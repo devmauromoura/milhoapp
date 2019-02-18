@@ -1,69 +1,81 @@
-<p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
+# MilhoAPP
+Projeto para desenvolvimento do BACKEND para a festa do milho. 
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
+##### Ferramentas Utilizados
+- Laravel
+- Laradock
+- Docker
+- Composer
 
-## About Laravel
+##### Ultimas atualizações
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as:
+- 18/02/2019  
+Estruturação do ambiente e aplicação ao GIT. 
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
 
-Laravel is accessible, yet powerful, providing tools needed for large, robust applications.
+##### Ambiente
 
-## Learning Laravel
+Para o desenvolvimento/manipulação da aplicação, você precisará realizar os seguintes processos:.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of any modern web application framework, making it a breeze to get started learning the framework.
+- GIT [Download](https://git-scm.com/downloads)
 
-If you're not in the mood to read, [Laracasts](https://laracasts.com) contains over 1100 video tutorials on a range of topics including Laravel, modern PHP, unit testing, JavaScript, and more. Boost the skill level of yourself and your entire team by digging into our comprehensive video library.
 
-## Laravel Sponsors
+Faça o download do GIT e o instale em sua estação. O GIT será utilizado para o versionamento e compartilhamento do projeto entre os alunos envolvidos. 
+Após sua instalação, você deve clonar este repositorio em seu computador, para que tenha acesso aos arquivos/aplicação.  
+Já no local aonde irá guardar o projeto, clique com o botão direito do mouse e selecione *GIT BASH HERE*. No terminal que abriu coloque o comando a baixo.
+```sh
+git clone https://github.com/devmauromoura/milhoapp.git
+```
 
-We would like to extend our thanks to the following sponsors for helping fund on-going Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell):
+Após esse processo, você ja terá o LARARVEL e LARADOCK em seu computador. Agora será necessário fazer o download da proxima ferramenta. O DOCKER será utilizado para virtualizar nosso ambiente,  que seria o intepretador do PHP, Banco de dados e Gerenciador do Banco de dados.  
+- Docker [Download](https://www.docker.com/get-started)
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[British Software Development](https://www.britishsoftware.co)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- [UserInsights](https://userinsights.com)
-- [Fragrantica](https://www.fragrantica.com)
-- [SOFTonSOFA](https://softonsofa.com/)
-- [User10](https://user10.com)
-- [Soumettre.fr](https://soumettre.fr/)
-- [CodeBrisk](https://codebrisk.com)
-- [1Forge](https://1forge.com)
-- [TECPRESSO](https://tecpresso.co.jp/)
-- [Runtime Converter](http://runtimeconverter.com/)
-- [WebL'Agence](https://weblagence.com/)
-- [Invoice Ninja](https://www.invoiceninja.com)
-- [iMi digital](https://www.imi-digital.de/)
-- [Earthlink](https://www.earthlink.ro/)
-- [Steadfast Collective](https://steadfastcollective.com/)
-- [We Are The Robots Inc.](https://watr.mx/)
-- [Understand.io](https://www.understand.io/)
+Após fazer o download, realize a instalação do DOCKER. Para os proximos passos, você deve ter certeza que ele está sendo executado.  *Obs.: Durante o processo de instalação, seu computador será reiniciados de 2 a 3 vezes.*
 
-## Contributing
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Para instalar o proximo item, precisaremos do PHP.  Recomendo utilizar o tutorial a seguir [Link](https://blog.schoolofnet.com/como-instalar-o-php-no-windows-do-jeito-certo-e-usar-o-servidor-embutido/). Você precisará somente do PHP, o servidor imbutido não será util.
 
-## Security Vulnerabilities
+Com isso chegamos ao próximo item. O composer. 
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+- Composer [download](https://getcomposer.org/download/)
 
-## License
+Realize a instalação dele. Para efetuar o teste de funcionamento, em seu terminal execute o comando a seguir:
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+```sh
+composer -v
+```
+
+Com o composer instalado,  agora podemos fazer a mágica acontecer.
+
+
+
+Em seu terminal navegue até o diretorio onde estão os arquivos foram clonados. Dentro da pasta laradock execute os seguintes comandos:
+
+```sh
+cp env-example .env
+docker-compose up -d apache2 postgres pgadmin
+```
+No comando acima estamos fazendo uma copia do env-exemple e colando ele com o nome .env, nele ficam as configurações gerais. Como as portas que as aplicações vão utilizar.
+
+Obs.:*Recomendo que altere a porta do apache, pois o mesmo usa a 80 e ela é utilizada para o SKYPE no windows. Altere por exemplo para 81*.
+
+No segundo, estamos iniciandos as imagens do servidor Apache, o banco de dados PostgreSQL e seu SGBD.
+
+
+Feito isso, teste o acesso das aplicações através do seu navegador.
+
+Para acessar o SGBD/BD, use as credenciais default.
+
+    Username : pgadmin4@pgadmin.org
+    Password : admin
+    
+
+Para parar as imagens, basta executar o mesmo comando porem com down. 
+```sh
+docker-compose down -d apache2 postgres pgadmin
+```
+
+Com eles em execução, finalizamos a configuração do ambiente. 
+
+
+##### Laravel
