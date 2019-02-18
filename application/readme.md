@@ -30,7 +30,7 @@ git clone https://github.com/devmauromoura/milhoapp.git
 Após esse processo, você ja terá o LARARVEL e LARADOCK em seu computador. Agora será necessário fazer o download da proxima ferramenta. O DOCKER será utilizado para virtualizar nosso ambiente,  que seria o intepretador do PHP, Banco de dados e Gerenciador do Banco de dados.  
 - Docker [Download](https://www.docker.com/get-started)
 
-Após fazer o download, realize a instalação do DOCKER. Para os proximos passos, você deve ter certeza que ele está sendo executado.  *Obs.: Durante o processo de instalação, seu computador será reiniciados de 2 a 3 vezes.*
+Após fazer o download, realize a instalação do DOCKER. Para os proximos passos, você deve ter certeza que ele está sendo executado.  *Obs.: Durante o processo de instalação, seu computador será reiniciado de 2 a 3 vezes.*
 
 
 Para instalar o proximo item, precisaremos do PHP.  Recomendo utilizar o tutorial a seguir [Link](https://blog.schoolofnet.com/como-instalar-o-php-no-windows-do-jeito-certo-e-usar-o-servidor-embutido/). Você precisará somente do PHP, o servidor imbutido não será util.
@@ -79,3 +79,14 @@ Com eles em execução, finalizamos a configuração do ambiente.
 
 
 ##### Laravel
+Para poder ativar o laravel, será necessário realizar alguns procedimentos nesse primeiro "contato".
+Com seu terminal,  acesse a pasta APPLICATION. Dentro dela execute os comandos a seguir:
+
+```sh
+cp env-example .env
+php artisan key:generate 
+```
+
+No primeiro comadando, estamos ativando o arquivo que controla os dados de acesso, como IP e credenciais do banco de dados. Recomendo que deixe de acordo com o .ENV do Laradock. Você pode deixar defaul ou personalizado, fica a seu critério.
+
+Feito isso, você deverá configurar seu APACHE para abrir a pasta public como default. Onde para efetuar o teste, abra o apache em seu navegador.
