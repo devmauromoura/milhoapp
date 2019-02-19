@@ -79,7 +79,7 @@ Para acessar o SGBD/BD, use as credenciais default.
 
 Para parar as imagens, basta executar o mesmo comando porem com stop. 
 ```sh
-docker-compose stop apache2 postgres pgadmin
+docker-compose stop apache2 mongo pgadmin
 ```
 
 Com eles em execução, finalizamos a configuração do ambiente. 
