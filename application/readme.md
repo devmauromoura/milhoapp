@@ -63,7 +63,7 @@ No comando acima estamos fazendo uma copia do env-exemple e colando ele com o no
 
 Obs.:*Recomendo que altere a porta do apache, pois o mesmo usa a 80 e ela é utilizada para o SKYPE no windows. Altere por exemplo para 81*.
 ```sh
-docker-compose up -d apache2 postgres pgadmin
+docker-compose up -d apache2 mongo pgadmin
 ```
 
 No segundo, estamos iniciandos as imagens do servidor Apache, o banco de dados PostgreSQL e seu SGBD.
@@ -77,9 +77,9 @@ Para acessar o SGBD/BD, use as credenciais default.
     Password : admin
     
 
-Para parar as imagens, basta executar o mesmo comando porem com down. 
+Para parar as imagens, basta executar o mesmo comando porem com stop. 
 ```sh
-docker-compose down -d apache2 postgres pgadmin
+docker-compose stop apache2 postgres pgadmin
 ```
 
 Com eles em execução, finalizamos a configuração do ambiente. 
