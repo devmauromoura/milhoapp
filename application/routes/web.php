@@ -16,3 +16,6 @@ Route::get('/', function () {
 });
 
 Route::get('/teste/{name}', 'testesController@testeInicial');
+
+Route::get('login/github', 'Auth\LoginController@redirectToProvider');
+Route::get('login/github/callback', 'Auth\LoginController@handleProviderCallback');

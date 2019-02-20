@@ -27,7 +27,7 @@ Já no local aonde irá guardar o projeto, clique com o botão direito do mouse 
 git clone https://github.com/devmauromoura/milhoapp.git
 ```
 
-Após esse processo, você ja terá o LARARVEL em seu computador. Em seguida, dentro do respositorio clone o submódulo com o comando:
+Após esse processo, você ja terá o LARARVEL em seu computador. Em seguida, dentro do respositorio (application) clone o submódulo com o comando:
 ```sh
 git submodule add https://github.com/Laradock/laradock.git
 ```
@@ -63,23 +63,18 @@ No comando acima estamos fazendo uma copia do env-exemple e colando ele com o no
 
 Obs.:*Recomendo que altere a porta do apache, pois o mesmo usa a 80 e ela é utilizada para o SKYPE no windows. Altere por exemplo para 81*.
 ```sh
-docker-compose up -d apache2 mongo pgadmin
+docker-compose up -d apache2 mariadb phpmydamin
 ```
 
-No segundo, estamos iniciandos as imagens do servidor Apache, o banco de dados PostgreSQL e seu SGBD.
+No segundo, estamos iniciandos as imagens do servidor Apache, o banco de dados MariaDB.
 
 
 Feito isso, teste o acesso das aplicações através do seu navegador.
 
-Para acessar o SGBD/BD, use as credenciais default.
-
-    Username : pgadmin4@pgadmin.org
-    Password : admin
     
-
 Para parar as imagens, basta executar o mesmo comando porem com stop. 
 ```sh
-docker-compose stop apache2 mongo pgadmin
+docker-compose stop apache2 mariadb phpmydamin
 ```
 
 Com eles em execução, finalizamos a configuração do ambiente. 

@@ -38,6 +38,12 @@ return [
             'secret' => env('STRIPE_WEBHOOK_SECRET'),
             'tolerance' => env('STRIPE_WEBHOOK_TOLERANCE', 300),
         ],
+
     ],
 
+    'github' => [
+    'client_id' => env('GITHUB_CLIENT_ID'),         // Your GitHub Client ID
+    'client_secret' => env('GITHUB_CLIENT_SECRET'), // Your GitHub Client Secret
+    'redirect' => '',
+    ],
 ];
