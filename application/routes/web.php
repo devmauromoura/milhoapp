@@ -18,10 +18,9 @@ Route::get('/', function () {
 Route::get('/teste/{name}', 'testesController@testeInicial');
 
 
-/*
-Route::get('login/github', 'Auth\LoginController@redirectToProvider');
-Route::get('login/github/callback', 'Auth\LoginController@handleProviderCallback');
-*/
+
+Route::get('login/facebook', 'Auth\LoginController@redirectToProvider');
+Route::get('login/facebook/callback', 'Auth\LoginController@handleProviderCallback');
 
 Auth::routes();
 

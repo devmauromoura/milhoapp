@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Socialite;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
@@ -40,14 +41,14 @@ class LoginController extends Controller
 
     public function redirectToProvider()
     {
-        return Socialite::driver('github')->redirect();
+        return Socialite::driver('facebook')->redirect();
     }
 
 
         public function handleProviderCallback()
     {
-        $user = Socialite::driver('github')->user();
+        $userFacebook = Socialite::driver('facebook')->user();
 
-        // $user->token;
+        dd($userFacebook);
     }
 }
