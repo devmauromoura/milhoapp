@@ -81,20 +81,18 @@ class LoginController extends Controller
 
         $findUserG = User::where('email', $userGoogle->email)->first();
 
-        dd($findUserG);
+        if($findUserG){
+            $user = $findUserG;
+        }else{
+            $user = new User;
+            $user->name = $userGoogle->getName();
+            $user->email = $userGoogle->getEmail();
+            $user->password = bcrypt(123456);
+            $user->save();
+        }
 
-        // if($findUser){
-        //     $user = $findUser;
-        // }else{
-        //     $user = new User;
-        //     $user->name = $userGoogle->getName();
-        //     $user->email = $userGoogle->getEmail();
-        //     $user->password = bcrypt(123456);
-        //     $user->save();
-        // }
+        Auth::login($user);
 
-        // Auth::login($user);
-
-        // return redirect($this->redirectTo);
+        return redirect($this->redirectTo);
     }
 }

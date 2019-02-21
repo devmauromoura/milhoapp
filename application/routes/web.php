@@ -15,10 +15,10 @@ Route::get('/home', 'HomeController@index')->name('home');
 // Manipulação de Usuários
 
 Route::middleware(['middlewareUsuario'])->group(function () {
-    Route::post('/usuario/{id}', 'userController@post');
-    Route::get('/usuario/{id}', 'userController@get');
-    Route::put('/usuario/{id}', 'userController@put');
-    Route::delete('/usuario/{id}', 'userController@delete');
+    Route::post('/usuario/{id}', 'UserController@teste');
+    Route::get('/usuario/{id}', 'UserController@get');
+    Route::put('/usuario/{id}', 'UserController@put');
+    Route::delete('/usuario/{id}', 'UserController@delete');
 
 });
 
