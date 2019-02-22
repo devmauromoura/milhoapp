@@ -15,7 +15,7 @@ class CreateFichaTable extends Migration
     {
         Schema::create('ficha', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('uuid');
+            $table->integer('uuid');    
             $table->foreign('idbarraca')->references('id')->on('barraca');
             $table->bool('ativo');
             $table->timestamps();
@@ -32,11 +32,3 @@ class CreateFichaTable extends Migration
         Schema::dropIfExists('ficha');
     }
 }
-
-
-    ficha   
-int     id
-string  uuid
-barraca idbarraca
-bool        ativo
-

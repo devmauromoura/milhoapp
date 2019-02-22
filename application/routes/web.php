@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Support\Facades\View;
+
 Auth::routes();
 
 Route::get('/', function () {
@@ -14,57 +16,58 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 // Manipulação de Usuários
 
-Route::middleware(['middlewareUsuario'])->group(function () {
-    Route::post('/usuario/{id}', 'UserController@teste');
-    Route::get('/usuario/{id}', 'UserController@get');
-    Route::put('/usuario/{id}', 'UserController@put');
-    Route::delete('/usuario/{id}', 'UserController@delete');
+Route::group(['prefix' => '/usuario/', 'middleware' => 'auth'], function () {
+    Route::get('/', 'UserController@show');
+    Route::post('/create', 'UserController@create');
+    Route::get('/{id}/edit', 'UserController@edit');
+    Route::put('/{id}/update', 'UserController@update');
+    Route::get('/{id}/delete', 'UserController@delete');
 
 });
 
 // Manipulação de Cursos
 
-Route::middleware(['middlewareCurso'])->group(function () {
-    Route::post('/curso/{id}', 'cursoController@post');
-    Route::get('/curso/{id}', 'cursoController@get');
-    Route::put('/curso/{id}', 'cursoController@put');
-    Route::delete('/curso/{id}', 'cursoController@delete');
+Route::group(['prefix' => '/curso/', 'middleware' => 'auth'], function () {
+    Route::post('/{id}', 'cursoController@post');
+    Route::get('/{id}', 'cursoController@get');
+    Route::put('/{id}', 'cursoController@put');
+    Route::delete('/{id}', 'cursoController@delete');
 
 });
 
 // Manipulação de Barracas
 
-Route::middleware(['middlewareBarraca'])->group(function () {
-    Route::post('/barraca/{id}', 'barracaController@post');
-    Route::get('/barraca/{id}', 'barracaController@get');
-    Route::put('/barraca/{id}', 'barracaController@put');
-    Route::delete('/barraca/{id}', 'barracaController@delete');
+Route::group(['prefix' => '/barraca/'], function () {
+    Route::post('/{id}', 'barracaController@post');
+    Route::get('/{id}', 'barracaController@get');
+    Route::put('/{id}', 'barracaController@put');
+    Route::delete('/{id}', 'barracaController@delete');
 
 });
 
 // Manipulação de Pratos
 
-Route::middleware(['middlewarePrato'])->group(function () {
-    Route::post('/prato/{id}', 'pratoController@post');
-    Route::get('/prato/{id}', 'pratoController@get');
-    Route::put('/prato/{id}', 'pratoController@put');
-    Route::delete('/prato/{id}', 'pratoController@delete');
+Route::group(['prefix' => '/prato/', 'middleware' => 'auth'], function () {
+    Route::post('/{id}', 'pratoController@post');
+    Route::get('/{id}', 'pratoController@get');
+    Route::put('/{id}', 'pratoController@put');
+    Route::delete('/{id}', 'pratoController@delete');
 
 });
 
 // Manipulação de Votos
 
-Route::middleware(['middlewareVoto'])->group(function () {
-    Route::post('/voto/{id}', 'votoController@post');
-    Route::get('/voto/{id}', 'votoController@get');
+Route::group(['prefix' => '/voto/', 'middleware' => 'auth'], function () {
+    Route::post('/{id}', 'votoController@post');
+    Route::get('/{id}', 'votoController@get');
 
 });
 
 // Manipulação de Ficha
 
-Route::middleware(['middlewareFicha'])->group(function () {
-    Route::post('/ficha/{id}', 'fichaController@post');
-    Route::get('/ficha/{id}', 'fichaController@get');
+Route::group(['prefix' => '/ficha/', 'middleware' => 'auth'], function () {
+    Route::post('/{id}', 'fichaController@post');
+    Route::get('/{id}', 'fichaController@get');
 
 });
 

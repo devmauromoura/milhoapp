@@ -12,15 +12,17 @@ Projeto para desenvolvimento do BACKEND para a festa do milho.
 
 
 - 22/02/2019  
-Ajuste de chave estrageira nas Migrations.
+Ajuste de chave estrageira nas Migrations.</br>
+Inserção de Autenticação em todas as rotas.</br>
+Cadastramento, edição e remoção de usuário implementado.
 
 - 21/02/2019  
-Autenticação via Google implementada.
-Configuração dos Routes.
+Autenticação via Google implementada.</br>
+Configuração dos Routes.</br>
 Configuração das Migrations.
 
 - 20/02/2019  
-Autenticação implementada e ajusta.
+Autenticação implementada e ajusta.</br>
 Autenticação via Facebook Implementada.
 
 
