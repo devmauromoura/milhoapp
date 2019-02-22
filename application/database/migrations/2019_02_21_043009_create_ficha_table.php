@@ -16,7 +16,7 @@ class CreateFichaTable extends Migration
         Schema::create('ficha', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('uuid');
-            $table->integer('idbarraca');
+            $table->foreign('idbarraca')->references('id')->on('barraca');
             $table->bool('ativo');
             $table->timestamps();
         });

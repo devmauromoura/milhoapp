@@ -18,7 +18,7 @@ class CreatePratoTable extends Migration
             $table->string('nome');
             $table->string('descricao');
             $table->double('valor');
-            $table->string('idbarraca');
+            $table->foreign('idbarraca')->references('id')->on('barraca');
             $table->timestamps();
         });
     }
