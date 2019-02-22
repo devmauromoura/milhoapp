@@ -9,6 +9,21 @@ Projeto para desenvolvimento do BACKEND para a festa do milho.
 
 ##### Ultimas atualizações
 
+
+
+- 22/02/2019  
+Ajuste de chave estrageira nas Migrations.
+
+- 21/02/2019  
+Autenticação via Google implementada.
+Configuração dos Routes.
+Configuração das Migrations.
+
+- 20/02/2019  
+Autenticação implementada e ajusta.
+Autenticação via Facebook Implementada.
+
+
 - 18/02/2019  
 Estruturação do ambiente e aplicação ao GIT. 
 
