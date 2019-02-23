@@ -12,7 +12,8 @@ Route::get('/', function () {
 /*	#### ROUTES PARA CONTROLE DE PÁGINAS ### */
 
 
-Route::get('/home', 'HomeController@index')->name('home');
+//Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/admin', 'UserController@show');
 
 // Manipulação de Usuários
 
@@ -35,7 +36,7 @@ Route::group(['prefix' => '/curso/', 'middleware' => 'auth'], function () {
 
 // Manipulação de Barracas
 
-Route::group(['prefix' => '/barraca/'], function () {
+Route::group(['prefix' => '/barraca/', 'middleware' => 'auth'], function () {
     Route::get('/',function(){return view('barraca');});
     Route::post('/{id}', 'barracaController@post');
     Route::get('/{id}', 'barracaController@get');

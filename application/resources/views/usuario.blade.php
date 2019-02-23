@@ -23,7 +23,7 @@
 			<td >{{$user->name}}</td>
 			<td >{{$user->email}}</td>
 			<td><button onclick="selectedRowToInput()">Edit</button></td>
-			<td><a href="usuario/{{$user->id}}/delete">Delete</a></td>								
+			<td><a href="usuario/{{$user->id}}/Delete">Delete</a></td>								
 		</tbody>
 		@endforeach	
 	</table>

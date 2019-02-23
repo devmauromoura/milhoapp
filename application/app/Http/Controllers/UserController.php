@@ -12,7 +12,7 @@ class UserController extends Controller
     public function show(){
     	$usuarios = DB::table('users')->get();
 
-    	return view::make('/usuario', compact('usuarios'));
+    	return view::make('/admin', compact('usuarios'));
     }
 
     public function create(Request $requestCreate){
