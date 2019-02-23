@@ -89,9 +89,9 @@ No segundo, estamos iniciandos as imagens do servidor Apache, o banco de dados M
 Feito isso, teste o acesso das aplicações através do seu navegador.
 
     
-Para parar as imagens, basta executar o mesmo comando porem com stop. 
+Para parar as imagens, basta executar o comando a baixo.
 ```sh
-docker-compose stop apache2 mariadb phpmydamin
+docker-compose down
 ```
 
 Com eles em execução, finalizamos a configuração do ambiente. 

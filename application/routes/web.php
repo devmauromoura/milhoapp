@@ -28,11 +28,9 @@ Route::group(['prefix' => '/usuario/', 'middleware' => 'auth'], function () {
 // Manipulação de Cursos
 
 Route::group(['prefix' => '/curso/', 'middleware' => 'auth'], function () {
-    Route::post('/{id}', 'cursoController@post');
-    Route::get('/{id}', 'cursoController@get');
-    Route::put('/{id}', 'cursoController@put');
-    Route::delete('/{id}', 'cursoController@delete');
-
+    Route::get('/', 'cursoController@show');
+    Route::post('/create', 'cursoController@create');
+    Route::get('/{id}/delete', 'cursoController@delete');
 });
 
 // Manipulação de Barracas

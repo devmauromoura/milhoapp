@@ -59,7 +59,6 @@
              }
          }
          selectedRowToInput();
-         
      </script>
 </body>
 </html>

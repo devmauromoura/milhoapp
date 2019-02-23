@@ -15,9 +15,9 @@ class CreateVotoBarracaTable extends Migration
     {
         Schema::create('voto_barraca', function (Blueprint $table) {
             $table->increments('id');
-            $table->foreign('idusuario')->references('id')->on('users');
-            $table->dataTime('data');
-            $table->foreign('idbarraca')->references('id')->on('barraca');
+           // $table->foreign('idusuario')->references('id')->on('users');
+           // $table->data('data');
+            //$table->foreign('idbarraca')->references('id')->on('barraca');
             $table->timestamps();
         });
     }

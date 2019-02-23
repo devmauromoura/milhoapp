@@ -15,10 +15,10 @@ class CreateVotoTable extends Migration
     {
         Schema::create('voto', function (Blueprint $table) {
             $table->increments('id');
-            $table->foreign('idusuario')->references('id')->on('users');
-            $table->dataTime('data');
-            $table->foreign('idbarraca')->references('id')->on('barraca');
-            $table->foreign('idprato')->references('id')->on('prato');
+           // $table->foreign('idusuario')->references('id')->on('users');
+            //$table->dataTime('data');
+           // $table->foreign('idbarraca')->references('id')->on('barraca');
+           // $table->foreign('idprato')->references('id')->on('prato');
             $table->timestamps();
         });
     }
