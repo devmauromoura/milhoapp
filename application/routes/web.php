@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\View;
 Auth::routes();
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
 
@@ -36,6 +36,7 @@ Route::group(['prefix' => '/curso/', 'middleware' => 'auth'], function () {
 // Manipulação de Barracas
 
 Route::group(['prefix' => '/barraca/'], function () {
+    Route::get('/',function(){return view('barraca');});
     Route::post('/{id}', 'barracaController@post');
     Route::get('/{id}', 'barracaController@get');
     Route::put('/{id}', 'barracaController@put');
@@ -45,13 +46,26 @@ Route::group(['prefix' => '/barraca/'], function () {
 
 // Manipulação de Pratos
 
-Route::group(['prefix' => '/prato/', 'middleware' => 'auth'], function () {
+Route::group(['prefix' => '/pratos/', 'middleware' => 'auth'], function () {
+    Route::get('/',function(){return view('pratos');});
     Route::post('/{id}', 'pratoController@post');
     Route::get('/{id}', 'pratoController@get');
     Route::put('/{id}', 'pratoController@put');
     Route::delete('/{id}', 'pratoController@delete');
 
 });
+
+// Manipulação de Pratos
+
+Route::group(['prefix' => '/bebidas/', 'middleware' => 'auth'], function () {
+    Route::get('/',function(){return view('bebidas');});
+    Route::post('/{id}', 'pratoController@post');
+    Route::get('/{id}', 'pratoController@get');
+    Route::put('/{id}', 'pratoController@put');
+    Route::delete('/{id}', 'pratoController@delete');
+
+});
+
 
 // Manipulação de Votos
 
