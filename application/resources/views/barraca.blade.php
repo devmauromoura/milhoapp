@@ -43,7 +43,12 @@
             <div class="row">
               <div class="col-sm-6 mt-3">
                 <label>Curso</label>
-                <input type="text" class="form-control" placeholder="Nome do curso">
+                <select name="curso" class="form-control" id="periodos">
+                  <option value="" disabled="" selected="">Selecione uma opção...</option>
+                  <option value="ads">ADS</option>
+                  <option value="direito">Direito</option>
+                  <option value="adm">ADM</option>
+                </select>
               </div>
               <div class="col-sm-6 mt-3">
                 <label for="pagamentos">Tipo de pagamento</label>

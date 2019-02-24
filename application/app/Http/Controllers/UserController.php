@@ -11,8 +11,9 @@ class UserController extends Controller
 {
     public function show(){
     	$usuarios = DB::table('users')->get();
+        $todosC = DB::table('curso')->get();
 
-    	return view::make('/admin', compact('usuarios'));
+    	return view::make('/admin')->with(compact('usuarios'))->with(compact('todosC'));
     }
 
     public function create(Request $requestCreate){

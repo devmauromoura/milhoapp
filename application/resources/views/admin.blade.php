@@ -74,7 +74,33 @@
           </form>
         </div>
       </div> 
-
+      <div class="container"> <!-- Listar Cursos -->
+        <div class="listar shadow">
+            <h4>Cursos</h4>
+            <table class="table table-sm">
+                <thead class="thead-light">
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nome</th>
+                    <th scope="col"></th>
+                  </tr>
+                </thead>
+                @foreach($todosC as $curso)
+                <tbody>
+                  <tr>
+                    <th scope="row">{{$curso->id}}</th>
+                    <td>{{$curso->nome}}</td>
+                    <td>
+                        <a href="#" data-toggle="modal" data-target="#modalEditar"><i class="fas fa-edit mb-2 mr-2"></i></a>
+                        <a href="#" data-toggle="modal" data-target="#modalExcluir"><i class="fas fa-trash-alt mb-2 mr-2"></i></a>
+                        <a href="#" data-toggle="modal" data-target="#modalExcluir"><i class="fas fa-envelope"></i></a>
+                      </td>
+                  </tr>
+                </tbody>
+                @endforeach                
+            </table>
+        </div>
+      </div>
 
     </main>
     <!-- Main - FIM -->

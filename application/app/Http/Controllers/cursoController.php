@@ -11,7 +11,7 @@ class cursoController extends Controller
 {
 	public function show(){
 		$todosC = DB::table('curso')->get();
-		return view::make('curso')->with(compact('todosC'));
+		return view::make('admin')->with(compact('todosC'));
 	}
 
 	public function create(Request $request){
