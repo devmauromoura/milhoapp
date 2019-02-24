@@ -56,7 +56,7 @@ Route::group(['prefix' => '/pratos/', 'middleware' => 'auth'], function () {
 
 });
 
-// Manipulação de Pratos
+// Manipulação de Bebidas
 
 Route::group(['prefix' => '/bebidas/', 'middleware' => 'auth'], function () {
     Route::get('/',function(){return view('bebidas');});

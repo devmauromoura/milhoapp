@@ -58,10 +58,28 @@
             </table>
         </div>
       </div> 
+
+      <div class="container">
+        <div class="cadastrar shadow"> <!-- Cadastrar Curso -->
+          <h4>Novo Curso</h4>
+          <form action="curso/create" method="POST">
+            @csrf
+            <div class="row">
+              <div class="col">
+                <label>Nome</label>
+                <input type="text" class="form-control" name="nomeCurso" placeholder="Insira o nome do Curso!">
+              </div>
+            </div>
+            <button type="submit" class="btn btn-default btn-md btn-block mt-4">Cadastrar</button>
+          </form>
+        </div>
+      </div> 
+
+
     </main>
     <!-- Main - FIM -->
 
-    <!-- Modal Editar -->
+    <!-- Modal Editar Usuários -->
     <div class="modal fade" id="modalEditar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">

@@ -23,9 +23,9 @@ class cursoController extends Controller
 		$Curso->nome =  $request->nomeCurso;
 		$Curso->save();
 
-		return redirect('curso');
+		return redirect('/admin');
 
-		//return $request->nomeCurso;
+		//return $request->input('nomeCurso');
 	}
 
 	public function delete($id){
@@ -34,6 +34,6 @@ class cursoController extends Controller
     	
     	//return $id;
 
-    	return redirect('/curso');
+    	return redirect('/admin');
 	}
 }

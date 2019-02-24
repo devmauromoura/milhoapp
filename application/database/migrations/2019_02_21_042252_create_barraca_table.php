@@ -18,7 +18,8 @@ class CreateBarracaTable extends Migration
             $table->string('nome');
             $table->integer('semestre');
             $table->integer('periodo');
-            //$table->foreign('idcurso')->references('id')->on('curso');
+            $table->integer('idcurso')->unsigned();
+            $table->foreign('idcurso')->references('id')->on('curso');
             $table->integer('pagamento');
             $table->timestamps();
         });
