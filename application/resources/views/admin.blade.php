@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Bebidas')
+@section('title', 'Admin')
 
 @section('conteudo')
 
@@ -101,6 +101,36 @@
             </table>
         </div>
       </div>
+
+      <div class="container"> <!-- Listar Barracas -->
+        <div class="listar shadow">
+            <h4>Barracas</h4>
+            <table class="table table-sm">
+                <thead class="thead-light">
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Barraca</th>
+                    <th scope="col">Curso</th>
+                    <th scope="col"></th>
+                  </tr>
+                </thead>
+                @foreach($barracas as $barra)
+                <tbody>
+                  <tr>
+                    <th scope="row">{{$barra->id}}</th>
+                    <td>{{$barra->nome}}</td>
+                    <td>{{$barra->cnome}}</td>
+                    <td>
+                        <a href="#" data-toggle="modal" data-target="#modalEditar"><i class="fas fa-edit mb-2 mr-2"></i></a>
+                        <a href="#" data-toggle="modal" data-target="#modalExcluir"><i class="fas fa-trash-alt mb-2 mr-2"></i></a>
+                        <a href="#" data-toggle="modal" data-target="#modalExcluir"><i class="fas fa-envelope"></i></a>
+                      </td>
+                  </tr>
+                </tbody>
+                @endforeach                
+            </table>
+        </div>
+      </div>      
 
     </main>
     <!-- Main - FIM -->

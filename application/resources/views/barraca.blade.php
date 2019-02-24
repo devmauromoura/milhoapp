@@ -45,9 +45,9 @@
                 <label>Curso</label>
                 <select name="curso" class="form-control" id="periodos">
                   <option value="" disabled="" selected="">Selecione uma opção...</option>
-                  <option value="ads">ADS</option>
-                  <option value="direito">Direito</option>
-                  <option value="adm">ADM</option>
+                  @foreach($cursosListagem as $curso)
+                  <option value="{{$curso->id}}">{{$curso->nome}}</option>
+                  @endforeach
                 </select>
               </div>
               <div class="col-sm-6 mt-3">
