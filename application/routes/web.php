@@ -4,20 +4,29 @@ use Illuminate\Support\Facades\View;
 
 Auth::routes();
 
-Route::get('/', function () {
-    return view('auth.login');
-});
-
+Route::get('/', 'UserController@ini');
+Route::post('/loginUser','UserController@login');
+Route::get('/logout','UserController@logout');
 
 /*	#### ROUTES PARA CONTROLE DE PÁGINAS ### */
 
+Route::group(['prefix'=> '/admin', 'middleware' => 'auth'], function(){
+    Route::get('/', 'UserController@show');
+});
 
-//Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/admin', 'UserController@show');
+
+Route::group(['prefix' => '/home', 'middleware' => 'auth'], function () {
+    Route::get('/', function(){
+        return view('home');
+    });
+
+});
+
+
 
 // Manipulação de Usuários
 
-Route::group(['prefix' => '/usuario/', 'middleware' => 'auth'], function () {
+Route::group(['prefix' => '/usuario', 'middleware' => 'auth'], function () {
     Route::get('/', 'UserController@show');
     Route::post('/create', 'UserController@create');
     Route::get('/{id}/edit', 'UserController@edit');
@@ -28,7 +37,7 @@ Route::group(['prefix' => '/usuario/', 'middleware' => 'auth'], function () {
 
 // Manipulação de Cursos
 
-Route::group(['prefix' => '/curso/', 'middleware' => 'auth'], function () {
+Route::group(['prefix' => '/curso', 'middleware' => 'auth'], function () {
     Route::get('/', 'cursoController@show');
     Route::post('/create', 'cursoController@create');
     Route::get('/{id}/delete', 'cursoController@delete');
@@ -36,7 +45,7 @@ Route::group(['prefix' => '/curso/', 'middleware' => 'auth'], function () {
 
 // Manipulação de Barracas
 
-Route::group(['prefix' => '/barraca/', 'middleware' => 'auth'], function () {
+Route::group(['prefix' => '/barraca', 'middleware' => 'auth'], function () {
     Route::get('/', 'barracaController@show');
     Route::post('/{id}', 'barracaController@post');
     Route::get('/{id}', 'barracaController@get');
@@ -47,7 +56,7 @@ Route::group(['prefix' => '/barraca/', 'middleware' => 'auth'], function () {
 
 // Manipulação de Pratos
 
-Route::group(['prefix' => '/pratos/', 'middleware' => 'auth'], function () {
+Route::group(['prefix' => '/pratos', 'middleware' => 'auth'], function () {
     Route::get('/',function(){return view('pratos');});
     Route::post('/{id}', 'pratoController@post');
     Route::get('/{id}', 'pratoController@get');
@@ -83,16 +92,3 @@ Route::group(['prefix' => '/ficha/', 'middleware' => 'auth'], function () {
     Route::get('/{id}', 'fichaController@get');
 
 });
-
-
-
-
-/*	#### ROUTES PARA AUTENTICAÇÃO ### */
-
-//Facebook
-Route::get('login/facebook', 'Auth\LoginController@redirectToProvider');
-Route::get('login/facebook/callback', 'Auth\LoginController@handleProviderCallback');
-
-//Google
-Route::get('login/google', 'Auth\LoginController@redirectToProviderGoogle');
-Route::get('login/google/callback', 'Auth\LoginController@handleProviderCallbackGoogle');
