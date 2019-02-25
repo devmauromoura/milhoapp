@@ -21,15 +21,17 @@ class UserController extends Controller
 
     public function create(Request $requestCreate){
 
-    	// $userNew = new User;
-    	// $userNew->name = $requestCreate->input('name');
-    	// $userNew->email = $requestCreate->input('email');
-    	// //echo $userNew->name."<br>".$userNew->email."<br>".$userNew->password;
-        // $userNew->save();
-        Mail::to($requestCreate->input('email'))->send(new cadastroUsuario());
-        Return redirect('/admin');
-        //return dd(config('mail'));
-        //Return '<h4>Notificação</h4><br><p>Email enviado para.: </p><h3>'.$requestCreate->input('email').'</h3>';
+        $user = User::where('email', '=', $requestCreate->input('email'))->first();
+        if($user == null){
+            $userNew = new User;
+            $userNew->name = $requestCreate->input('name');
+            $userNew->email = $requestCreate->input('email');
+            Mail::to($requestCreate->input('email'))->send(new cadastroUsuario());  // Para testar as configurações -> dd(config('mail'));
+            $userNew->save();
+            return redirect('/admin');
+        }else{
+            return "O email ".$requestCreate->input('email')." ja existe no banco!";
+        }
     }
 
     public function delete($id)
