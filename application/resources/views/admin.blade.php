@@ -10,6 +10,7 @@
         <div class="cadastrar shadow"> <!-- Cadastrar -->
           <h4>Novo Usuário</h4>
           <form action="usuario/create" method="POST">
+            @csrf
             <div class="row">
               <div class="col">
                 <label>Nome</label>
@@ -37,6 +38,8 @@
                     <th scope="col">Nome</th>
                     <th scope="col">E-mail</th>
                     <th scope="col">Nível</th>
+                    <th scope="col">Ativo</th>
+                    <th scope="col"></th>
                     <th scope="col"></th>
                   </tr>
                 </thead>
@@ -47,6 +50,7 @@
                     <td>{{$user->name}}</td>
                     <td>{{$user->email}}</td>
                     <td>{{$user->nivel}}</td>
+                    <td></td>
                     <td>
                         <a href="#" data-toggle="modal" data-target="#modalEditar"><i class="fas fa-edit mb-2 mr-2"></i></a>
                         <a href="#" data-toggle="modal" data-target="#modalExcluir"><i class="fas fa-trash-alt mb-2 mr-2"></i></a>
