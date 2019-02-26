@@ -3,11 +3,11 @@
             <b>Informativo MilhoAPP</b>
         </div>
         <div style="padding: 10px; font-size: 15px;">
-            <h4> Seu cadastro foi realizado com sucesso. </h4>
+            <h4>Olá, seu cadastro foi realizado com sucesso. </h4>
             Cadastre sua senha de acesso através do link a seguir!
             <center>
                 <div style="border: 1px solid black; width: 150px; margin: 10px 10px 30px 10px; border-radius: 20px; padding: 5px; background-color: #00c853;">
-                    <a style="text-decoration: none; color: #fff;" href="http://google.com.br/" target="_blank" >Cadastrar Senha</a>
+                    <a style="text-decoration: none; color: #fff;" href="http://localhost/public/cadastrarSenha/{{ $id }}" target="_blank" >Cadastrar Senha</a>
                 </div>
             </center>
             Não responda este e-mail, o mesmo não é monitorado.

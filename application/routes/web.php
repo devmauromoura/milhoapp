@@ -4,9 +4,11 @@ use Illuminate\Support\Facades\View;
 
 Auth::routes();
 
-Route::get('/', 'UserController@ini');
+Route::get('/', 'UserController@ini')->name('index');
 Route::post('/loginUser','UserController@login');
 Route::get('/logout','UserController@logout');
+Route::get('/cadastrarSenha/{id}','UserController@cadastrarSenha');
+Route::post('/cadastrarSenha/{id}/aplicar','UserController@salvarSenha');
 
 /*	#### ROUTES PARA CONTROLE DE PÁGINAS ### */
 
@@ -92,3 +94,6 @@ Route::group(['prefix' => '/ficha/', 'middleware' => 'auth'], function () {
     Route::get('/{id}', 'fichaController@get');
 
 });
+
+Route::get('login/facebook', 'Auth\LoginController@redirectToProvider');
+Route::get('login/facebook/callback', 'Auth\LoginController@handleProviderCallback');

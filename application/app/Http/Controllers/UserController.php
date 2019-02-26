@@ -5,9 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\Hash;
 use App\Mail\cadastroUsuario;
 use App\User;
-use View;
 use DB;
 
 
@@ -20,31 +21,27 @@ class UserController extends Controller
             return redirect()->intended('home');
         }
         else{
-            return view('index');
+            return view::make('index');
         }
     }
 
 
     public function login(Request $request){
-    
         $credentials = $request->only('email', 'password');
-       
+
         if (Auth::attempt($credentials)) {
             // Authentication passed...
             return redirect()->intended('home');
         }
         else{
-            return redirect('index');
+            return 'validacao fail';
         }
-
-
     }
-
 
     public function logout(){
         Auth::logout();
 
-        return redirect('index');
+        return redirect('/');
     }
 
 
@@ -60,17 +57,22 @@ class UserController extends Controller
 
         $user = User::where('email', '=', $requestCreate->input('email'))->first();
         if($user == null){
-            //$userNew = new User;
-            //$userNew->name = $requestCreate->input('name');
-            //$userNew->email = $requestCreate->input('email');
-            Mail::to($requestCreate->input('email'))->send(new cadastroUsuario());  // Para testar as configurações -> dd(config('mail'));
-            //$userNew->save();
-            return redirect('/admin');
+           $userNew = new User;
+           $userNew->name = $requestCreate->input('name');
+           $userNew->email = $requestCreate->input('email');
+           $userNew->save();
+            
+           $userCheck = User::where('email', '=', $requestCreate->input('email'))->first();
+           $id = $userCheck->id;
+        
+            Mail::to($requestCreate->input('email'))->send(new cadastroUsuario($id));  // Para testar as configurações -> dd(config('mail'));
+                        
+            return 'Encaminhamos para seu e-mail a definição de senha.'.$userCheck->id;
         }else{
             return "O email ".$requestCreate->input('email')." ja existe no banco!";
         }
     }
-
+ 
     public function delete($id)
     {
     	$userDel = User::find($id);
@@ -81,6 +83,21 @@ class UserController extends Controller
     	Return redirect('/usuario');
     }
 
+    public function cadastrarSenha($id){
+        return view::make('cadastrarSenha')->with(compact('id'));
+    }
 
+    public function salvarSenha(Request $request, $id){
+
+        $pass = Hash::make($request->input('passwordNew'));
+        $passC = User::find($id);
+        $passC->password = $pass;
+
+        $passC->save();
+
+
+
+        return redirect('/');
+    }
 }
 	

@@ -11,15 +11,18 @@ class cadastroUsuario extends Mailable
 {
     use Queueable, SerializesModels;
 
+    public $id;
+    
+    public function __construct($id)
+    {
+        $this->id = $id;
+    }
+
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct()
-    {
-        //
-    }
 
     /**
      * Build the message.
