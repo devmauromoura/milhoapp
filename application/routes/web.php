@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\View;
 
 Auth::routes();
 
+Route::get('/criarsenha','UserController@criarsenha');
+
 Route::get('/', 'UserController@ini')->name('index');
 Route::post('/loginUser','UserController@login');
 Route::get('/logout','UserController@logout');
@@ -31,6 +33,7 @@ Route::group(['prefix' => '/home', 'middleware' => 'auth'], function () {
 Route::group(['prefix' => '/usuario', 'middleware' => 'auth'], function () {
     Route::get('/', 'UserController@show');
     Route::post('/create', 'UserController@create');
+    Route::post('/{id}/select', 'UserController@select');
     Route::get('/{id}/edit', 'UserController@edit');
     Route::put('/{id}/update', 'UserController@update');
     Route::get('/{id}/delete', 'UserController@delete');

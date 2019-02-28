@@ -15,6 +15,7 @@ use DB;
 class UserController extends Controller
 {
 
+    // Validação de acesso a rota principal "/"
 
     public function ini(){
         if (Auth::check()){
@@ -25,6 +26,7 @@ class UserController extends Controller
         }
     }
 
+    //Validação de crenciais ao utilizar o FORM de Login
 
     public function login(Request $request){
         $credentials = $request->only('email', 'password');
@@ -38,6 +40,7 @@ class UserController extends Controller
         }
     }
 
+    //Deslogar
     public function logout(){
         Auth::logout();
 
@@ -45,6 +48,8 @@ class UserController extends Controller
     }
 
 
+
+    //Funções para listagem de dados na página do ADM
     public function show(){
     	$usuarios = DB::table('users')->get();
         $todosC = DB::table('curso')->get();
@@ -53,6 +58,11 @@ class UserController extends Controller
     	return view::make('/admin')->with(compact('usuarios'))->with(compact('todosC'))->with(compact('barracas'));
     }
 
+    public function select($){
+        
+    }
+
+    // Cadastrar Usuário
     public function create(Request $requestCreate){
 
         $user = User::where('email', '=', $requestCreate->input('email'))->first();
@@ -67,9 +77,9 @@ class UserController extends Controller
         
             Mail::to($requestCreate->input('email'))->send(new cadastroUsuario($id));  // Para testar as configurações -> dd(config('mail'));
                         
-            return 'Encaminhamos para seu e-mail a definição de senha.'.$userCheck->id;
+            return 'O usuário foi cadastrado. Id.: '.$userCheck->id."<br>Foi encaminhado ao e-mail ".$requestCreate->input('email')." um link para update da senha!";
         }else{
-            return "O email ".$requestCreate->input('email')." ja existe no banco!";
+            return "O email ".$requestCreate->input('email')." já está cadastrado! Os emails de acesso podem ser utilizados/cadastrados apenas uma vez. ";
         }
     }
  
@@ -98,6 +108,12 @@ class UserController extends Controller
 
 
         return redirect('/');
+    }
+
+    public function criarsenha(){
+        $retorno = Hash::make('12345');
+
+        return $retorno;
     }
 }
 	

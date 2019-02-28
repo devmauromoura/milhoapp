@@ -52,9 +52,9 @@
                     <td>{{$user->nivel}}</td>
                     <td></td>
                     <td>
-                        <a href="#" data-toggle="modal" data-target="#modalEditar"><i class="fas fa-edit mb-2 mr-2"></i></a>
-                        <a href="#" data-toggle="modal" data-target="#modalExcluir"><i class="fas fa-trash-alt mb-2 mr-2"></i></a>
-                        <a href="#" data-toggle="modal" data-target="#modalExcluir"><i class="fas fa-envelope"></i></a>
+                        <a href="#" data-toggle="modal" data-target="#modalEditarUser"><i class="fas fa-edit mb-2 mr-2"></i></a>
+                        <a href="/usuario/{{$user->id}}/delete" data-toggle="modal" data-target="#modalExcluirUser"><i class="fas fa-trash-alt mb-2 mr-2"></i></a>
+                        <a href="#"><i class="fas fa-envelope"></i></a>
                       </td>
                   </tr>
                 </tbody>
@@ -96,7 +96,7 @@
                     <td>{{$curso->nome}}</td>
                     <td>
                         <a href="#" data-toggle="modal" data-target="#modalEditar"><i class="fas fa-edit mb-2 mr-2"></i></a>
-                        <a href="#" data-toggle="modal" data-target="#modalExcluir"><i class="fas fa-trash-alt mb-2 mr-2"></i></a>
+                        <a href="3" data-toggle="modal" data-target="#modalExcluir"><i class="fas fa-trash-alt mb-2 mr-2"></i></a>
                         <a href="#" data-toggle="modal" data-target="#modalExcluir"><i class="fas fa-envelope"></i></a>
                       </td>
                   </tr>
@@ -140,11 +140,11 @@
     <!-- Main - FIM -->
 
     <!-- Modal Editar Usuários -->
-    <div class="modal fade" id="modalEditar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="modalEditarUser" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Alterar Bebida</h5>
+            <h5 class="modal-title" id="exampleModalLabel">Alterar Usuário</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -177,17 +177,17 @@
     <!-- Modal Editar - FIM -->
 
     <!-- Modal Excluir -->
-    <div class="modal fade" id="modalExcluir" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="modalExcluirUser" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Excluir Bebida</h5>
+            <h5 class="modal-title" id="exampleModalLabel">Excluir Usuário</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
           <div class="modal-body">
-            Deseja excluir sua bebida?
+            Deseja excluir o usuário?
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-danger btn-block mt-4 ml-2" data-dismiss="modal">Não</button>
