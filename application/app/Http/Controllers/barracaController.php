@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use DB;
 use Barraca;
 use View;
@@ -32,9 +33,9 @@ class barracaController extends Controller
         $dadosBarracaUpdate = $request->only(['nome','curso','periodo','semestre','pagamento']);
         //return $dadosBarracaUpdate;
 
-         DB::table('barraca')->update([
+         DB::table('barraca')->where('idUser', Auth::id())->update([
             'nome' => $dadosBarracaUpdate['nome'],
-            'idcurso' => $dadosBarracaUpdate['curso'],
+            'idCurso' => $dadosBarracaUpdate['curso'],
             'periodo' => $dadosBarracaUpdate['periodo'],
             'semestre' => $dadosBarracaUpdate['semestre'],
             'pagamento' => $dadosBarracaUpdate['pagamento']

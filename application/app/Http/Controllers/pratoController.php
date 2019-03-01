@@ -12,7 +12,10 @@ use App\barraca;
 class pratoController extends Controller
 {
     public function show(){
-        $listPratos = Pratos::all();
+
+        $idBarraca = barraca::select('id')->where('idUser', Auth::id())->first(); 
+        $idBarracaString = $idBarraca['id'];
+        $listPratos = Pratos::where('idBarraca', $idBarracaString)->get();
 
         return view::make('pratos')->with(compact('listPratos'));
     }
@@ -27,7 +30,7 @@ class pratoController extends Controller
         $idBarracaString = $idBarraca['id'];
         $addPrato->idbarraca = $idBarracaString;
         $addPrato->save();
-        
+
         return redirect()->route('pratos');;
     }
 }
