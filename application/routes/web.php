@@ -58,8 +58,8 @@ Route::group(['prefix' => '/barraca', 'middleware' => 'auth'], function () {
 // Manipulação de Pratos
 
 Route::group(['prefix' => '/pratos', 'middleware' => 'auth'], function () {
-    Route::get('/',function(){return view('pratos');});
-    Route::post('/{id}', 'pratoController@post');
+    Route::get('/','pratoController@show')->name('pratos');
+    Route::post('/cadastrar', 'pratoController@create');
     Route::get('/{id}', 'pratoController@get');
     Route::put('/{id}', 'pratoController@put');
     Route::delete('/{id}', 'pratoController@delete');

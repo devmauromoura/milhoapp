@@ -1,0 +1,33 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Arr;
+use App\Pratos;
+use View;
+use App\barraca;
+
+class pratoController extends Controller
+{
+    public function show(){
+        $listPratos = Pratos::all();
+
+        return view::make('pratos')->with(compact('listPratos'));
+    }
+
+    public function create(Request $request){
+        $dadosPrato = $request->only(['nomePrato','descPrato', 'valorPrato']);
+        $addPrato = new Pratos;
+        $addPrato->nome = $dadosPrato['nomePrato'];
+        $addPrato->descricao = $dadosPrato['descPrato'];
+        $addPrato->valor = $dadosPrato['valorPrato'];
+        $idBarraca = barraca::select('id')->where('idUser', Auth::id())->first(); 
+        $idBarracaString = $idBarraca['id'];
+        $addPrato->idbarraca = $idBarracaString;
+        $addPrato->save();
+        
+        return redirect()->route('pratos');;
+    }
+}
