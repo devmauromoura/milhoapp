@@ -15,11 +15,17 @@ use DB;
 class adminPageController extends Controller
 {
         public function show(){
-    	$usuarios = DB::table('users')->get();
-        $todosC = DB::table('curso')->get();
-        $barracas = DB::table('barraca')->leftJoin('curso', 'barraca.idcurso','=','curso.id')->select(DB::raw('barraca.id, barraca.nome, curso.nome AS cnome'))->get();
+        
+            if (Auth::user()->nivel == 3) {
+                $usuarios = DB::table('users')->get();
+                $todosC = DB::table('curso')->get();
+                $barracas = DB::table('barraca')->leftJoin('curso', 'barraca.idcurso','=','curso.id')->select(DB::raw('barraca.id, barraca.nome, curso.nome AS cnome'))->get();
+        
+                return view::make('/admin')->with(compact('usuarios'))->with(compact('todosC'))->with(compact('barracas'));
+            }else{
+                return redirect('home');
+            }
 
-    	return view::make('/admin')->with(compact('usuarios'))->with(compact('todosC'))->with(compact('barracas'));
     }
 
      /*
