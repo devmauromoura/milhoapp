@@ -49,10 +49,8 @@ Route::group(['prefix' => '/curso', 'middleware' => 'auth'], function () {
 // Manipulação de Barracas
 
 Route::group(['prefix' => '/barraca', 'middleware' => 'auth'], function () {
-    Route::get('/', 'barracaController@show');
-    Route::post('/{id}', 'barracaController@post');
-    Route::get('/{id}', 'barracaController@get');
-    Route::put('/{id}', 'barracaController@put');
+    Route::get('/', 'barracaController@show')->name('showBarracas');
+    Route::post('/update', 'barracaController@update');
     Route::delete('/{id}', 'barracaController@delete');
 
 });
