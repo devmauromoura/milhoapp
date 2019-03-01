@@ -18,6 +18,8 @@ class CreateCursoTable extends Migration
             $table->string('nome');
             $table->timestamps();
         });
+
+        DB::table('curso')->insert(['nome' => 'Default']);
     }
 
     /**

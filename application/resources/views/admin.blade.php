@@ -1,9 +1,6 @@
 @extends('layouts.app')
-
 @section('title', 'Admin')
-
 @section('conteudo')
-
     <!-- Main - Corpo do painel -->
     <main>
       <div class="container">
@@ -18,7 +15,7 @@
               </div>
             </div>
             <div class="row">
-              <div class="col-sm-6 mt-3">
+              <div class="col">
                 <label>E-mail</label>
                 <input type="text" class="form-control" name="email" placeholder="Insira o E-mail.">
               </div>
@@ -52,10 +49,9 @@
                     <td>{{$user->nivel}}</td>
                     <td></td>
                     <td>
-                        <a href="#" data-toggle="modal" data-target="#modalEditarUser"><i class="fas fa-edit mb-2 mr-2"></i></a>
-                        <a href="/usuario/{{$user->id}}/delete" data-toggle="modal" data-target="#modalExcluirUser"><i class="fas fa-trash-alt mb-2 mr-2"></i></a>
-                        <a href="#"><i class="fas fa-envelope"></i></a>
-                      </td>
+                      <a href="/usuario/" data-toggle="modal" data-target="#modalEditarUser"><i class="fas fa-edit mb-2 mr-2"></i></a>                 
+                      <a href="/usuario/{{$user->id}}/delete" data-toggle="modal" data-target="#modalExcluirUser"><i class="fas fa-trash-alt mb-2 mr-2"></i></a>
+                    </td>   
                   </tr>
                 </tbody>
                 @endforeach                
@@ -69,7 +65,7 @@
           <form action="curso/create" method="POST">
             @csrf
             <div class="row">
-              <div class="col">
+              <div class="                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               ol">
                 <label>Nome</label>
                 <input type="text" class="form-control" name="nomeCurso" placeholder="Insira o nome do Curso!">
               </div>
@@ -95,9 +91,9 @@
                     <th scope="row">{{$curso->id}}</th>
                     <td>{{$curso->nome}}</td>
                     <td>
-                        <a href="#" data-toggle="modal" data-target="#modalEditar"><i class="fas fa-edit mb-2 mr-2"></i></a>
-                        <a href="3" data-toggle="modal" data-target="#modalExcluir"><i class="fas fa-trash-alt mb-2 mr-2"></i></a>
-                        <a href="#" data-toggle="modal" data-target="#modalExcluir"><i class="fas fa-envelope"></i></a>
+                        <a href="#"><i class="fas fa-edit mb-2 mr-2"></i></a>
+                        <a href="3"><i class="fas fa-trash-alt mb-2 mr-2"></i></a>
+                        <a href="#"><i class="fas fa-envelope"></i></a>
                       </td>
                   </tr>
                 </tbody>
@@ -125,9 +121,9 @@
                     <td>{{$barra->nome}}</td>
                     <td>{{$barra->cnome}}</td>
                     <td>
-                        <a href="#" data-toggle="modal" data-target="#modalEditar"><i class="fas fa-edit mb-2 mr-2"></i></a>
-                        <a href="#" data-toggle="modal" data-target="#modalExcluir"><i class="fas fa-trash-alt mb-2 mr-2"></i></a>
-                        <a href="#" data-toggle="modal" data-target="#modalExcluir"><i class="fas fa-envelope"></i></a>
+                        <a href="#"><i class="fas fa-edit mb-2 mr-2"></i></a>
+                        <a href="#"><i class="fas fa-trash-alt mb-2 mr-2"></i></a>
+                        <a href="#"><i class="fas fa-envelope"></i></a>
                       </td>
                   </tr>
                 </tbody>
@@ -144,7 +140,7 @@
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Alterar Usuário</h5>
+            <h5 class="modal-title" id="alter">Alterar Usuário</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -177,11 +173,11 @@
     <!-- Modal Editar - FIM -->
 
     <!-- Modal Excluir -->
-    <div class="modal fade" id="modalExcluirUser" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="modalExcluirUser" tabindex="-1" role="dialog" aria-labelledby="remove" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Excluir Usuário</h5>
+            <h5 class="modal-title" id="remove">Excluir Usuário</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -197,7 +193,6 @@
       </div>
     </div>
     <!-- Modal Excluir - FIM -->
-
     <script>
              var rIndex,
              table = document.getElementById("table");

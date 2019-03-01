@@ -16,13 +16,17 @@ class CreateBarracaTable extends Migration
         Schema::create('barraca', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nome');
-            $table->integer('semestre');
-            $table->integer('periodo');
-            $table->integer('idcurso')->unsigned();
+            $table->integer('semestre')->default(0);
+            $table->string('periodo')->default('Definir');
+            $table->integer('idcurso')->unsigned()->default(0);
             $table->foreign('idcurso')->references('id')->on('curso');
-            $table->integer('pagamento');
+            $table->integer('idUser')->unsigned();
+            $table->foreign('idUser')->references('id')->on('users');
+            $table->string('pagamento')->default('Definir');
             $table->timestamps();
         });
+
+        
     }
 
     /**
