@@ -7,9 +7,11 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\DB;
 use App\Mail\cadastroUsuario;
 use App\User;
-use DB;
+
+
 
 
 class adminPageController extends Controller

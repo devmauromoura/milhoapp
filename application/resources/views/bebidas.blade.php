@@ -1,7 +1,5 @@
 @extends('layouts.app')
-
 @section('title', 'Bebidas')
-
 @section('conteudo')
 
     <!-- Main - Corpo do painel -->
@@ -9,21 +7,22 @@
       <div class="container">
         <div class="cadastrar shadow"> <!-- Cadastrar -->
           <h4>Cadastrar Bebida</h4>
-          <form action="" method="POST">
+          <form action="/public/bebidas/create" method="post">
+          @csrf
             <div class="row">
               <div class="col">
                 <label>Nome da bebida</label>
-                <input type="text" class="form-control" placeholder="Ex: Refrigerante lata">
+                <input name="nomeBebida" type="text" class="form-control" placeholder="Ex: Refrigerante lata">
               </div>
             </div>
             <div class="row">
               <div class="col-sm-6 mt-3">
                 <label>Descrição da bebida</label>
-                <input type="text" class="form-control" placeholder="Ex: Coca-cola">
+                <input name="descBebida" type="text" class="form-control" placeholder="Ex: Coca-cola">
               </div>
               <div class="col-sm-6 mt-3">
                 <label>Valor</label>
-                <input type="text" class="form-control" placeholder="R$0,00">
+                <input name="valorBebida" type="text" class="form-control" placeholder="R$0,00">
               </div>
             </div>
             <button type="submit" class="btn btn-default btn-md btn-block mt-4">Cadastrar</button>
@@ -45,36 +44,18 @@
                   </tr>
                 </thead>
                 <tbody>
+                @foreach($listBebidas as $bebidas)
                   <tr>
-                    <th scope="row">1</th>
-                    <td>Coca-Cola</td>
-                    <td>Refrigerante de cola</td>
-                    <td>R$ 3.50</td>
+                    <th scope="row">{{$bebidas->id}}</th>
+                    <td>{{$bebidas->nome}}</td>
+                    <td>{{$bebidas->descricao}}</td>
+                    <td>{{$bebidas->valor}}</td>
                     <td>
                         <a href="#" data-toggle="modal" data-target="#modalEditar"><i class="fas fa-edit mb-2 mr-2"></i></a>
                         <a href="#" data-toggle="modal" data-target="#modalExcluir"><i class="fas fa-trash-alt"></i></a>
                       </td>
                   </tr>
-                  <tr>
-                    <th scope="row">2</th>
-                    <td>Agua</td>
-                    <td>Garrafa de agua</td>
-                    <td>R$ 3.00</td>
-                    <td>
-                        <a href="#" data-toggle="modal" data-target="#modalEditar"><i class="fas fa-edit mb-2 mr-2"></i></a>
-                        <a href="#" data-toggle="modal" data-target="#modalExcluir"><i class="fas fa-trash-alt"></i></a>
-                      </td>
-                  </tr>
-                  <tr>
-                    <th scope="row">3</th>
-                    <td>Skol palito</td>
-                    <td>Cerveja</td>
-                    <td>R$ 4.00</td>
-                    <td>
-                        <a href="#" data-toggle="modal" data-target="#modalEditar"><i class="fas fa-edit mb-2 mr-2"></i></a>
-                        <a href="#" data-toggle="modal" data-target="#modalExcluir"><i class="fas fa-trash-alt"></i></a>
-                      </td>
-                  </tr>
+                  @endforeach
                 </tbody>
             </table>
         </div>
@@ -93,21 +74,22 @@
             </button>
           </div>
           <div class="modal-body">
-              <form action="" method="POST">
+              <form method="post" action="/bebidas/update">
+              @csrf
                 <div class="row">
                   <div class="col">
                     <label>Nome da Bebida</label>
-                    <input type="text" class="form-control" placeholder="Ex: Refrigerante lata">
+                    <input name="nomeBebida" type="text" class="form-control" placeholder="Ex: Refrigerante lata">
                   </div>
                 </div>
                 <div class="row">
                   <div class="col-sm-6 mt-3">
                     <label>Descrição da Bebida</label>
-                    <input type="text" class="form-control" placeholder="Ex: Coca-Cola">
+                    <input name="descBebida" type="text" class="form-control" placeholder="Ex: Coca-Cola">
                   </div>
                   <div class="col-sm-6 mt-3">
                     <label>Valor</label>
-                    <input type="text" class="form-control" placeholder="R$0,00">
+                    <input name="valorBebida" type="text" class="form-control" placeholder="R$0,00">
                   </div>
                 </div>
                 <button type="button" class="btn btn-danger mt-4" data-dismiss="modal">Fechar</button>

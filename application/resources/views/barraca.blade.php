@@ -21,7 +21,7 @@
             <div class="row">
               <div class="col-sm-6 mt-3">
                 <label for="semestre">Semestre</label>
-                <select name="semestre" class="form-control" id="semestres">
+                 <select name="semestre" class="form-control" id="semestres">
                   <option value="{{$dados->semestre}}" disabled selected>{{$dados->semestre}}</option>
                   <option value="1">1º</option>
                   <option value="2">2º</option>
@@ -33,6 +33,7 @@
                   <option value="8">8º</option>
                   <option value="9">9º</option>
                   <option value="10">10º</option>
+                  
                 </select>
                 <div id="semestre"></div><!--Msg Erro-->
               </div>

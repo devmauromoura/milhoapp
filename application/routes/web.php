@@ -51,8 +51,6 @@ Route::group(['prefix' => '/curso', 'middleware' => 'auth'], function () {
 Route::group(['prefix' => '/barraca', 'middleware' => 'auth'], function () {
     Route::get('/', 'barracaController@show')->name('showBarracas');
     Route::post('/update', 'barracaController@update');
-    Route::delete('/{id}', 'barracaController@delete');
-
 });
 
 // Manipulação de Pratos
@@ -68,19 +66,15 @@ Route::group(['prefix' => '/pratos', 'middleware' => 'auth'], function () {
 
 // Manipulação de Bebidas
 
-Route::group(['prefix' => '/bebidas/', 'middleware' => 'auth'], function () {
-    Route::get('/',function(){return view('bebidas');});
-    Route::post('/{id}', 'pratoController@post');
-    Route::get('/{id}', 'pratoController@get');
-    Route::put('/{id}', 'pratoController@put');
-    Route::delete('/{id}', 'pratoController@delete');
-
+Route::group(['prefix' => '/bebidas', 'middleware' => 'auth'], function () {
+    Route::get('/','bebidaController@show')->name('showBebidas');
+    Route::post('/create', 'bebidaController@create');
 });
 
 
 // Manipulação de Votos
 
-Route::group(['prefix' => '/voto/', 'middleware' => 'auth'], function () {
+Route::group(['prefix' => '/voto', 'middleware' => 'auth'], function () {
     Route::post('/{id}', 'votoController@post');
     Route::get('/{id}', 'votoController@get');
 
