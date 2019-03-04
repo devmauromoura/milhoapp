@@ -10,6 +10,33 @@ Projeto para desenvolvimento do BACKEND para a festa do milho.
 ##### Ultimas atualizações
 
 
+- 02/03/2019 
+Ajustado listagem de bebidas com restrição ao usuário autenticado.
+
+- 01/03/2019 
+Fix update barracas, restrição Where para visualizar Barracas.</br>
+Configuração de acesso admin apenas para nível 3.</br> 
+Ajuste de valores default.</br>
+Fix criação barraca ao cadastrar o usuário.</br>
+
+- 28/02/2019  
+Ajustes nas rotas.
+
+- 26/02/2019  
+Configuração do Logout.</br>
+Confirmação de senha via email.</br>
+
+- 25/02/2019  
+Implementado driver de e-mail para envio.</br>
+Ajuste de chaves estrageiras no migration.</br>
+
+- 24/02/2019  
+Implementado driver de e-mail para envio.</br>
+Ajuste de chaves estrageiras no migration.</br>
+
+- 23/02/2019  
+Implementado adição e seleção de curso.</br>
+Ajustes front (blade).</br>
 
 - 22/02/2019  
 Ajuste de chave estrageira nas Migrations.</br>
