@@ -9,6 +9,9 @@ Route::post('/loginUser','UserController@login');
 Route::get('/logout','UserController@logout');
 Route::get('/cadastrarSenha/{id}','UserController@cadastrarSenha');
 Route::post('/cadastrarSenha/{id}/aplicar','UserController@salvarSenha');
+Route::get('/sair', function(){
+    return view('logout');
+})->name('sair');
 
 /*	#### ROUTES PARA CONTROLE DE PÁGINAS ### */
 

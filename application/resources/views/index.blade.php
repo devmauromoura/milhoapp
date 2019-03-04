@@ -26,53 +26,64 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="{{asset('css/login.css')}}">
   </head>
 
   <body>
     <div class="container">
       <div class="box shadow">
+
         <div class="row box-header">
           <div class="col-sm-12">
             <img class="mx-auto d-block logo mb-4" src="img/Logo.png" alt="Logo">
           </div>
         </div>
-        <form name="formAcesso" action="/public/loginUser" method="POST">
+
+        <form name="login" id="login" action="/public/loginUser" method="POST">
           @csrf
           <div class="row">
-            <div class="col-sm-12">
+            <div class="col">
               <div class="input-group input-group-lg mt-4 pr-4 pl-4 pt-3">
                 <div class="input-group-prepend">
-                  <span class="input-group-text" id="basic-addon1"><i class="fas fa-user"></i></span>
+                  <span class="input-group-text" id="iconEmail"><i class="fas fa-user"></i></span>
                 </div>
-                <input type="email" name="email" class="form-control" placeholder="E-mail" aria-describedby="basic-addon1">
+                <input type="email" name="email" class="form-control" placeholder="E-mail" aria-describedby="iconEmail">
               </div>
-              <div id="email"></div><!--Msg Erro-->
-              <div class="input-group input-group-lg pr-4 pl-4 mt-4">
-                <div class="input-group-prepend">
-                  <span class="input-group-text" id="basic-addon1"><i class="fas fa-key"></i></span>
-                </div>
-                <input type="password" name="password" class="form-control" placeholder="Senha" aria-describedby="basic-addon1">
-              </div>
-              <div id="senha"></div><!--Msg Erro-->
             </div>
           </div>
+
+          <div class="row">
+            <div class="col">
+              <div class="input-group input-group-lg pr-4 pl-4 mt-5">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="iconSenha"><i class="fas fa-key"></i></span>
+                </div>
+                <input type="password" name="password" class="form-control" placeholder="Senha" aria-describedby="iconSenha">
+              </div>
+            </div>
+          </div>
+
           <div class="row">
             <div class="col-sm-12 pr-5 pl-5 pt-5">
-                <button type="submit" class="btn btn-success btn-lg btn-block" onclick="return validaLogin()">Acessar</button>
+                <button type="submit" class="btn btn-success btn-lg btn-block">Acessar</button>
                 <button type="button" class="btn btn-outline-success btn-lg btn-block mt-3">Ajuda</button>
             </div>
           </div>
+
         </form>
+
         <div class="row box-bottom">
             <div class="col-sm-12 text-center">
               <p><b>Desenvolvido pela turma de ADS<br>5º SEMESTRE</b></p>
             </div>
           </div>
-      </div>
-    </div>  
 
-  
-    <script type="text/javascript" src="js/validateLogin.js"></script>
+      </div>
+    </div>
+
+    <script type="text/javascript" src="{{asset('js/jquery-3.3.1.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset('js/jquery.validate.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset('js/localization/messages_pt_BR.js')}}"></script>
+    <script type="text/javascript" src="{{asset('js/script.js')}}"></script>
   </body>
 </html>

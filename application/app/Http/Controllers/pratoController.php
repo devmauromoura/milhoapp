@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\View;
 use App\Pratos;
-use App\barraca;
+use App\Barraca;
 
 class pratoController extends Controller
 {

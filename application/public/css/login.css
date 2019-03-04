@@ -11,12 +11,10 @@ body {
 }
 .box {
     width: 400px;
-   
     background: #fff;
     border: 1px solid #6C7A89;
     border-radius: 20px;
 }
-
 .box-header {
   background-color: #00c853;
   border-top-left-radius: 20px;
@@ -24,7 +22,6 @@ body {
   margin: 0px;
 
 }
-
 .box-bottom {
     background-color: #00c853;
     border-bottom-left-radius: 20px;
@@ -34,20 +31,15 @@ body {
     height: 60px;
     color: #fff; 
   }
-
 .box-bottom p {
     padding: 5px;
 }
-
 .logo {
     height: 100px;
     margin-top: 15px;
 }
-
-.alert {
-    margin-top: 5px;
-    padding: 0px;
-    margin-left: 24px;
-    margin-right: 24px;
-    text-align: center;
+.error{
+    color:red;
+    padding-top: 50px;
+    position: absolute;
   }

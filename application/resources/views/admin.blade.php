@@ -1,218 +1,331 @@
 @extends('layouts.app')
-@section('title', 'Admin')
+@section('title', 'AdminPage')
 @section('conteudo')
     <!-- Main - Corpo do painel -->
-    <main>
-      <div class="container">
-        <div class="cadastrar shadow"> <!-- Cadastrar -->
-          <h4>Novo Usuário</h4>
-          <form action="usuario/create" method="POST">
-            @csrf
-            <div class="row">
-              <div class="col">
-                <label>Nome</label>
-                <input type="text" class="form-control" name="name" placeholder="Insira o nome do Usuário.">
-              </div>
-            </div>
-            <div class="row">
-              <div class="col">
-                <label>E-mail</label>
-                <input type="text" class="form-control" name="email" placeholder="Insira o E-mail.">
-              </div>
-            </div>
-            <button type="submit" class="btn btn-default btn-md btn-block mt-4">Cadastrar</button>
-          </form>
-        </div>
-      </div> 
-
-      <div class="container"> <!-- Listar -->
-        <div class="listar shadow">
-            <h4>Usuários</h4>
-            <table class="table table-sm">
-                <thead class="thead-light">
-                  <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Nome</th>
-                    <th scope="col">E-mail</th>
-                    <th scope="col">Nível</th>
-                    <th scope="col">Ativo</th>
-                    <th scope="col"></th>
-                    <th scope="col"></th>
-                  </tr>
-                </thead>
-                @foreach($usuarios as $user)
-                <tbody>
-                  <tr>
-                    <th scope="row">{{$user->id}}</th>
-                    <td>{{$user->name}}</td>
-                    <td>{{$user->email}}</td>
-                    <td>{{$user->nivel}}</td>
-                    <td></td>
-                    <td>
-                      <a href="/usuario/" data-toggle="modal" data-target="#modalEditarUser"><i class="fas fa-edit mb-2 mr-2"></i></a>                 
-                      <a href="/usuario/{{$user->id}}/delete" data-toggle="modal" data-target="#modalExcluirUser"><i class="fas fa-trash-alt mb-2 mr-2"></i></a>
-                    </td>   
-                  </tr>
-                </tbody>
-                @endforeach                
-            </table>
-        </div>
-      </div> 
-
-      <div class="container">
-        <div class="cadastrar shadow"> <!-- Cadastrar Curso -->
-          <h4>Novo Curso</h4>
-          <form action="curso/create" method="POST">
-            @csrf
-            <div class="row">
-              <div class="                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               ol">
-                <label>Nome</label>
-                <input type="text" class="form-control" name="nomeCurso" placeholder="Insira o nome do Curso!">
-              </div>
-            </div>
-            <button type="submit" class="btn btn-default btn-md btn-block mt-4">Cadastrar</button>
-          </form>
-        </div>
-      </div> 
-      <div class="container"> <!-- Listar Cursos -->
-        <div class="listar shadow">
-            <h4>Cursos</h4>
-            <table class="table table-sm">
-                <thead class="thead-light">
-                  <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Nome</th>
-                    <th scope="col"></th>
-                  </tr>
-                </thead>
-                @foreach($todosC as $curso)
-                <tbody>
-                  <tr>
-                    <th scope="row">{{$curso->id}}</th>
-                    <td>{{$curso->nome}}</td>
-                    <td>
-                        <a href="#"><i class="fas fa-edit mb-2 mr-2"></i></a>
-                        <a href="3"><i class="fas fa-trash-alt mb-2 mr-2"></i></a>
-                        <a href="#"><i class="fas fa-envelope"></i></a>
-                      </td>
-                  </tr>
-                </tbody>
-                @endforeach                
-            </table>
+    <div class="container">
+      <div class="cadastrar">
+        <h4 class="border-bot">Cadastrar</h4>
+        <div class="row">
+          <div class="col-sm-3">
+            <button type="button" class="btn btn-default btn-md btn-block mt-3" data-toggle="modal" data-target="#modalUsuario">Usuário</button>    
+          </div>
+          <div class="col-sm-3">
+            <button type="button" class="btn btn-default btn-md btn-block mt-3" data-toggle="modal" data-target="#modalCurso">Curso</button>
+          </div>
+          <div class="col-sm-6">
+          </div>
         </div>
       </div>
+    </div>
 
-      <div class="container"> <!-- Listar Barracas -->
-        <div class="listar shadow">
-            <h4>Barracas</h4>
-            <table class="table table-sm">
-                <thead class="thead-light">
-                  <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Barraca</th>
-                    <th scope="col">Curso</th>
-                    <th scope="col"></th>
-                  </tr>
-                </thead>
-                @foreach($barracas as $barra)
-                <tbody>
-                  <tr>
-                    <th scope="row">{{$barra->id}}</th>
-                    <td>{{$barra->nome}}</td>
-                    <td>{{$barra->cnome}}</td>
-                    <td>
-                        <a href="#"><i class="fas fa-edit mb-2 mr-2"></i></a>
-                        <a href="#"><i class="fas fa-trash-alt mb-2 mr-2"></i></a>
-                        <a href="#"><i class="fas fa-envelope"></i></a>
-                      </td>
-                  </tr>
-                </tbody>
-                @endforeach                
-            </table>
+    <div class="container"> <!-- Listar -->
+      <div class="listar-adm shadow">
+        <div class="border-bot">
+          <div class="row">
+            <div class="col-sm-6">
+              <h4>Usuários</h4>
+            </div>
+            <div class="col-sm-6">
+              <input class="form-control" id="buscaUsuario" type="search" placeholder="Procurar usuários" aria-label="Search">
+            </div>
+          </div>
         </div>
-      </div>      
+          <div class="table-responsive mt-3">
+          <table class="table table-sm" id="tabelaUsuario">
+              <thead class="thead-light">
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Nome</th>
+                  <th scope="col">E-mail</th>
+                  <th scope="col">Nivel</th>
+                  <th scope="col">Ativo</th>
+                  <th scope="col"></th>
+                  <th scope="col"></th>
+                  <th scope="col"></th>
+                </tr>
+              </thead>
+              <tbody>
+                  @foreach($usuarios as $user)                
+                <tr>
+                  <th scope="row">{{$user->id}}</th>
+                  <td>{{$user->name}}</td>
+                  <td>{{$user->email}}</td>
+                  <td>{{$user->nivel}}</td>
+                  <td><i class="far fa-check-circle"></i></td>
+                  <td><a href="#" data-toggle="modal" data-target="#modalEditarUsuario"><i class="fas fa-edit mr-2"></i></a> </td>
+                  <td><a href="#" data-toggle="modal" data-target="#removerUsuario"><i class="fas fa-trash-alt mr-2"></i></a></td>
+                  <td><a href="#" data-toggle="modal" data-target="#emailUsuario"><i class="fas fa-envelope"></i></a></td>
+                </tr>
+                @endforeach
+              </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
 
-    </main>
-    <!-- Main - FIM -->
+    <div class="container"> <!-- Listar -->
+      <div class="listar-adm shadow">
+        <div class="border-bot">
+          <div class="row">
+            <div class="col-sm-6">
+              <h4>Cursos</h4>
+            </div>
+            <div class="col-sm-6">
+              <input class="form-control" type="search" placeholder="Procurar cursos" aria-label="Search">
+            </div>
+          </div>
+        </div>
+          <div class="table-responsive mt-3">
+          <table class="table table-sm">
+              <thead class="thead-light">
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Nome</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                @foreach($todosC as $curso)
+                <tr>
+                  <th scope="row">{{$curso->id}}</th>
+                  <td>{{$curso->nome}}</td>
+                  <td><a href="#" data-toggle="modal" data-target="#removerCurso"><i class="fas fa-trash-alt mr-2"></i></a></td>
+                </tr>
+                @endforeach
+              </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
 
-    <!-- Modal Editar Usuários -->
-    <div class="modal fade" id="modalEditarUser" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="container"> <!-- Listar -->
+      <div class="listar-adm shadow mb-5">
+        <div class="border-bot">
+          <div class="row">
+            <div class="col-sm-6">
+              <h4>Barracas</h4>
+            </div>
+            <div class="col-sm-6">
+              <input class="form-control" type="search" placeholder="Procurar barracas" aria-label="Search">
+            </div>
+          </div>
+        </div>
+          <div class="table-responsive mt-3">
+          <table class="table table-sm">
+              <thead class="thead-light">
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Barraca</th>
+                  <th scope="col">Curso</th>
+                </tr>
+              </thead>
+              <tbody>
+                @foreach($barracas as $barra)                
+                <tr>
+                  <th scope="row">{{$barra->id}}</th>
+                  <td>{{$barra->nome}}</td>
+                  <td>{{$barra->cnome}}</td>
+                </tr>
+                @endforeach
+              </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+
+
+    <!-- Modal Cadastrar Usuario -->
+    <div class="modal fade" id="modalUsuario" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="alter">Alterar Usuário</h5>
+            <h5 class="modal-title" id="exampleModalLabel">Cadastrar Usuário</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
           <div class="modal-body">
-              <form action="" method="POST">
+              <form name="cadastrarUsuario" id="cadastrarUsuario" action="usuario/create" method="POST">
+                @csrf
                 <div class="row">
                   <div class="col">
                     <label>Nome</label>
-                    <input type="text" class="form-control" id="userId">
+                    <input name="name" type="text" class="form-control" placeholder="Nome do usuário" maxlength="60">
                   </div>
                 </div>
                 <div class="row">
-                  <div class="col-sm-6 mt-3">
-                    <label>Email</label>
-                    <input type="text" class="form-control" id="UserEmail">
-                  </div>	
-                  <div class="col-sm-6 mt-3">
-                    <label>Nivel</label>
-                    <input type="text" class="form-control"
+                  <div class="col mt-3">
+                    <label>E-mail</label>
+                    <input name="email" type="text" class="form-control" placeholder="email@email.com.br" maxlength="60">
                   </div>
                 </div>
-                <button type="button" class="btn btn-danger mt-4" data-dismiss="modal">Fechar</button>
-                <button type="submit" class="btn btn-default mt-4">Salvar</button>
+                <div class="row">
+                  <div class="col mt-3">
+                    <label for="nivel">Nivel</label>
+                    <select name="nivel" class="form-control" id="nivel">
+                      <option value="" disabled selected></option>
+                      <option value="1">1 - Web User</option>
+                      <option value="2">2 - App User</option>
+                      <option value="3">3 - Admin User</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-6">
+                    <button type="submit" class="btn btn-default btn-block mt-4">Salvar</button>
+                  </div>
+                  <div class="col-sm-6">
+                    <button type="button" class="btn btn-danger btn-block mt-4" data-dismiss="modal">Fechar</button>
+                  </div>
+                </div>
               </form>    
           </div>
         </div>
       </div>
     </div>
-    <!-- Modal Editar - FIM -->
+    <!-- Modal Cadastrar Usuario - FIM -->
 
-    <!-- Modal Excluir -->
-    <div class="modal fade" id="modalExcluirUser" tabindex="-1" role="dialog" aria-labelledby="remove" aria-hidden="true">
+    <!-- Modal Cadastrar Curso -->
+    <div class="modal fade" id="modalCurso" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="remove">Excluir Usuário</h5>
+            <h5 class="modal-title" id="exampleModalLabel">Cadastrar Curso</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
           <div class="modal-body">
-            Deseja excluir o usuário?
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-danger btn-block mt-4 ml-2" data-dismiss="modal">Não</button>
-            <a href="usuario/{{$user->id}}/delete" class="btn btn-default btn-block mt-4 ml-2">Sim</a>
+              <form name="cadastrarCurso" id="cadastrarCurso" action="curso/create" method="POST">
+                @csrf
+                <div class="row">
+                  <div class="col">
+                    <label>Nome do curso</label>
+                    <input name="nomeCurso" type="text" class="form-control" placeholder="Nome do curso" maxlength="60">
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-6">
+                    <button type="submit" class="btn btn-default btn-block mt-4">Salvar</button>
+                  </div>
+                  <div class="col-sm-6">
+                    <button type="button" class="btn btn-danger btn-block mt-4" data-dismiss="modal">Fechar</button>
+                  </div>
+                </div>
+              </form>    
           </div>
         </div>
       </div>
     </div>
-    <!-- Modal Excluir - FIM -->
-    <script>
-             var rIndex,
-             table = document.getElementById("table");
-         
-         function selectedRowToInput()
-         {
-             
-             for(var i = 1; i < table.rows.length; i++)
-             {
-                 table.rows[i].onclick = function()
-                 {
-                   // get the seected row index
-                   rIndex = this.rowIndex;
-                   document.getElementById("userId").value = this.cells[0].innerHTML;
-                   document.getElementById("userName").value = this.cells[1].innerHTML;
-                   document.getElementById("UserEmail").value = this.cells[2].innerHTML;
-                 };
-             }
-         }
-         selectedRowToInput();
-     </script>
+    <!-- Modal Cadastrar Usuario - FIM -->
 
+    <!-- Modal Editar Usuario -->
+    <div class="modal fade" id="modalEditarUsuario" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Editar Usuário</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+              <form name="editarUsuario" id="editarUsuario" action="" method="POST">
+                <div class="row">
+                  <div class="col">
+                    <label>Nome</label>
+                    <input name="nome" type="text" class="form-control" placeholder="Nome do usuário" maxlength="60">
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col mt-3">
+                    <label>E-mail</label>
+                    <input name="email" type="text" class="form-control" placeholder="email@email.com.br" maxlength="60">
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col mt-3">
+                    <label for="nivel">Nivel</label>
+                    <select name="nivel" class="form-control" id="nivel">
+                      <option value="" disabled selected></option>
+                      <option value="1">1 - Web User</option>
+                      <option value="2">2 - App User</option>
+                      <option value="3">3 - Admin User</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-6">
+                    <button type="submit" class="btn btn-default btn-block mt-4">Salvar</button>
+                  </div>
+                  <div class="col-sm-6">
+                    <button type="button" class="btn btn-danger btn-block mt-4" data-dismiss="modal">Fechar</button>
+                  </div>
+                </div>
+              </form>    
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Modal Editar Usuario - FIM -->
+
+    <!-- Modal Remover Usuario -->
+    <div class="modal fade" id="removerUsuario" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Remover Usuario</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            Deseja remover este usuario?
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger btn-block mt-4 ml-2" data-dismiss="modal">Não</button>
+            <a href="#" class="btn btn-default btn-block mt-4 ml-2">Sim</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Modal Remover Usuario - FIM -->
+
+    <!-- Modal E-mail Usuario -->
+    <div class="modal fade" id="emailUsuario" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-body">
+            O e-mail chegara em breve!
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Modal E-mail Usuario - FIM -->
+
+    <!-- Modal Remover Curso -->
+    <div class="modal fade" id="removerCurso" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Remover Curso</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            Deseja remover este curso?
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger btn-block mt-4 ml-2" data-dismiss="modal">Não</button>
+            <a href="#" class="btn btn-default btn-block mt-4 ml-2">Sim</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Modal Remover Curso - FIM -->
 @endsection

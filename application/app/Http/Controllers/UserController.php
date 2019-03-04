@@ -58,7 +58,7 @@ class UserController extends Controller
     public function logout(){
         Auth::logout();
 
-        return redirect('/');
+        return redirect()->route('sair');
     }
 
     public function cadastrarSenha($id){

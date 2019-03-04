@@ -1,3 +1,4 @@
+/***** ALL *****/
 *{
   margin: 0;
   padding: 0;
@@ -121,12 +122,9 @@ table i {
   padding-bottom: 5px;
 }
 
-
-/***** Error *****/
-.alert {
-  margin-top: 5px;
-  padding: 0px;
-  text-align: center;
+.error{
+  color:red;
+  padding-top: 5px;
 }
 
 /***** Footer *****/
@@ -152,7 +150,8 @@ table i {
     position: fixed;
     width: 70%;
     height: 100vh;
-    background: #333;
+    background: var(--cor-btn-hover);
+    color: var(--cor-white);
     right: -100%;
     top: 0;
     text-align: center;
@@ -167,6 +166,7 @@ table i {
   .menu a{
     display: block;
     padding: 20px;
+    border: 1px solid var(--cor-white);
   }
   .hide-menu-btn{
     position: absolute;
@@ -177,4 +177,3 @@ table i {
     right: 0;
   }
 }
-

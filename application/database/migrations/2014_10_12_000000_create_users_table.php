@@ -29,7 +29,7 @@ class CreateUsersTable extends Migration
 
         DB::table('users')->insert([
             'name' => 'Administrador ADS',
-            'email' => 'admin',
+            'email' => 'admin@ads.com.br',
             'password' => Hash::make('159357ads'),
             'nivel' => '3'
         ]);
