@@ -33,4 +33,19 @@ class pratoController extends Controller
 
         return redirect()->route('pratos');;
     }
+
+
+    /*
+    ########################################################################################################
+                                    Controller dos PRATOS para API                  
+    ########################################################################################################
+    */
+
+    public function showAll(){
+        $pratosApi = Pratos::all();
+
+        return response()->json($pratosApi);
+    }
+
+
 }
