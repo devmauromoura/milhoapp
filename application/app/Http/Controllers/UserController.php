@@ -96,5 +96,21 @@ class UserController extends Controller
         }
     }
 
+    public function apiRegister(Request $request){
+            $dadosRequest =  $request->all();
+
+            $userApi = new User;
+            $userApi->name = $dadosRequest['nome'];
+            $userApi->password = $dadosRequest['password'];
+            $userApi->email = $dadosRequest['email'];
+            $userApi->save();
+
+            $token = $userApi->createToken('milhoAPP')->accessToken;
+
+            return response()->json(['Mensagem' => 'Cadastro Realizado com Sucesso', 'Token: ' => 'Bearer '.$token], 200);
+
+            //return response()->json($dadosRequest);
+    }
+
 }
 	

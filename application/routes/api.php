@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 
 
 Route::post('/login', 'UserController@apiLogin');
+Route::post('/register', 'UserController@apiRegister');
 
 Route::group(['middleware' => 'auth:api'], function(){
     Route::get('/user', 'UserController@getUser');
