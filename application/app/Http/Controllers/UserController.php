@@ -78,5 +78,23 @@ class UserController extends Controller
         return redirect('/');
     }
 
+    /*
+    ########################################################################################################
+                                    Funções para a API                      
+    ########################################################################################################
+    */
+
+    public function apiLogin(Request $request){
+        if(Auth::attempt(['email' => $request->input('email'), 'password' => $request->input('password')])){
+            $user = Auth::user();
+            $token = $user->createToken('milhoAPP')->accessToken;
+
+            return response()->json(['Mensagem' => 'Login Realizado com Sucesso', 'Token: ' => 'Bearer '.$token], 200);
+        }
+        else{
+            return response()->json(['Fail'=>'Sem Acesso']);
+        }
+    }
+
 }
 	
