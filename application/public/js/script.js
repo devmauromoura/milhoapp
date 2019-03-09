@@ -1,3 +1,42 @@
+window.onload=function(){
+    //Busca usuario
+    var filtro = document.getElementById('buscaUsuario');
+    var tabela = document.getElementById('tabelaUsuario');
+    filtro.onkeyup = function() {
+        var nomeFiltro = filtro.value;
+        for (var i = 1; i < tabela.rows.length; i++) {
+            var conteudoCelula = tabela.rows[i].cells[1].innerText;
+            var corresponde = conteudoCelula.toLowerCase().indexOf(nomeFiltro) >= 0;
+            tabela.rows[i].style.display = corresponde ? '' : 'none';
+        }
+    };
+
+    //Busca curso
+    var filtroCurso = document.getElementById('buscaCurso');
+    var tabelaCurso = document.getElementById('tabelaCurso');
+    filtroCurso.onkeyup = function() {
+        var nomeFiltro = filtroCurso.value;
+        for (var i = 1; i < tabelaCurso.rows.length; i++) {
+            var conteudoCelula = tabelaCurso.rows[i].cells[1].innerText;
+            var corresponde = conteudoCelula.toLowerCase().indexOf(nomeFiltro) >= 0;
+            tabelaCurso.rows[i].style.display = corresponde ? '' : 'none';
+        }
+    };
+
+    //para barraca
+    var filtroBarraca = document.getElementById('buscaBarraca');
+    var tabelaBarraca = document.getElementById('tabelaBarraca');
+    filtroBarraca.onkeyup = function() {
+        var nomeFiltro = filtroBarraca.value;
+        for (var i = 1; i < tabelaBarraca.rows.length; i++) {
+            var conteudoCelula = tabelaBarraca.rows[i].cells[1].innerText;
+            var corresponde = conteudoCelula.toLowerCase().indexOf(nomeFiltro) >= 0;
+            tabelaBarraca.rows[i].style.display = corresponde ? '' : 'none';
+        }
+    };
+}
+
+
 $(document).ready(function(){
     $('#myModal').on('shown.bs.modal', function () {
         $('#myInput').trigger('focus')
