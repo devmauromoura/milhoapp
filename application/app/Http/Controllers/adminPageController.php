@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
 use App\Mail\cadastroUsuario;
 use App\User;
+use App\Barraca;
 
 
 
@@ -49,11 +50,11 @@ class adminPageController extends Controller
         
             Mail::to($requestCreate->input('email'))->send(new cadastroUsuario($id));  // Para testar as configurações -> dd(config('mail'));
             
-            DB::table('barraca')->insert([
-                'nome' => $userNew->name,
-                'idUser' => $userCheck->id,
-                'idCurso' => 1
-            ]);
+            $barracaNew = new Barraca;
+            $barracaNew->nome = $userNew->name;
+            $barracaNew->idUser = $userCheck->id;
+            $barracaNew->idCurso = 1;
+            $barracaNew->save();
 
             return 'O usuário foi cadastrado. Id.: '.$userCheck->id."<br>Foi encaminhado ao e-mail ".$requestCreate->input('email')." um link para update da senha!
             ";
@@ -62,7 +63,9 @@ class adminPageController extends Controller
         }
     }
  
- 
+        public function update(Request $requestUpdate){
+            
+        }
     
     public function delete($id)
     {

@@ -231,7 +231,7 @@
             </button>
           </div>
           <div class="modal-body">
-              <form name="editarUsuario" id="editarUsuario" action="" method="POST">
+              <form name="editarUsuario" id="editarUsuario" action="public/usuario//update" method="POST">
                 <div class="row">
                   <div class="col">
                     <label>Nome</label>
