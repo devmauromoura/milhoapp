@@ -10,6 +10,18 @@ Projeto para desenvolvimento do BACKEND para a festa do milho.
 ##### Ultimas atualizações
 
 
+- 10/03/2019 
+Ajuste de senha no registro da API, HASH FIX.<br>
+Votoção de Barraca.
+
+- 09/03/2019 
+Implementado Passport.<br>
+Registro via API.<br>
+Login via API.<br>
+
+- 04/03/2019 
+Alteração do Front para versão atualizada.
+
 - 02/03/2019 
 Ajustado listagem de bebidas com restrição ao usuário autenticado.
 
