@@ -101,7 +101,8 @@ class UserController extends Controller
 
             $userApi = new User;
             $userApi->name = $dadosRequest['nome'];
-            $userApi->password = $dadosRequest['password'];
+            $passApi = Hash::make($dadosRequest['password']);
+            $userApi->password = $passApi;
             $userApi->email = $dadosRequest['email'];
             $userApi->nivel = 2;
             $userApi->save();
