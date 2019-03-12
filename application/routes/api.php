@@ -10,6 +10,12 @@ Route::group(['middleware' => 'auth:api'], function(){
     Route::get('/user', 'UserController@getUser');
     Route::get('/items', 'dashController@getItemApi');
     Route::post('/registrarvoto','votoController@registrarVoto');
+
+    Route::prefix('/barraca')->group(function(){
+      Route::get('/','ApiController@barracaShow');
+    });
+
+
 });
 
 
