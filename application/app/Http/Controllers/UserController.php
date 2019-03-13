@@ -17,7 +17,7 @@ class UserController extends Controller
     /*
     ########################################################################################################
                                     Checagem de autenticação através de rotas default
-                                    como http://localhost.com/ > "/"                        
+                                    como http://localhost.com/ > "/"
     ########################################################################################################
     */
 
@@ -34,7 +34,7 @@ class UserController extends Controller
      /*
     ########################################################################################################
                                     Função para checar se as credenciais são validas
-                                    se forem, o mesmo é enviado a home.  
+                                    se forem, o mesmo é enviado a home.
     ########################################################################################################
     */
 
@@ -52,7 +52,7 @@ class UserController extends Controller
 
     /*
     ########################################################################################################
-                                    Desconectar // Logout                       
+                                    Desconectar // Logout
     ########################################################################################################
     */
     public function logout(){
@@ -80,7 +80,7 @@ class UserController extends Controller
 
     /*
     ########################################################################################################
-                                    Funções para a API                      
+                                    Funções para a API
     ########################################################################################################
     */
 
@@ -89,7 +89,7 @@ class UserController extends Controller
             $user = Auth::user();
             $token = $user->createToken('milhoAPP')->accessToken;
 
-            return response()->json(['Mensagem' => 'Login Realizado com Sucesso', 'Token: ' => 'Bearer '.$token], 200);
+            return response()->json(['Mensagem' => 'Login Realizado com Sucesso', 'Token: ' => $token], 200);
         }
         else{
             return response()->json(['Fail'=>'Sem Acesso']);
@@ -97,27 +97,27 @@ class UserController extends Controller
     }
 
     public function apiRegister(Request $request){
+
             $dadosRequest =  $request->all();
 
-            $userApi = new User;
-            $userApi->name = $dadosRequest['nome'];
-            $passApi = Hash::make($dadosRequest['password']);
-            $userApi->password = $passApi;
-            $userApi->email = $dadosRequest['email'];
-            $userApi->nivel = 2;
-            $userApi->save();
+             $userApi = new User;
+             $userApi->name = $dadosRequest['name'];
+             $passApi = Hash::make($dadosRequest['password']);
+             $userApi->password = $passApi;
+             $userApi->email = $dadosRequest['email'];
+             $userApi->nivel = 2;
+             $userApi->save();
 
-            $token = $userApi->createToken('milhoAPP')->accessToken;
+            //$token = $userApi->createToken('milhoAPP')->accessToken;
 
-            return response()->json(['Mensagem' => 'Cadastro Realizado com Sucesso', 'Token: ' => 'Bearer '.$token], 200);
+            return response()->json(['Mensagem' => 'Cadastro Realizado com Sucesso'], 200);
 
             //return response()->json($dadosRequest);
     }
 
     public function getUser(){
-        $user = Auth::user(); 
-        return response()->json($user); 
+        $user = Auth::user();
+        return response()->json($user);
     }
 
 }
-	

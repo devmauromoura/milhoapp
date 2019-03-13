@@ -25,5 +25,15 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    public function barraca()
+    {
+      if($this->nivel == 1)
+      {
+        return $this->hasOne('App\Barraca');
+      } else {
+        return null;
+      }
+    }
+
 
 }
