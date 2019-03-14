@@ -10,14 +10,22 @@ Projeto para desenvolvimento do BACKEND para a festa do milho.
 ##### Ultimas atualizações
 
 
+- 14/03/2019 
+Implementação API.
+Listagem de Barracas.
+Listagem de Pratos.
+Listagem de Bebidas.
+Votação de Barraca.
+
+
 - 10/03/2019 
-Ajuste de senha no registro da API, HASH FIX.<br>
+Ajuste de senha no registro da API, HASH FIX.
 Votoção de Barraca.
 
 - 09/03/2019 
-Implementado Passport.<br>
-Registro via API.<br>
-Login via API.<br>
+Implementado Passport.
+Registro via API.
+Login via API.
 
 - 04/03/2019 
 Alteração do Front para versão atualizada.
@@ -26,42 +34,42 @@ Alteração do Front para versão atualizada.
 Ajustado listagem de bebidas com restrição ao usuário autenticado.
 
 - 01/03/2019 
-Fix update barracas, restrição Where para visualizar Barracas.</br>
-Configuração de acesso admin apenas para nível 3.</br> 
-Ajuste de valores default.</br>
-Fix criação barraca ao cadastrar o usuário.</br>
+Fix update barracas, restrição Where para visualizar Barracas.
+Configuração de acesso admin apenas para nível 3. 
+Ajuste de valores default.
+Fix criação barraca ao cadastrar o usuário.
 
 - 28/02/2019  
 Ajustes nas rotas.
 
 - 26/02/2019  
-Configuração do Logout.</br>
-Confirmação de senha via email.</br>
+Configuração do Logout.
+Confirmação de senha via email.
 
 - 25/02/2019  
-Implementado driver de e-mail para envio.</br>
-Ajuste de chaves estrageiras no migration.</br>
+Implementado driver de e-mail para envio.
+Ajuste de chaves estrageiras no migration.
 
 - 24/02/2019  
-Implementado driver de e-mail para envio.</br>
-Ajuste de chaves estrageiras no migration.</br>
+Implementado driver de e-mail para envio.
+Ajuste de chaves estrageiras no migration.
 
 - 23/02/2019  
-Implementado adição e seleção de curso.</br>
-Ajustes front (blade).</br>
+Implementado adição e seleção de curso.
+Ajustes front (blade).
 
 - 22/02/2019  
-Ajuste de chave estrageira nas Migrations.</br>
-Inserção de Autenticação em todas as rotas.</br>
+Ajuste de chave estrageira nas Migrations.
+Inserção de Autenticação em todas as rotas.
 Cadastramento, edição e remoção de usuário implementado.
 
 - 21/02/2019  
-Autenticação via Google implementada.</br>
-Configuração dos Routes.</br>
+Autenticação via Google implementada.
+Configuração dos Routes.
 Configuração das Migrations.
 
 - 20/02/2019  
-Autenticação implementada e ajusta.</br>
+Autenticação implementada e ajusta.
 Autenticação via Facebook Implementada.
 
 
