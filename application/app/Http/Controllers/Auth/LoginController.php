@@ -59,13 +59,13 @@ class LoginController extends Controller
             $user = new User;
             $user->name = $userFacebook->getName();
             $user->email = $userFacebook->getEmail();
-            $user->password = bcrypt(123456);
+            $user->password = Hash::make('12345');
             $user->save();
         }
 
         Auth::login($user);
-
-        return redirect($this->redirectTo);
+        $token = $user->createToken('milhoAPP')->accessToken;
+        return response()->json(['Msg'=>'Login FB realizado com sucesso','Token'=> $token]);
     }
 
 
@@ -87,12 +87,13 @@ class LoginController extends Controller
             $user = new User;
             $user->name = $userGoogle->getName();
             $user->email = $userGoogle->getEmail();
-            $user->password = bcrypt(123456);
+            $user->password = Hash::make('12345');
             $user->save();
         }
 
         Auth::login($user);
 
-        return redirect($this->redirectTo);
+        $token = $user->createToken('milhoAPP')->accessToken;
+        return response()->json(['Msg'=>'Login GG realizado com sucesso','Token'=> $token]);
     }
 }

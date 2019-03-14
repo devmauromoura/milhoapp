@@ -10,6 +10,13 @@ use App\Barraca;
 
 class barracaController extends Controller
 {
+    
+    /*
+    ########################################################################################################
+                                    Funções para a WEB
+    ########################################################################################################
+    */
+    
     public function show(){
 
         $idUser = Auth()->User()->id;
@@ -43,4 +50,7 @@ class barracaController extends Controller
 
         return redirect()->route('showBarracas');
          }
+
+
+         
 }
