@@ -51,7 +51,13 @@
                   <td>{{$user->name}}</td>
                   <td>{{$user->email}}</td>
                   <td>{{$user->nivel}}</td>
-                  <td><i class="far fa-check-circle"></i></td>
+                  <td>
+                    @if ($user->ativo == 1)
+                    <i class="far fa-check-circle"></i>
+                    @else
+                    <i class="fas fa-ban" style="color: red"></i>
+                    @endif
+                  </td>
                   <td><a href="#" data-toggle="modal" data-target="#modalEditarUsuario"><i class="fas fa-edit mr-2"></i></a> </td>
                   <td><a href="#" data-toggle="modal" data-target="#removerUsuario"><i class="fas fa-trash-alt mr-2"></i></a></td>
                   <td><a href="#" data-toggle="modal" data-target="#emailUsuario"><i class="fas fa-envelope"></i></a></td>

@@ -43,7 +43,11 @@ class UserController extends Controller
 
         if (Auth::attempt($credentials)) {
             // Authentication passed...
-            return redirect()->intended('home');
+            if(Auth::User()->nivel == 3){
+                return redirect()->intended('admin');                
+            }else{
+                return redirect()->intended('home');
+            }
         }
         else{
             return 'validacao fail';
@@ -70,6 +74,7 @@ class UserController extends Controller
         $pass = Hash::make($request->input('passwordNew'));
         $passC = User::find($id);
         $passC->password = $pass;
+        $passC->ativo = 1;
 
         $passC->save();
 

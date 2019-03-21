@@ -90,6 +90,3 @@ Route::group(['prefix' => '/ficha/', 'middleware' => 'auth'], function () {
     Route::get('/{id}', 'fichaController@get');
 
 });
-
-Route::get('login/facebook', 'Auth\LoginController@redirectToProvider');
-Route::get('login/facebook/callback', 'Auth\LoginController@handleProviderCallback');
