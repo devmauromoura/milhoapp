@@ -90,3 +90,7 @@ Route::group(['prefix' => '/ficha/', 'middleware' => 'auth'], function () {
     Route::get('/{id}', 'fichaController@get');
 
 });
+
+// Página de consulta de votos; 
+
+Route::get('/votacao', 'dashController@votacao');

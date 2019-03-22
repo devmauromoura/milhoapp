@@ -15,21 +15,22 @@ class votoController extends Controller
 {
     public function registrarVoto(Request $request){
         $dadosVoto = $request->all();
-        $dataUltimoVoto = Voto::select('created_at')->where('idbarraca','=',$dadosVoto['idBarraca'])->orderBy('created_at','desc')->first();
         $user = Auth::user();
+        $dataUltimoVoto = Voto::select('created_at')->where('idusuario','=',$user->id)->where('idbarraca','=',$dadosVoto['idBarraca'])->orderBy('created_at','desc')->first();
+    
 
-        $dataAtual = date("Y-m-d h:i:s");
+        $dataAtual = date("Y-m-d");
 
-        if($dataUltimoVoto < $dataAtual){
+        if($dataUltimoVoto['created_at'] < $dataAtual){
             $voto = new Voto;
             $voto->idusuario = $user->id;
             $voto->idbarraca = $dadosVoto['idBarraca'];
-            $voto->created_at = date("Y-m-d h:i:s");
+            $voto->created_at = date("Y-m-d");
             $voto->save();
     
             return response()->json(['Mensagem'=>'Voto registrado com sucesso!']); 
         }else{
-            return response()->json(['Mensagem'=>'Limite máximo de voto alcançado. Você pode votar uma vez por barraca a cada dia.']);
+            return response()->json(['Mensagem'=>'Limite máximo de voto alcançado. Você pode votar uma vez por barraca a cada dia.','Data Atual'=> $dataAtual,'Ultimo Voto'=>$dataUltimoVoto['created_at']]);
         }
     
 
