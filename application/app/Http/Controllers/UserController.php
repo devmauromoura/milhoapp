@@ -125,4 +125,9 @@ class UserController extends Controller
         return response()->json($user);
     }
 
+    public function apiLogout(){
+     
+        return response()->json('Teste Logout');
+    }
+
 }
