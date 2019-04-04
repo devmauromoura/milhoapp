@@ -36,7 +36,7 @@
         <div class="listar shadow">
             <h4 class="border-bot">Pratos</h4>
             <div class="table-responsive mt-3">
-            <table class="table table-sm">
+            <table class="table table-sm" id="table">
                 <thead class="thead-light">
                   <tr>
                     <th>#</th>
@@ -81,23 +81,30 @@
             </button>
           </div>
           <div class="modal-body">
-              <form name="editarPrato" id="editarPrato" action="" method="POST">
+              <form name="editarPrato" id="editarPrato" action="/public/pratos/atualizar" method="POST">
+                @csrf
+                <div class="row">
+                  <div class="col">
+                    <label for="codigoPrato">#</label>
+                    <input type="text" id="codigoPrato" class="form-control" name="codigoPrato">
+                  </div>
+                </div>
                 <div class="row">
                   <div class="col">
                     <label>Nome do prato</label>
-                    <input name="nome" type="text" class="form-control" placeholder="Ex: Bolo de milho" maxlength="60">
+                    <input name="nome" id="nomePrato" type="text" class="form-control" placeholder="Ex: Bolo de milho" maxlength="60">
                     <div id="errNomePratoModal"></div><!--Msg Erro-->
                   </div>
                 </div>
                 <div class="row">
                   <div class="col-sm-6 mt-3">
                     <label>Descrição do prato</label>
-                    <input name="desc" type="text" class="form-control" placeholder="Ex: Creme de milho" maxlength="60">
+                    <input name="desc" id="descricaoPrato" type="text" class="form-control" placeholder="Ex: Creme de milho" maxlength="60">
                     <div id="errDescPratoModal"></div><!--Msg Erro-->
                   </div>
                   <div class="col-sm-6 mt-3">
-                    <label for="dinheiro">Valor</label>
-                    <input name="valor" id="dinheiro" name="dinheiro" type="text" class="form-control dinheiro" placeholder="R$0,00">
+                    <label for="valorPrato">Valor</label>
+                    <input name="valor" id="valorPrato" name="dinheiro" type="text" class="form-control dinheiro" placeholder="R$0,00">
                     <div id="errValorPratoModal"></div><!--Msg Erro-->
                   </div>
                 </div>
@@ -137,4 +144,66 @@
       </div>
     </div>
     <!-- Modal Excluir - FIM -->
+    <script>
+             var rIndex,
+             table = document.getElementById("table");
+         
+         // check the empty input
+         function checkEmptyInput()
+         {
+             var isEmpty = false,
+                 codigoPrato = document.getElementById("codigoPrato").value,
+                 nomePrato = document.getElementById("nomePrato").value,
+                 descricaoPrato = document.getElementById("descricaoPrato").value,
+                 valorPrato = document.getElementById("valorPrato").value;
+         
+             if(nomePrato === ""){
+                 alert("O nome do prato não pode estar em branco!");
+                 isEmpty = true;
+             }
+             else if(descricaoPrato === ""){
+                 alert("A descriço do prato não pode estar em branco!");
+                 isEmpty = true;
+             }
+             else if(valorPrato === ""){
+                 alert("O valor do prato não pode estar em branco!");
+                 isEmpty = true;
+             }                          
+             return isEmpty;
+         }
+
+         // display selected row data into input text
+         function selectedRowToInput()
+         {
+             
+             for(var i = 1; i < table.rows.length; i++)
+             {
+                 table.rows[i].onclick = function()
+                 {
+                   // get the seected row index
+                   rIndex = this.rowIndex;
+                   document.getElementById("codigoPrato").value = this.cells[0].innerHTML;
+                   document.getElementById("nomePrato").value = this.cells[1].innerHTML;
+                   document.getElementById("descricaoPrato").value = this.cells[2].innerHTML;
+                   document.getElementById("valorPrato").value = this.cells[3].innerHTML;
+                 };
+             }
+         }
+         selectedRowToInput();
+
+         function editHtmlTbleSelectedRow()
+         {
+             var codigoPrato = document.getElementById("codigoPrato").value,
+                nomePrato = document.getElementById("nomePrato").value,
+                descricaoPrato = document.getElementById("descricaoPrato").value,
+                valorPrato = document.getElementById("valorPrato").value;
+
+            if(!checkEmptyInput()){
+             table.rows[rIndex].cells[0].innerHTML = codigoPrato;
+             table.rows[rIndex].cells[1].innerHTML = nomePrato;
+             table.rows[rIndex].cells[2].innerHTML = descricaoPrato;
+             table.rows[rIndex].cells[3].innerHTML = valorPrato;
+           }
+         }
+     </script>         
     @endsection

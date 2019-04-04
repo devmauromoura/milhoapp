@@ -58,7 +58,7 @@ Route::group(['prefix' => '/barraca', 'middleware' => 'auth'], function () {
 Route::group(['prefix' => '/pratos', 'middleware' => 'auth'], function () {
     Route::get('/','pratoController@show')->name('pratos');
     Route::post('/cadastrar', 'pratoController@create');
-    Route::get('/{id}', 'pratoController@get');
+    Route::post('/atualizar', 'pratoController@atualizarPrato');
     Route::put('/{id}', 'pratoController@put');
     Route::delete('/{id}', 'pratoController@delete');
 

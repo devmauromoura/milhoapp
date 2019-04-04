@@ -34,6 +34,19 @@ class pratoController extends Controller
         return redirect()->route('pratos');;
     }
 
+    public function atualizarPrato(Request $request){
+        $dadosPrato = $request->all();
+        
+        $pratoUpdate =  Pratos::find($request->codigoPrato);
+        $pratoUpdate->nome = $request->nome;
+        $pratoUpdate->descricao = $request->desc;
+        $pratoUpdate->valor = $request->valor;
+        $pratoUpdate->save();
+        
+        
+        return redirect('pratos');
+    }
+
 
     /*
     ########################################################################################################
