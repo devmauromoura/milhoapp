@@ -34,7 +34,7 @@
         <div class="listar shadow">
             <h4 class="border-bot">Bebidas</h4>
             <div class="table-responsive mt-3">
-            <table class="table table-sm">
+            <table class="table table-sm" id="table">
                 <thead class="thead-light">
                   <tr>
                     <th>#</th>
@@ -80,23 +80,29 @@
           </div>
           <div class="modal-body">
               <form name="alterarBebida" id="editarBebida" action="/bebidas/update" method="POST">
-                @crsf
+                @csrf
+                <div class="row">
+                  <div class="col">
+                    <label for="codigoBebida">#</label>
+                    <input type="text" id="codigoBebida" class="form-control" name="codigoBebida">
+                  </div>
+                </div>                
                 <div class="row">
                   <div class="col">
                     <label>Nome da Bebida</label>
-                    <input name="nome" type="text" class="form-control" placeholder="Ex: Refrigerante lata" maxlength="60">
+                    <input name="nome" id="nomeBebida" type="text" class="form-control" placeholder="Ex: Refrigerante lata" maxlength="60">
                     <div id="errNomeBebidaModal"></div><!--Msg Erro-->
                   </div>
                 </div>
                 <div class="row">
                   <div class="col-sm-6 mt-3">
                     <label>Descrição da Bebida</label>
-                    <input name="desc" type="text" class="form-control" placeholder="Ex: Coca-Cola" maxlength="60">
+                    <input name="desc" id="descricaoBebida" type="text" class="form-control" placeholder="Ex: Coca-Cola" maxlength="60">
                     <div id="errDescBebidaModal"></div><!--Msg Erro-->
                   </div>
                   <div class="col-sm-6 mt-3">
                     <label>Valor</label>
-                    <input name="valor" type="text" class="dinheiro form-control" placeholder="R$0,00">
+                    <input name="valor" id="valorBebida" type="text" class="dinheiro form-control" placeholder="R$0,00">
                     <div id="errValorBebidaModal"></div><!--Msg Erro-->
                   </div>
                 </div>
@@ -136,4 +142,72 @@
       </div>
     </div>
     <!-- Modal Excluir - FIM -->
+    <script>
+             var rIndex,
+             table = document.getElementById("table");
+         
+         // check the empty input
+         function checkEmptyInput()
+         {
+             var isEmpty = false,
+                 codigoBebida = document.getElementById("codigoBebida").value,
+                 nomeBebida = document.getElementById("nomeBebida").value,
+                 descricaoBebida = document.getElementById("descricaoBebida").value,
+                 valorBebida = document.getElementById("valorBebida").value;
+         
+             if(nomeBebida === ""){
+                 alert("O nome do Bebida não pode estar em branco!");
+                 isEmpty = true;
+             }
+             else if(descricaoBebida === ""){
+                 alert("A descriço do Bebida não pode estar em branco!");
+                 isEmpty = true;
+             }
+             else if(valorBebida === ""){
+                 alert("O valor do Bebida não pode estar em branco!");
+                 isEmpty = true;
+             }                          
+             return isEmpty;
+         }
+
+         // display selected row data into input text
+         function selectedRowToInput()
+         {
+             
+             for(var i = 1; i < table.rows.length; i++)
+             {
+                 table.rows[i].onclick = function()
+                 {
+                   // get the seected row index
+                   rIndex = this.rowIndex;
+                   document.getElementById("codigoBebida").value = this.cells[0].innerHTML;
+                   document.getElementById("nomeBebida").value = this.cells[1].innerHTML;
+                   document.getElementById("descricaoBebida").value = this.cells[2].innerHTML;
+                   document.getElementById("valorBebida").value = this.cells[3].innerHTML;
+                 };
+             }
+         }
+         selectedRowToInput();
+
+         function editHtmlTbleSelectedRow()
+         {
+             var codigoBebida = document.getElementById("codigoBebida").value,
+                nomeBebida = document.getElementById("nomeBebida").value,
+                descricaoBebida = document.getElementById("descricaoBebida").value,
+                valorBebida = document.getElementById("valorBebida").value;
+
+            if(!checkEmptyInput()){
+             table.rows[rIndex].cells[0].innerHTML = codigoBebida;
+             table.rows[rIndex].cells[1].innerHTML = nomeBebida;
+             table.rows[rIndex].cells[2].innerHTML = descricaoBebida;
+             table.rows[rIndex].cells[3].innerHTML = valorBebida;
+           }
+         }
+
+         function removerBebida(){
+          var codigoBebida = document.getElementById("codigoBebida").value;
+          
+          window.location.href = "http://localhost/public/Bebidas/remover/"+codigoBebida;
+         }
+     </script> 
     @endsection
