@@ -21,10 +21,7 @@ Route::group(['prefix'=> '/admin', 'middleware' => 'auth'], function(){
 
 
 Route::group(['prefix' => '/home', 'middleware' => 'auth'], function () {
-    Route::get('/', function(){
-        return view('home');
-    });
-
+    Route::get('/','dashController@homeShow');
 });
 
 
