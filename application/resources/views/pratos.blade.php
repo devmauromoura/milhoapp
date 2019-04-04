@@ -138,7 +138,7 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-danger btn-block mt-4 ml-2" data-dismiss="modal">Não</button>
-            <a href="#" class="btn btn-default btn-block mt-4 ml-2">Sim</a>
+            <a onclick="removerPrato()" class="btn btn-default btn-block mt-4 ml-2">Sim</a>
           </div>
         </div>
       </div>
@@ -204,6 +204,12 @@
              table.rows[rIndex].cells[2].innerHTML = descricaoPrato;
              table.rows[rIndex].cells[3].innerHTML = valorPrato;
            }
+         }
+
+         function removerPrato(){
+          var codigoPrato = document.getElementById("codigoPrato").value;
+          
+          window.location.href = "http://localhost/public/pratos/remover/"+codigoPrato;
          }
      </script>         
     @endsection

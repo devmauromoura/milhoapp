@@ -47,6 +47,13 @@ class pratoController extends Controller
         return redirect('pratos');
     }
 
+    public function removerPrato($id){
+        $pratoDelete = Pratos::find($id);
+        $pratoDelete->delete();
+
+        return redirect('pratos');
+    }
+
 
     /*
     ########################################################################################################

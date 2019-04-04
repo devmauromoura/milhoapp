@@ -59,8 +59,7 @@ Route::group(['prefix' => '/pratos', 'middleware' => 'auth'], function () {
     Route::get('/','pratoController@show')->name('pratos');
     Route::post('/cadastrar', 'pratoController@create');
     Route::post('/atualizar', 'pratoController@atualizarPrato');
-    Route::put('/{id}', 'pratoController@put');
-    Route::delete('/{id}', 'pratoController@delete');
+    Route::get('/remover/{id}', 'pratoController@removerPrato');
 
 });
 
