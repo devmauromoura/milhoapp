@@ -50,4 +50,12 @@ class bebidaController extends Controller
         // return "Nome: ".$dadosBebidas['nome']."<br>Descrição: ".$dadosBebidas['desc']."<br>Valor: ".$dadosBebidas['valor'];
 
     }
+
+    public function delete($id){
+        $codigo = $id;
+        $delete = Bebida::find($codigo);
+        $delete->delete();
+
+        return back();
+    }
 }

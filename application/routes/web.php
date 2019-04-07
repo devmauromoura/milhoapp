@@ -69,6 +69,7 @@ Route::group(['prefix' => '/bebidas', 'middleware' => 'auth'], function () {
     Route::get('/','bebidaController@show')->name('showBebidas');
     Route::post('/create', 'bebidaController@create');
     Route::post('/update','bebidaController@update');
+    route::get('/remover/{id}','bebidaController@delete');
 });
 
 

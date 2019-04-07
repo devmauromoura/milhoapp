@@ -136,7 +136,7 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-danger btn-block mt-4 ml-2" data-dismiss="modal">Não</button>
-            <a href="#" class="btn btn-default btn-block mt-4 ml-2">Sim</a>
+            <a onclick="removerBebida()" class="btn btn-default btn-block mt-4 ml-2">Sim</a>
           </div>
         </div>
       </div>
@@ -207,7 +207,7 @@
          function removerBebida(){
           var codigoBebida = document.getElementById("codigoBebida").value;
           
-          window.location.href = "http://localhost/public/Bebidas/remover/"+codigoBebida;
+          window.location.href = "http://localhost/public/bebidas/remover/"+codigoBebida;
          }
      </script> 
     @endsection
