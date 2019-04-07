@@ -35,8 +35,8 @@ class dashController extends Controller
     public function homeShow(){
         // Listagem das 5 barracas mais votadas.
         $votosBarraca = Voto::select('idbarraca','nome',DB::raw('count(idbarraca) AS Votos'))->leftJoin('barraca','voto.idbarraca','=','barraca.id')->groupBy('idbarraca','barraca.nome')->orderBy('Votos','desc')->limit(5)->get();
-        //return view::make('home')->with(compact('votosBarraca'));
+        return view::make('home')->with(compact('votosBarraca'));
 
-        return $votosBarraca;
+        //return $votosBarraca;
     }
 }

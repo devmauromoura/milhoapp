@@ -79,7 +79,7 @@
             </button>
           </div>
           <div class="modal-body">
-              <form name="alterarBebida" id="editarBebida" action="/bebidas/update" method="POST">
+              <form name="alterarBebida" id="editarBebida" action="/public/bebidas/update" method="POST">
                 @csrf
                 <div class="row">
                   <div class="col">

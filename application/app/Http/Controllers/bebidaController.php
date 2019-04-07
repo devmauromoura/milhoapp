@@ -34,4 +34,20 @@ class bebidaController extends Controller
         return back();
 
     }
+
+    public function update(Request $request){
+        $dadosBebidas = $request->all();
+        $update = Bebida::find($request->codigoBebida);
+        $update->nome = $dadosBebidas['nome'];
+        $update->descricao = $dadosBebidas['desc'];
+        $update->valor = $dadosBebidas['valor'];
+
+        $update->save();
+
+
+        return back();
+
+        // return "Nome: ".$dadosBebidas['nome']."<br>Descrição: ".$dadosBebidas['desc']."<br>Valor: ".$dadosBebidas['valor'];
+
+    }
 }
