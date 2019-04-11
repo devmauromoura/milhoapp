@@ -24,7 +24,7 @@
         <div style="border-top: 1px solid #6C7A89; padding: 10px; background-color: #00c853; color: #fff;">
             Equipe MilhoAPP
             <br>
-            Contato.: email@email.com
+            Contato.: contato.milhoapp@gmail.com
         </div>
     </div>
 
