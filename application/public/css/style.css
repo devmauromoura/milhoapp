@@ -121,10 +121,23 @@ table i {
   border-bottom: 2px solid var(--cor-padrao); 
   padding-bottom: 5px;
 }
-
 .error{
   color:red;
   padding-top: 5px;
+}
+.listaRank {
+  border-radius: 50px;
+  border: solid 1px var(--cor-padrao); 
+  background-color: #e8f5e9;
+}
+.listaRank > img {
+  border-radius: 50%;
+}
+.headerRank {
+  border-radius: 50px;
+  background-color: var(--cor-padrao);
+  padding: 10px;
+  color: var(--cor-white);
 }
 
 /***** Footer *****/
@@ -150,7 +163,7 @@ table i {
     position: fixed;
     width: 70%;
     height: 100vh;
-    background: var(--cor-btn-hover);
+    background: #757575;
     color: var(--cor-white);
     right: -100%;
     top: 0;
@@ -166,7 +179,6 @@ table i {
   .menu a{
     display: block;
     padding: 20px;
-    border: 1px solid var(--cor-white);
   }
   .hide-menu-btn{
     position: absolute;

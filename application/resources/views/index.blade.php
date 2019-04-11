@@ -66,7 +66,6 @@
           <div class="row">
             <div class="col-sm-12 pr-5 pl-5 pt-5">
                 <button type="submit" class="btn btn-success btn-lg btn-block">Acessar</button>
-                <button type="button" class="btn btn-outline-success btn-lg btn-block mt-3">Ajuda</button>
             </div>
           </div>
 

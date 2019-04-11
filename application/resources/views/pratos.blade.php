@@ -85,8 +85,7 @@
                 @csrf
                 <div class="row">
                   <div class="col">
-                    <label for="codigoPrato">#</label>
-                    <input type="text" id="codigoPrato" class="form-control" name="codigoPrato">
+                    <input style="display: none" type="text" id="codigoPrato" class="form-control" name="codigoPrato">
                   </div>
                 </div>
                 <div class="row">

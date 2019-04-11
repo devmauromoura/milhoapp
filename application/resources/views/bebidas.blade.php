@@ -83,8 +83,7 @@
                 @csrf
                 <div class="row">
                   <div class="col">
-                    <label for="codigoBebida">#</label>
-                    <input type="text" id="codigoBebida" class="form-control" name="codigoBebida">
+                    <input style="display: none" type="text" id="codigoBebida" class="form-control" name="codigoBebida">
                   </div>
                 </div>                
                 <div class="row">

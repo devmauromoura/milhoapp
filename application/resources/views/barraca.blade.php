@@ -8,7 +8,7 @@
       <div class="container">
         <div class="cadastrar shadow"> <!-- Cadastrar -->
           <h4 class="border-bot">Barraca</h4>
-          <form name="cadastrarBarraca" id="cadastrarBarraca" class="mt-3" action="barraca/update" method="POST">
+          <form name="cadastrarBarraca" id="cadastrarBarraca" class="mt-3" action="barraca/update" method="POST" enctype="multipart/form-data">
             @csrf
             @foreach($dadosBarraca as $dados)
             <div class="row">
@@ -55,13 +55,16 @@
                 </select>
               </div>
               <div class="col-sm-6 mt-3">
-                <label for="pagamentos">Tipo de pagamento</label>
-                <select name="pagamento" class="form-control" id="pagamentos">
-                  <option value="{{$dados->pagamento}}" disabled selected>{{$dados->pagamento}}</option>
-                  <option value="dinheiro">Dinheiro</option>
-                  <option value="credito">Cartão Crédito</option>
-                  <option value="debito">Cartão Débito</option>
-                </select>
+                <label for="localizacao">Localização</label>
+                @foreach($cursosListagem as $curso)
+                <input type="text" value="{{$dados->localizacao}}" name="localizacao" class="form-control" placeholder="Localização da barraca" maxlength="60">
+                @endforeach 
+              </div>
+            </div>
+            <div class="row">
+              <div class="col mt-3">
+                <label>Logo barraca</label>
+                <input type="file" name="logoBarraca" class="form-control-file">
               </div>
             </div>
             <button type="submit" class="btn btn-default btn-md btn-block mt-4">Salvar</button>

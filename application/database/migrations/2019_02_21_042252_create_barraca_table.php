@@ -22,7 +22,8 @@ class CreateBarracaTable extends Migration
             $table->foreign('idcurso')->references('id')->on('curso');
             $table->integer('idUser')->unsigned();
             $table->foreign('idUser')->references('id')->on('users');
-            $table->string('pagamento')->default('Definir');
+            $table->string('localizacao')->default('Definir');
+            $table->string('nomeimagem')->default('icondefault.png');
             $table->timestamps();
         });
 

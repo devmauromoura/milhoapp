@@ -24,7 +24,7 @@ class barracaController extends Controller
         //return $barracaCad;
 
         $cursosListagem = DB::table('curso')->get();
-        $dadosBarraca = DB::table('barraca')->where('idUser', $idUser)->leftJoin('curso','idCurso','=','curso.id')->select(DB::raw('barraca.nome, barraca.semestre, barraca.periodo, barraca.idcurso, barraca.pagamento, curso.nome AS cnome'))->get();
+        $dadosBarraca = DB::table('barraca')->where('idUser', $idUser)->leftJoin('curso','idCurso','=','curso.id')->select(DB::raw('barraca.nome, barraca.semestre, barraca.periodo, barraca.idcurso, barraca.localizacao, curso.nome AS cnome'))->get();
         //view::make('barraca')->with(compact('cursosListagem'));
 
         //return $dadosBarraca;
@@ -37,16 +37,30 @@ class barracaController extends Controller
     }
 
     public function update(Request $request){
-        $dadosBarracaUpdate = $request->only(['nome','curso','periodo','semestre','pagamento']);
+        $dadosBarracaUpdate = $request->only(['nome','curso','periodo','semestre','localizacao','c']);
         //return $dadosBarracaUpdate;
+        
+        if ($request->hasFile('logoBarraca') && $request->file('logoBarraca')->isValid()){
+            $name = Auth::user()->name.kebab_case(Auth::user()->id);
+            $extensao =  $request['logoBarraca']->extension();
+            $nameFile = "{$name}.{$extensao}";
+            $upload = $request['logoBarraca']->storeAs('barracas',$nameFile);
+            //dd($nameFile);
+        }else{
+            return "algo errado";
+        }
 
          DB::table('barraca')->where('idUser', Auth::id())->update([
             'nome' => $dadosBarracaUpdate['nome'],
             'idCurso' => $dadosBarracaUpdate['curso'],
             'periodo' => $dadosBarracaUpdate['periodo'],
             'semestre' => $dadosBarracaUpdate['semestre'],
-            'pagamento' => $dadosBarracaUpdate['pagamento']
+            'localizacao' => $dadosBarracaUpdate['localizacao'],
+            'nomeimagem' => $nameFile
         ]);
+
+            
+
 
         return redirect()->route('showBarracas');
          }
