@@ -9,7 +9,7 @@
           <br>
           <p class="lead text-muted">Aplicação desenvolvida pela turma de análise e desenvolvimento de sistemas - FASIPE 2019</p>
           <p>
-            <a href="/public" class="btn btn-default my-2">Acessar Novamente </a>
+            <a href="/" class="btn btn-default my-2">Acessar Novamente </a>
           </p>
         </div>
       </section>
