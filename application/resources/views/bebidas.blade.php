@@ -7,7 +7,7 @@
       <div class="container">
         <div class="cadastrar shadow"> <!-- Cadastrar -->
           <h4 class="border-bot">Cadastrar Bebida</h4>
-          <form name="cadastrarBebida" id="cadastrarBebida" class="mt-3" action="/public/bebidas/create" method="POST">
+          <form name="cadastrarBebida" id="cadastrarBebida" class="mt-3" action="/bebidas/create" method="POST">
             @csrf
             <div class="row">
               <div class="col">
@@ -79,7 +79,7 @@
             </button>
           </div>
           <div class="modal-body">
-              <form name="alterarBebida" id="editarBebida" action="/public/bebidas/update" method="POST">
+              <form name="alterarBebida" id="editarBebida" action="/bebidas/update" method="POST">
                 @csrf
                 <div class="row">
                   <div class="col">
@@ -206,7 +206,7 @@
          function removerBebida(){
           var codigoBebida = document.getElementById("codigoBebida").value;
           
-          window.location.href = "http://localhost/public/bebidas/remover/"+codigoBebida;
+          window.location.href = "http://144.202.70.222/bebidas/remover/"+codigoBebida;
          }
      </script> 
     @endsection

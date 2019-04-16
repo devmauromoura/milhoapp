@@ -39,7 +39,7 @@
           </div>
         </div>
 
-        <form name="login" id="login" action="/public/loginUser" method="POST">
+        <form name="login" id="login" action="/loginUser" method="POST">
           @csrf
           <div class="row">
             <div class="col">

@@ -9,7 +9,7 @@
       <div class="container">
         <div class="cadastrar shadow"> <!-- Cadastrar -->
           <h4 class="border-bot">Cadastrar Prato</h4>
-          <form name="cadastrarPrato" id="cadastrarPrato" class="mt-3" action="/public/pratos/cadastrar" method="POST">
+          <form name="cadastrarPrato" id="cadastrarPrato" class="mt-3" action="/pratos/cadastrar" method="POST">
             @csrf
             <div class="row">
               <div class="col">
@@ -81,7 +81,7 @@
             </button>
           </div>
           <div class="modal-body">
-              <form name="editarPrato" id="editarPrato" action="/public/pratos/atualizar" method="POST">
+              <form name="editarPrato" id="editarPrato" action="/pratos/atualizar" method="POST">
                 @csrf
                 <div class="row">
                   <div class="col">
@@ -208,7 +208,7 @@
          function removerPrato(){
           var codigoPrato = document.getElementById("codigoPrato").value;
           
-          window.location.href = "http://localhost/public/pratos/remover/"+codigoPrato;
+          window.location.href = "http://144.202.70.222/pratos/remover/"+codigoPrato;
          }
      </script>         
     @endsection

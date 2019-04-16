@@ -60,7 +60,7 @@
         <div class="box">
             <h4 class="p-3 border-bot">Olá, participante</h4>
             <p class="p-3">Para concluirmos o cadastramento, digite abaixo a nova senha para acessar a central do MilhoAPP.</p>
-            <form name="confirmaEmailForm" action="/public/cadastrarSenha/{{$id}}/aplicar" method="POST">
+            <form name="confirmaEmailForm" action="/cadastrarSenha/{{$id}}/aplicar" method="POST">
                 @csrf
                 <div class="input-group input-group-lg mt-4 pr-5 pl-5 pt-3">
                     <div class="input-group-prepend">
