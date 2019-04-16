@@ -56,9 +56,7 @@
               </div>
               <div class="col-sm-6 mt-3">
                 <label for="localizacao">Localização</label>
-                @foreach($cursosListagem as $curso)
                 <input type="text" value="{{$dados->localizacao}}" name="localizacao" class="form-control" placeholder="Localização da barraca" maxlength="60">
-                @endforeach 
               </div>
             </div>
             <div class="row">
