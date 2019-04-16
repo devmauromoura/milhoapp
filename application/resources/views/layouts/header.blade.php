@@ -38,11 +38,11 @@
       </label>
 
       <ul class="menu">
-        <a href="/public/home">Home</a>
-        <a href="/public/barraca">Barraca</a>
-        <a href="/public/pratos">Pratos</a>
-        <a href="/public/bebidas">Bebidas</a>
-        <a href="/public/logout">Sair</a>
+        <a href="/home">Home</a>
+        <a href="/barraca">Barraca</a>
+        <a href="/pratos">Pratos</a>
+        <a href="/bebidas">Bebidas</a>
+        <a href="/logout">Sair</a>
         <label for="chk" class="hide-menu-btn">
           <i class="fas fa-times"></i>
         </label>

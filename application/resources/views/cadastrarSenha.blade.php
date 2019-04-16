@@ -81,7 +81,7 @@
                 </div>
                 <div class="p-3 text-center">
                     <p>Você sera direcionado a pagina de entrada de nossa central.</p>
-                    <p>Duvidas <br> <b>contato@contato.com.br</b></p>
+                    <p>Duvidas <br> <b>contato.milhoapp@gmail.com</b></p>
                 </div>
             </form>                
         </div>
