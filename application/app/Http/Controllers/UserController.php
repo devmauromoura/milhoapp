@@ -50,7 +50,7 @@ class UserController extends Controller
             }
         }
         else{
-            return redirect('index')->with('alert', 'Usuário/Senha incorreto!');
+            return redirect()->back()->with('alert', 'Usuário/Senha incorreto!');
         }
     }
 
