@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\View;
 use App\Barraca;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
 
 class barracaController extends Controller
 {
@@ -47,6 +48,8 @@ class barracaController extends Controller
             $nameFile = "{$name}.{$extensao}";
             $nameCorrect = Str::kebab($nameFile);
             $upload = $request['logoBarraca']->storeAs('barracas',$nameCorrect);
+            $url = Storage::url($nameCorrect);
+
             //dd($nameFile);
         }else{
             return "algo errado";
@@ -58,11 +61,8 @@ class barracaController extends Controller
             'periodo' => $dadosBarracaUpdate['periodo'],
             'semestre' => $dadosBarracaUpdate['semestre'],
             'localizacao' => $dadosBarracaUpdate['localizacao'],
-            'nomeimagem' => $nameCorrect
+            'nomeimagem' => $url
         ]);
-
-            
-
 
         return redirect()->route('showBarracas');
          }
