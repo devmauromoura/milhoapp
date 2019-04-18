@@ -25,7 +25,8 @@ class pratoController extends Controller
         $addPrato = new Pratos;
         $addPrato->nome = $dadosPrato['nomePrato'];
         $addPrato->descricao = $dadosPrato['descPrato'];
-        $addPrato->valor = $dadosPrato['valorPrato'];
+        $valordopratao = str_replace(',', '.', $dadosPrato['valorPrato']);
+        $addPrato->valor = $valordopratao;
         $idBarraca = barraca::select('id')->where('idUser', Auth::id())->first(); 
         $idBarracaString = $idBarraca['id'];
         $addPrato->idbarraca = $idBarracaString;
@@ -40,7 +41,7 @@ class pratoController extends Controller
         $pratoUpdate =  Pratos::find($request->codigoPrato);
         $pratoUpdate->nome = $request->nome;
         $pratoUpdate->descricao = $request->desc;
-        $pratoUpdate->valor = $request->valor;
+        $pratoUpdate->valor = str_replace(',', '.', $request->valor);
         $pratoUpdate->save();
         
         
