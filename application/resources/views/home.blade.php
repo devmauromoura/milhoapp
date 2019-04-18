@@ -11,7 +11,7 @@
             <ul class="list-unstyled">
               @foreach($votosBarraca as $barracas)
               <li class="media listaRank mb-2">
-                <img src="{{ asset('storage/app/public/barracas/'.$barracas->nomeimagem) }}" height="85px" class="mr-4" alt="...">
+                <img src="{{ asset('barracas/'.$barracas->nomeimagem) }}" height="85px" class="mr-4" alt="...">
                 <div class="media-body">
                   <h4 class="mt-0 mb-1">{{$barracas->nome}}</h4>
                   <h5 class="mt-0 mb-1">{{$barracas->Votos}} Votos</h5>

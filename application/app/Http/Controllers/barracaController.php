@@ -58,7 +58,7 @@ class barracaController extends Controller
             'periodo' => $dadosBarracaUpdate['periodo'],
             'semestre' => $dadosBarracaUpdate['semestre'],
             'localizacao' => $dadosBarracaUpdate['localizacao'],
-            'nomeimagem' => $nameFile
+            'nomeimagem' => $nameCorrect
         ]);
 
             
