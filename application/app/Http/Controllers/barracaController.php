@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\View;
 use App\Barraca;
+use Illuminate\Support\Str;
 
 class barracaController extends Controller
 {
@@ -44,7 +45,8 @@ class barracaController extends Controller
             $name = Auth::user()->name.kebab_case(Auth::user()->id);
             $extensao =  $request['logoBarraca']->extension();
             $nameFile = "{$name}.{$extensao}";
-            $upload = $request['logoBarraca']->storeAs('barracas',$nameFile);
+            $nameCorrect = Str::kebab($nameFile);
+            $upload = $request['logoBarraca']->storeAs('barracas',$nameCorrect);
             //dd($nameFile);
         }else{
             return "algo errado";
