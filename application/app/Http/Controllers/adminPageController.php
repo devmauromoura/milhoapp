@@ -56,7 +56,7 @@ class adminPageController extends Controller
             $barracaNew->idCurso = 1;
             $barracaNew->save();
             
-            return redirect()->back()->with("alert", "O usuário foi cadastrado. Id.: ".$userCheck->id."<br>Foi encaminhado ao e-mail ".$requestCreate->input('email')."um link para update da senha!");
+            return redirect()->back()->with("alert", "O usuário foi cadastrado. Foi encaminhado ao e-mail ".$requestCreate->input('email')." um link para update da senha!");
         }else{
             return redirect()->back()->with("alert", "O ".$requestCreate->input('email')." ja foi cadastrado!");
         }
