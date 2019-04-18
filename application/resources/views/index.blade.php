@@ -79,7 +79,13 @@
 
       </div>
     </div>
-
+    <script>
+    var msg = '{{Session::get('alert')}}';
+    var exist = '{{Session::has('alert')}}';
+    if(exist){
+      alert(msg);
+    }
+    </script>
     <script type="text/javascript" src="{{asset('js/jquery-3.3.1.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('js/jquery.validate.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('js/localization/messages_pt_BR.js')}}"></script>
