@@ -25,7 +25,8 @@ class bebidaController extends Controller
         $cadBebida = new Bebida;
         $cadBebida->nome = $dadosCreate['nomeBebida'];
         $cadBebida->descricao = $dadosCreate['descBebida'];
-        $cadBebida->valor = $dadosCreate['valorBebida'];
+        $valordabebida = str_replace(',', '.', $dadosCreate['valorBebida']);
+        $cadBebida->valor = $valordabebida;
         $idBarraca = barraca::select('id')->where('idUser', Auth::id())->first(); 
         $idBarracaString = $idBarraca['id'];
         $cadBebida->idbarraca = $idBarracaString;
@@ -40,7 +41,7 @@ class bebidaController extends Controller
         $update = Bebida::find($request->codigoBebida);
         $update->nome = $dadosBebidas['nome'];
         $update->descricao = $dadosBebidas['desc'];
-        $update->valor = $dadosBebidas['valor'];
+        $update->valor =  str_replace(',', '.', $dadosBebidas['valor']);
 
         $update->save();
 
