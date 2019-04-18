@@ -12,10 +12,14 @@
               @foreach($votosBarraca as $barracas)
               <li class="media listaRank mb-2">
 <<<<<<< HEAD
+<<<<<<< HEAD
                 <img src="{{ asset('storage/barracas/'.$barracas->nomeimagem) }}" height="85px" class="mr-4" alt="...">
 =======
                 <img src="{{$barracas->nomeimagem}}" height="85px" class="mr-4" alt="...">
 >>>>>>> 39cd4b59dfc4e52d3ee245ab62b2eda923742f51
+=======
+                <img src="{{ asset($barracas->nomeimagem) }}" height="85px" class="mr-4" alt="...">
+>>>>>>> 05b6add3a7a843b86a6360c607c888faad5812af
                 <div class="media-body">
                   <h4 class="mt-0 mb-1">{{$barracas->nome}}</h4>
                   <h5 class="mt-0 mb-1">{{$barracas->Votos}} Votos</h5>
