@@ -9,15 +9,7 @@
             <ul class="list-unstyled">
               <?php $__currentLoopData = $votosBarraca; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $barracas): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
               <li class="media listaRank mb-2">
-<<<<<<< HEAD
-<<<<<<< HEAD
                 <img src="<?php echo e(asset('storage/barracas/'.$barracas->nomeimagem)); ?>" height="85px" class="mr-4" alt="...">
-=======
-                <img src="<?php echo e($barracas->nomeimagem); ?>" height="85px" class="mr-4" alt="...">
->>>>>>> 39cd4b59dfc4e52d3ee245ab62b2eda923742f51
-=======
-                <img src="<?php echo e(asset($barracas->nomeimagem)); ?>" height="85px" class="mr-4" alt="...">
->>>>>>> 05b6add3a7a843b86a6360c607c888faad5812af
                 <div class="media-body">
                   <h4 class="mt-0 mb-1"><?php echo e($barracas->nome); ?></h4>
                   <h5 class="mt-0 mb-1"><?php echo e($barracas->Votos); ?> Votos</h5>
