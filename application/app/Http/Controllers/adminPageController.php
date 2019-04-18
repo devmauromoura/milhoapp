@@ -55,11 +55,10 @@ class adminPageController extends Controller
             $barracaNew->idUser = $userCheck->id;
             $barracaNew->idCurso = 1;
             $barracaNew->save();
-
-            return 'O usuário foi cadastrado. Id.: '.$userCheck->id."<br>Foi encaminhado ao e-mail ".$requestCreate->input('email')." um link para update da senha!
-            ";
+            
+            return redirect()->back()->with("alert", "O usuário foi cadastrado. Id.: ".$userCheck->id."<br>Foi encaminhado ao e-mail ".$requestCreate->input('email')."um link para update da senha!");
         }else{
-            return "O email ".$requestCreate->input('email')." já está cadastrado! Os emails de acesso podem ser utilizados/cadastrados apenas uma vez. ";
+            return redirect()->back()->with("alert", "O ".$requestCreate->input('email')." ja foi cadastrado!");
         }
     }
  
