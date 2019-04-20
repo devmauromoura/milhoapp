@@ -48,7 +48,7 @@ class barracaController extends Controller
             $nameFile = "{$name}.{$extensao}";
             $nameCorrect = Str::kebab($nameFile);
             $upload = $request['logoBarraca']->storeAs('barracas',$nameCorrect);
-            Storage::setVisibility($nameCorrect, 'public');
+            Storage::setVisibility('barracas/'.$nameCorrect, 'public');
             $url = Storage::url($nameCorrect);
 
             //dd($nameFile);
