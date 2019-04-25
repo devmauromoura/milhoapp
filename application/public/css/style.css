@@ -132,6 +132,8 @@ table i {
 }
 .listaRank > img {
   border-radius: 50%;
+  max-width: 85px;
+  max-height: 85px;
 }
 .headerRank {
   border-radius: 50px;
