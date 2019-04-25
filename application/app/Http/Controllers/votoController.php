@@ -10,27 +10,37 @@ use App\Bebida;
 use App\Pratos;
 use App\Curso;
 use App\Voto;
+use Validator;
 
 class votoController extends Controller
 {
     public function registrarVoto(Request $request){
-        $dadosVoto = $request->all();
-        $user = Auth::user();
-        $dataUltimoVoto = Voto::select('created_at')->where('idusuario','=',$user->id)->where('idbarraca','=',$dadosVoto['idBarraca'])->orderBy('created_at','desc')->first();
-    
+        
+        $validator = Validator::make($request->all(), [
+            "idBarraca" => "required|integer",
+        ]);
 
-        $dataAtual = date("Y-m-d");
+        if ($validator->fails()) {
+            return response()->json(['Mensagem'=>'Envie os dados corretamente.']);
+        }else{          
+            $dadosVoto = $request->all();
+            $user = Auth::user();
+            $dataUltimoVoto = Voto::select('created_at')->where('idusuario','=',$user->id)->where('idbarraca','=',$dadosVoto['idBarraca'])->orderBy('created_at','desc')->first();
+        
 
-        if($dataUltimoVoto['created_at'] < $dataAtual){
-            $voto = new Voto;
-            $voto->idusuario = $user->id;
-            $voto->idbarraca = $dadosVoto['idBarraca'];
-            $voto->created_at = date("Y-m-d");
-            $voto->save();
-    
-            return response()->json(['Mensagem'=>'Voto registrado com sucesso!']); 
-        }else{
-            return response()->json(['Mensagem'=>'Limite máximo de voto alcançado. Você pode votar uma vez por barraca a cada dia.','Data Atual'=> $dataAtual,'Ultimo Voto'=>$dataUltimoVoto['created_at']]);
+            $dataAtual = date("Y-m-d");
+
+            if($dataUltimoVoto['created_at'] < $dataAtual){
+                $voto = new Voto;
+                $voto->idusuario = $user->id;
+                $voto->idbarraca = $dadosVoto['idBarraca'];
+                $voto->created_at = date("Y-m-d");
+                $voto->save();
+        
+                return response()->json(['Mensagem'=>'Voto registrado com sucesso!']); 
+            }else{
+                return response()->json(['Mensagem'=>'Limite máximo de voto alcançado. Você pode votar uma vez por barraca a cada dia.','Data Atual'=> $dataAtual,'Ultimo Voto'=>$dataUltimoVoto['created_at']]);
+            }
         }
     
 

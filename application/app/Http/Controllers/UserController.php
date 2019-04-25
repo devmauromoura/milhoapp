@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
 use App\Mail\cadastroUsuario;
 use App\User;
-
+use Validator;
 class UserController extends Controller
 {
 
@@ -90,19 +90,37 @@ class UserController extends Controller
     */
 
     public function apiLogin(Request $request){
-        if(Auth::attempt(['email' => $request->input('email'), 'password' => $request->input('password')])){
-            $user = Auth::user();
-            $token = $user->createToken('milhoAPP')->accessToken;
+        $validator = Validator::make($request->all(), [
+            "email" => "required",
+            "password"  => "required",
+        ]);
 
-            return response()->json(['Mensagem' => 'Login Realizado com Sucesso', 'Token: ' => $token], 200);
-        }
-        else{
-            return response()->json(['Fail'=>'Sem Acesso']);
-        }
+        if ($validator->fails()) {
+            return response()->json(['Mensagem'=>'Envie os dados corretamente.']);
+        }else{        
+
+            if(Auth::attempt(['email' => $request->input('email'), 'password' => $request->input('password')])){
+                $user = Auth::user();
+                $token = $user->createToken('milhoAPP')->accessToken;
+
+                return response()->json(['Mensagem' => 'Login Realizado com Sucesso', 'Token: ' => $token], 200);
+            }
+            else{
+                return response()->json(['Mensagem'=>'Dados Incorretos']);
+            }
+        }    
     }
 
     public function apiRegister(Request $request){
-
+        $validator = Validator::make($request->all(), [
+            "name" => "required",
+            "email" => "required",
+            "password"  => "required",
+        ]);
+        
+        if ($validator->fails()) {
+            return response()->json(['Mensagem'=>'Envie os dados corretamente.']);
+        }else{
             $dadosRequest =  $request->all();
 
              $userApi = new User;
@@ -117,7 +135,8 @@ class UserController extends Controller
 
             return response()->json(['Mensagem' => 'Cadastro Realizado com Sucesso'], 200);
 
-            //return response()->json($dadosRequest);
+            //return response()->json($dadosRequest);            
+        } 
     }
 
     public function getUser(){
