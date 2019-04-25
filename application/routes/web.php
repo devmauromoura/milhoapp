@@ -92,10 +92,3 @@ Route::group(['prefix' => '/ficha/', 'middleware' => 'auth'], function () {
 // Página de consulta de votos; 
 
 Route::get('/votacao', 'dashController@votacao');
-
-
-// Gestão Fasipe
-
-Route::get('/fasipe/home','gestaoFasipe@index');
-Route::get('/fasipe/home/barraca/{id}','gestaoFasipe@barraca');
-Route::post('/fasipe/home/barraca/enviarpontos','gestaoFasipe@barraca');
