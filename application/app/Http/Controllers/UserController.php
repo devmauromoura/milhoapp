@@ -113,13 +113,13 @@ class UserController extends Controller
 
     public function apiRegister(Request $request){
         $validator = Validator::make($request->all(), [
-            "name" => "required",
-            "email" => "required",
-            "password"  => "required",
+            "name" => "required|string",
+            "email" => "required|email|unique:users",
+            "password"  => "required|string",
         ]);
         
         if ($validator->fails()) {
-            return response()->json(['Mensagem'=>'Envie os dados corretamente.']);
+            return response()->json(['Mensagem'=>'Envie os dados corretamente.'], 422);
         }else{
 
             $consulta = User::where('email',$request['email'])->first();
