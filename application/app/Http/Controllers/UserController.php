@@ -122,7 +122,7 @@ class UserController extends Controller
             return response()->json(['Mensagem'=>'Envie os dados corretamente.']);
         }else{
 
-            $consulta = User::where('email',$dadosRequest['email'])->first();
+            $consulta = User::where('email',$request['email'])->first();
 
             if($consulta != NULL){
                 return response()->json(['Mensagem'=>'Email ja cadastrado']);
