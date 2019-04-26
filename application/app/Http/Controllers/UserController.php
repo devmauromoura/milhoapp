@@ -103,7 +103,7 @@ class UserController extends Controller
                 $user = Auth::user();
                 $token = $user->createToken('milhoAPP')->accessToken;
 
-                return response()->json(['Mensagem' => 'Login Realizado com Sucesso', 'Token: ' => $token], 200);
+                return response()->json(['Mensagem' => 'Login Realizado com Sucesso', 'token' => $token], 200);
             }
             else{
                 return response()->json(['Mensagem'=>'Dados Incorretos']);
