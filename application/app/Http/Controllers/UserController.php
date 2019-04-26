@@ -121,21 +121,29 @@ class UserController extends Controller
         if ($validator->fails()) {
             return response()->json(['Mensagem'=>'Envie os dados corretamente.']);
         }else{
-            $dadosRequest =  $request->all();
 
-             $userApi = new User;
-             $userApi->name = $dadosRequest['name'];
-             $passApi = Hash::make($dadosRequest['password']);
-             $userApi->password = $passApi;
-             $userApi->email = $dadosRequest['email'];
-             $userApi->nivel = 2;
-             $userApi->save();
+            $consulta = User::where('email',$dadosRequest['email'])->first();
 
-            //$token = $userApi->createToken('milhoAPP')->accessToken;
+            if($consulta != NULL){
+                return response()->json(['Mensagem'=>'Email ja cadastrado']);
+            }else{
+            
+                $dadosRequest =  $request->all();
 
-            return response()->json(['Mensagem' => 'Cadastro Realizado com Sucesso'], 200);
+                 $userApi = new User;
+                 $userApi->name = $dadosRequest['name'];
+                 $passApi = Hash::make($dadosRequest['password']);
+                 $userApi->password = $passApi;
+                 $userApi->email = $dadosRequest['email'];
+                 $userApi->nivel = 2;
+                 $userApi->save();
 
-            //return response()->json($dadosRequest);            
+                //$token = $userApi->createToken('milhoAPP')->accessToken;
+
+                return response()->json(['Mensagem' => 'Cadastro Realizado com Sucesso'], 200);
+
+                //return response()->json($dadosRequest);   
+            }        
         } 
     }
 

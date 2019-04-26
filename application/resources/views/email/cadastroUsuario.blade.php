@@ -16,7 +16,7 @@
             Cadastre sua senha de acesso através do link a seguir!
             <center>
                 <div style="border: 1px solid black; width: 150px; margin: 10px 10px 30px 10px; border-radius: 20px; padding: 5px; background-color: #00c853;">
-                    <a style="text-decoration: none; color: #fff;" href="http://144.202.70.222/cadastrarSenha/{{ $id }}" target="_blank" >Cadastrar Senha</a>
+                    <a style="text-decoration: none; color: #fff;" href="https://milho.rodrigojpaiva.com.br/cadastrarSenha/{{ $id }}" target="_blank" >Cadastrar Senha</a>
                 </div>
             </center>
             Não responda este e-mail, o mesmo não é monitorado.          
