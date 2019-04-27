@@ -33,7 +33,7 @@ Route::group(['prefix' => '/usuario', 'middleware' => 'auth'], function () {
     Route::post('/create', 'adminPageController@create');
     Route::post('/{id}/select', 'adminPageController@select');
     Route::get('/{id}/edit', 'adminPageController@edit');
-    Route::post('/update', 'adminPageController@update');
+    Route::post('/{id}/update', 'adminPageController@update');
     Route::get('/{id}/delete', 'adminPageController@delete');
 
 });

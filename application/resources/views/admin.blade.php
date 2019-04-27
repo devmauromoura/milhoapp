@@ -294,7 +294,7 @@
             </button>
           </div>
           <div class="modal-body">
-            Deseja remover este usuario?
+            Deseja remover este usuario?<br>Obs.: Caso ele tenha algum vinculo não será removido!
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-danger btn-block mt-4 ml-2" data-dismiss="modal">Não</button>
@@ -361,11 +361,11 @@
                  nivelUsuario = document.getElementById("nivelUsuario").value;
          
              if(nomeUsuario === ""){
-                 alert("O nome do prato não pode estar em branco!");
+                 alert("O campo nome não pode ficar em branco/nulo.");
                  isEmpty = true;
              }
              else if(emailUsuario === ""){
-                 alert("A descriço do prato não pode estar em branco!");
+                 alert("O campo email não pode ficar em branco/nulo.");
                  isEmpty = true;
              }
              return isEmpty;
@@ -405,8 +405,8 @@
            }
          }
          function removerUsuario(){
-          var codigoRemover = document.getElementById("codigoRemover").value;
-          window.location.href = "http://localhost/usuarios/"+codigoRemover+"/remover";
+          var codigoRemover = document.getElementById("codigoUsuario").value;
+          window.location.href = "https://milho.rodrigojpaiva.com.br/usuario/"+codigoRemover+"/delete";
          }         
      </script>         
    

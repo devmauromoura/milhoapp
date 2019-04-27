@@ -78,7 +78,7 @@ class adminPageController extends Controller
 
     	//return $id;
 
-    	Return redirect('/usuario');
+    	return redirect('/usuario');
     }
 
 }
