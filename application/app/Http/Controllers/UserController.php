@@ -136,6 +136,7 @@ class UserController extends Controller
                  $userApi->password = $passApi;
                  $userApi->email = $dadosRequest['email'];
                  $userApi->nivel = 2;
+                 $userApi->ativo = 1;
                  $userApi->save();
 
                 //$token = $userApi->createToken('milhoAPP')->accessToken;
