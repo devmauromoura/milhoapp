@@ -32,7 +32,7 @@ class barracaController extends Controller
         //return $dadosBarraca;
 
         if ($barracaCad == 0){
-            return "<h3>Não existe barraca vinculada a seu usuário.</h3><br>Entre em contato com a turma de ADS.";
+            return redirect('/admin')->with("alert","Não existe BARRACA vinculada a seu usuário!");
         }else{
                 return view::make('barraca')->with(compact('cursosListagem'))->with(compact('dadosBarraca'));
         }
