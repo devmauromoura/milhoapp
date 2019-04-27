@@ -95,7 +95,7 @@
                 <tr>
                   <th scope="row">{{$curso->id}}</th>
                   <td>{{$curso->nome}}</td>
-                  <td><a href="#" data-toggle="modal" data-target="#removerCurso"><i class="fas fa-trash-alt mr-2"></i></a></td>
+                  <td><a href="/curso/{{$curso->id}}/delete"><i class="fas fa-trash-alt mr-2"></i></a></td>
                 </tr>
                 @endforeach
               </tbody>
@@ -320,27 +320,6 @@
     </div>
     <!-- Modal E-mail Usuario - FIM -->
 
-    <!-- Modal Remover Curso -->
-    <div class="modal fade" id="removerCurso" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Remover Curso</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            Deseja remover este curso?
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-danger btn-block mt-4 ml-2" data-dismiss="modal">Não</button>
-            <a href="#" class="btn btn-default btn-block mt-4 ml-2">Sim</a>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- Modal Remover Curso - FIM -->
     <script>
     var msg = '{{Session::get('alert')}}';
     var exist = '{{Session::has('alert')}}';
