@@ -13,10 +13,14 @@
               <li class="media listaRank mb-2">
                 <img src="{{asset($barracas->nomeimagem)}}" height="85px" width="85px" class="mr-4" alt="Logo Barraca">    
                 <div class="media-body">
+                  @if($countVotos === 0)
+                  <h4 class="mt-0 mb-1">Não existem votos</h4>
+                  <h5 class="mt-0 mb-1">registrados!</h5>
+                  @else
                   <h4 class="mt-0 mb-1">{{$barracas->nome}}</h4>
                   <h5 class="mt-0 mb-1">{{$barracas->Votos}} Votos</h5>
+                  @endif
                 </div>
-              </li>
               @endforeach
             </ul>
         </div>
