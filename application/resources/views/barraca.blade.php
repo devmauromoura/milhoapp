@@ -21,7 +21,7 @@
               <div class="col-sm-6 mt-3">
                 <label for="semestre">Semestre</label>
                 <select name="semestre" class="form-control" id="semestres">
-                  <option value="{{$dados->semestre}}" disabled selected>{{$dados->semestre}}</option>
+                  <option value="{{$dados->semestre}}"{{$dados->semestre ? 'selected="selected"':''}}>{{$dados->semestre}}º</option>
                   <option value="1">1º</option>
                   <option value="2">2º</option>
                   <option value="3">3º</option>
@@ -37,7 +37,7 @@
               <div class="col-sm-6 mt-3">
                 <label for="periodos">Periodo</label>
                 <select name="periodo" class="form-control" id="periodos">
-                  <option value="{{$dados->periodo}}" disabled selected>{{$dados->periodo}}</option>
+                  <option value="{{$dados->periodo}}" {{$dados->periodo ? 'selected="selected"':''}}>{{$dados->periodo}}</option>
                   <option value="Matutino">Matutino</option>
                   <option value="Vespertino">Vespertino</option>
                   <option value="Noturno">Noturno</option>
@@ -48,7 +48,7 @@
               <div class="col-sm-6 mt-3">
                 <label for="cursos">Curso</label>
                 <select name="curso" class="form-control" id="curso">
-                  <option value="{{$dados->idcurso}}" disabled selected>{{$dados->cnome}}</option>
+                  <option value="{{$dados->idcurso}}"{{$dados->idcurso ? 'selected="selected"':''}}>{{$dados->cnome}}</option>
                   @foreach($cursosListagem as $curso)
                   <option value="{{$curso->id}}">{{$curso->nome}}</option>
                   @endforeach                  
@@ -71,5 +71,12 @@
         </div>
       </div> 
     </main>
+    <script>
+    var msg = '{{Session::get('alert')}}';
+    var exist = '{{Session::has('alert')}}';
+    if(exist){
+      alert(msg);
+    }      
+    </script>
     <!-- Main - FIM -->
     @endsection

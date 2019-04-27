@@ -32,42 +32,50 @@ class barracaController extends Controller
         //return $dadosBarraca;
 
         if ($barracaCad == 0){
-            return redirect('/admin')->with("alert","Não existe BARRACA vinculada a seu usuário!");
+            return redirect('/admin')->with("alert","Não existe BARRACA vinculada a seu usuário");
         }else{
                 return view::make('barraca')->with(compact('cursosListagem'))->with(compact('dadosBarraca'));
         }
     }
 
     public function update(Request $request){
-        $dadosBarracaUpdate = $request->only(['nome','curso','periodo','semestre','localizacao','c']);
+        $dadosBarracaUpdate = $request->only(['nome','curso','periodo','semestre','localizacao']);
         //return $dadosBarracaUpdate;
         
-        if ($request->hasFile('logoBarraca') && $request->file('logoBarraca')->isValid()){
-            $name = Auth::user()->name.kebab_case(Auth::user()->id);
-            $extensao =  $request['logoBarraca']->extension();
-            $nameFile = "{$name}.{$extensao}";
-            $nameCorrect = Str::kebab($nameFile);
-            $upload = $request['logoBarraca']->storeAs('barracas',$nameCorrect);
-            Storage::setVisibility('barracas/'.$nameCorrect, 'public');
-            $url = Storage::url($nameCorrect);
+        if ($request->hasFile('logoBarraca')){
+            if($request->file('logoBarraca')->isValid()){
+                $name = Auth::user()->name.kebab_case(Auth::user()->id);
+                $extensao =  $request['logoBarraca']->extension();
+                $nameFile = "{$name}.{$extensao}";
+                $nameCorrect = Str::kebab($nameFile);
+                $upload = $request['logoBarraca']->storeAs('barracas',$nameCorrect);
+                Storage::setVisibility('barracas/'.$nameCorrect, 'public');
+                $url = Storage::url($nameCorrect);+
 
-            //dd($nameFile);
+                DB::table('barraca')->where('idUser', Auth::id())->update([
+                    'nome' => $dadosBarracaUpdate['nome'],
+                    'idCurso' => $dadosBarracaUpdate['curso'],
+                    'periodo' => $dadosBarracaUpdate['periodo'],
+                    'semestre' => $dadosBarracaUpdate['semestre'],
+                    'localizacao' => $dadosBarracaUpdate['localizacao'],
+                    'nomeimagem' => $url
+                ]);
+
+                return redirect()->route('showBarracas');
+
+            }else{
+                return redirect()->back()->with('alert','O arquivo enviado não é valido!');
+            }
         }else{
-            return "algo errado";
-        }
-
-         DB::table('barraca')->where('idUser', Auth::id())->update([
-            'nome' => $dadosBarracaUpdate['nome'],
-            'idCurso' => $dadosBarracaUpdate['curso'],
-            'periodo' => $dadosBarracaUpdate['periodo'],
-            'semestre' => $dadosBarracaUpdate['semestre'],
-            'localizacao' => $dadosBarracaUpdate['localizacao'],
-            'nomeimagem' => $url
-        ]);
-
+            DB::table('barraca')->where('idUser', Auth::id())->update([
+                'nome' => $dadosBarracaUpdate['nome'],
+                'idCurso' => $dadosBarracaUpdate['curso'],
+                'periodo' => $dadosBarracaUpdate['periodo'],
+                'semestre' => $dadosBarracaUpdate['semestre'],
+                'localizacao' => $dadosBarracaUpdate['localizacao']
+            ]);
         return redirect()->route('showBarracas');
-         }
 
-
-         
+            }        
+}
 }
