@@ -238,22 +238,29 @@
           </div>
           <div class="modal-body">
               <form name="editarUsuario" id="editarUsuario" action="/usuario/update" method="POST">
+              @csrf
+                <div class="row">
+                  <div class="col">
+                      <label>Código</label>
+                      <input name="codigo" style="display: none" type="text" id="codigoUsuario">
+                  </div>
+                </div>
                 <div class="row">
                   <div class="col">
                     <label>Nome</label>
-                    <input name="nome" type="text" class="form-control" placeholder="Nome do usuário" maxlength="60">
+                    <input name="nome" type="text" id="nomeUsuario" class="form-control" placeholder="Nome do usuário" maxlength="60">
                   </div>
                 </div>
                 <div class="row">
                   <div class="col mt-3">
                     <label>E-mail</label>
-                    <input name="email" type="text" class="form-control" placeholder="email@email.com.br" maxlength="60">
+                    <input name="email" type="text" id="emailUsuario" class="form-control" placeholder="email@email.com.br" maxlength="60">
                   </div>
                 </div>
                 <div class="row">
                   <div class="col mt-3">
                     <label for="nivel">Nivel</label>
-                    <select name="nivel" class="form-control" id="nivel">
+                    <select id="nivelUsuario" name="nivel" class="form-control" id="nivel">
                       <option value="" disabled selected></option>
                       <option value="1">1 - Web User</option>
                       <option value="2">2 - App User</option>
@@ -291,7 +298,7 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-danger btn-block mt-4 ml-2" data-dismiss="modal">Não</button>
-            <a href="#" class="btn btn-default btn-block mt-4 ml-2">Sim</a>
+            <a onclick="removerUsuario()" class="btn btn-default btn-block mt-4 ml-2">Sim</a>
           </div>
         </div>
       </div>
@@ -340,5 +347,68 @@
     if(exist){
       alert(msg);
     }
-    </script>
+
+    var rIndex,
+             table = document.getElementById("tabelaUsuario");
+         
+         // check the empty input
+         function checkEmptyInput()
+         {
+             var isEmpty = false,
+                 codigoUsuario = document.getElementById("codigoUsuario").value,
+                 nomeUsuario = document.getElementById("nomeUsuario").value,
+                 emailUsuario = document.getElementById("emailUsuario").value,
+                 nivelUsuario = document.getElementById("nivelUsuario").value;
+         
+             if(nomeUsuario === ""){
+                 alert("O nome do prato não pode estar em branco!");
+                 isEmpty = true;
+             }
+             else if(emailUsuario === ""){
+                 alert("A descriço do prato não pode estar em branco!");
+                 isEmpty = true;
+             }
+             return isEmpty;
+         }
+
+         // display selected row data into input text
+         function selectedRowToInput()
+         {
+             
+             for(var i = 1; i < table.rows.length; i++)
+             {
+                 table.rows[i].onclick = function()
+                 {
+                   // get the seected row index
+                   rIndex = this.rowIndex;
+                   document.getElementById("codigoUsuario").value = this.cells[0].innerHTML;
+                   document.getElementById("nomeUsuario").value = this.cells[1].innerHTML;
+                   document.getElementById("emailUsuario").value = this.cells[2].innerHTML;
+                   document.getElementById("nivelUsuario").value = this.cells[3].innerHTML;
+                 };
+             }
+         }
+         selectedRowToInput();
+
+         function editHtmlTbleSelectedRow()
+         {
+             var codigoUsuario = document.getElementById("codigoUsuario").value,
+                nomeUsuario = document.getElementById("nomeUsuario").value,
+                emailUsuario = document.getElementById("emailUsuario").value,
+                nivelUsuario = document.getElementById("nivelUsuario").value;
+
+            if(!checkEmptyInput()){
+             table.rows[rIndex].cells[0].innerHTML = codigoUsuario;
+             table.rows[rIndex].cells[1].innerHTML = nomeUsuario;
+             table.rows[rIndex].cells[2].innerHTML = emailUsuario;
+             table.rows[rIndex].cells[3].innerHTML = nivelUsuario;
+           }
+         }
+         function removerUsuario(){
+          var codigoRemover = document.getElementById("codigoRemover").value;
+          window.location.href = "http://localhost/usuarios/"+codigoRemover+"/remover";
+         }         
+     </script>         
+   
+
 @endsection

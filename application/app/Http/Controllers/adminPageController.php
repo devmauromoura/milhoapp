@@ -63,7 +63,12 @@ class adminPageController extends Controller
     }
  
         public function update(Request $requestUpdate){
-            
+            $userUpdate = User::find($requestUpdate['codigo']);
+            $userUpdate->name = $requestUpdate['nome'];
+            $userUpdate->email = $requestUpdate['email'];
+            $userUpdate->nivel = $requestUpdate['nivel'];
+            $userUpdate->update();
+            return redirect('admin');
         }
     
     public function delete($id)
