@@ -12,13 +12,13 @@
             <div class="row">
               <div class="col">
                 <label>Nome da bebida</label>
-                <input name="nomeBebida" type="text" class="form-control" placeholder="Ex: Refrigerante lata" maxlength="60">
+                <input name="nomeBebida" type="text" class="form-control" placeholder="Insira o nome da Bebida." maxlength="60">
               </div>
             </div>
             <div class="row">
               <div class="col-sm-6 mt-3">
                 <label>Descrição da bebida</label>
-                <input name="descBebida" type="text" class="form-control" placeholder="Ex: Coca-cola" maxlength="60">
+                <input name="descBebida" type="text" class="form-control" placeholder="Insira uma breve descrição da Bebida." maxlength="60">
               </div>
               <div class="col-sm-6 mt-3">
                 <label>Valor</label>

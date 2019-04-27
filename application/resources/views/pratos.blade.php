@@ -14,13 +14,13 @@
             <div class="row">
               <div class="col">
                 <label>Nome do prato</label>
-                <input name="nomePrato" type="text" class="form-control" placeholder="Ex: Milho Assado" maxlength="60">
+                <input name="nomePrato" type="text" class="form-control" placeholder="Insira o nome do Prato." maxlength="60">
               </div>
             </div>
             <div class="row">
               <div class="col-sm-6 mt-3">
                 <label>Descrição do prato</label>
-                <input name="descPrato" type="text" class="form-control" placeholder="Ex: Milho temperado assado na churrasqueira" maxlength="60">
+                <input name="descPrato" type="text" class="form-control" placeholder="Insira uma breve descrição do Prato!" maxlength="60">
               </div>
               <div class="col-sm-6 mt-3">
                 <label>Valor</label>
