@@ -60,7 +60,7 @@
                   </td>
                   <td><a href="#" data-toggle="modal" data-target="#modalEditarUsuario"><i class="fas fa-edit mr-2"></i></a> </td>
                   <td><a href="#" data-toggle="modal" data-target="#removerUsuario"><i class="fas fa-trash-alt mr-2"></i></a></td>
-                  <td><a href="#" data-toggle="modal" data-target="#emailUsuario"><i class="fas fa-envelope"></i></a></td>
+                  <td><a href="/usuario/resendmail/{{$user->id}}/{{$user->email}}"><i class="fas fa-envelope"></i></a></td>
                 </tr>
                 @endforeach
               </tbody>

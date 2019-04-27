@@ -81,4 +81,12 @@ class adminPageController extends Controller
     	return redirect('/usuario');
     }
 
+    public function resendMail($id, $email){
+        Mail::to($email)->send(new cadastroUsuario($id));  // Para testar as configurações -> dd(config('mail'));
+
+        //return "Email: ".$email." Id: ".$id;
+
+        return redirect()->back()->with("alert", "O email foi reenviado para ".$email);
+    }
+
 }

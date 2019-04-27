@@ -35,6 +35,7 @@ Route::group(['prefix' => '/usuario', 'middleware' => 'auth'], function () {
     Route::get('/{id}/edit', 'adminPageController@edit');
     Route::post('/{id}/update', 'adminPageController@update');
     Route::get('/{id}/delete', 'adminPageController@delete');
+    Route::get('/resendmail/{id}/{email}','adminPageController@resendMail');
 
 });
 
