@@ -81,21 +81,12 @@ class ApiController extends Controller
         return response()->json(['Mensagem'=>'Cadastro realizado','Token'=>$token]);
       }else{
         $dadosUser = User::where('email', $email)->first();
-        $emailvalid = $dadosUser['email'];
-        $senhavalid = $dadosUser['password'];
-        $credentials = ['email'=> $emailvalid,'password'=>$senhavalid];
+
 
         //return dd($senhaUser['password']);
-        
-        if(Auth::attempt($credentials)){
-          $user = Auth::user();
-          $token = $user->createToken('milhoAPP')->accessToken;
-          return response()->json(['Mensagem' => 'Login Realizado com Sucesso', 'token' => $token], 200);
-        }else{
-          //return response()->json(['Mensagem'=>'Dados incorretos']);
-  
-          return $credentials;
-        }
+        Auth::login($dadosUser);
+        $token = $dadosUser->createToken('milhoAPP')->accessToken;
+        return response()->json(['Mensagem' => 'Login Realizado com Sucesso', 'token' => $token], 200);
       }
     }
   }
