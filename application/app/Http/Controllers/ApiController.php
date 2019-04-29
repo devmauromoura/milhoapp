@@ -6,8 +6,12 @@ use Illuminate\Http\Request;
 use App\Barraca;
 use App\Pratos;
 use App\Bebida;
-
+use Validator;
 use DB;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Socialite;
+use App\User;
 
 class ApiController extends Controller
 {
@@ -55,5 +59,44 @@ class ApiController extends Controller
         return response()->json(['Msg'=>'True','Retorno'=>'Não existem bebidas para essa barraca!']);
       }
 
-    }    
+    }
+    
+  public function validaFbAccess($token){
+    if($token == null){
+      return response()->json(['Mensagem'=>'Envie o Token Access']);
+    }else{
+      $tokenFacebook = Socialite::driver('facebook')->userFromToken($token);
+      $email = $tokenFacebook->email; 
+      $valida = User::where('email', $email)->count();
+
+      if($valida === 0){
+        $newUser = new User;
+        $newUser->name = $tokenFacebook->name; 
+        $newUser->email = $tokenFacebook->email; 
+        $newUser->password = Hash::make('12345');
+        $newUser->nivel = 2;
+        $newUser->ativo = 1;
+        $newUser->save();
+        $token = $newUser->createToken('milhoAPP')->accessToken;
+        return response()->json(['Mensagem'=>'Cadastro realizado','Token'=>$token]);
+      }else{
+        $dadosUser = User::where('email', $email)->first();
+        $emailvalid = $dadosUser['email'];
+        $senhavalid = $dadosUser['password'];
+        $credentials = ['email'=> $emailvalid,'password'=>$senhavalid];
+
+        //return dd($senhaUser['password']);
+        
+        if(Auth::attempt($credentials)){
+          $user = Auth::user();
+          $token = $user->createToken('milhoAPP')->accessToken;
+          return response()->json(['Mensagem' => 'Login Realizado com Sucesso', 'token' => $token], 200);
+        }else{
+          //return response()->json(['Mensagem'=>'Dados incorretos']);
+  
+          return $credentials;
+        }
+      }
+    }
+  }
 }
