@@ -37,7 +37,7 @@ class dashController extends Controller
         // Listagem das 5 barracas mais votadas.
         $votosBarraca = Voto::select('idbarraca','nome','nomeimagem',DB::raw('count(idbarraca) AS Votos'))->leftJoin('barraca','voto.idbarraca','=','barraca.id')->groupBy('idbarraca','barraca.nome','nomeimagem')->orderBy('Votos','desc')->limit(5)->get();
         $dadosBarraca = Barraca::where('idUser', Auth::user()->id)->first();
-        $seusVotos = Voto::where('idusuario', Auth::user()->id)->count();
+        $seusVotos = Voto::where('idusuario', Auth::user()->id)->leftJoin('barraca','voto.idbarraca','=','barraca.id')->count();
         $countVotos = Voto::all()->count();
         $nivelUser = Auth::user()->nivel;
 
