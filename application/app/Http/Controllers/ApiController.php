@@ -81,8 +81,7 @@ class ApiController extends Controller
         return response()->json(['Mensagem'=>'Cadastro realizado','Token'=>$token]);
       }else{
         $dadosUser = User::where('email', $email)->first();
-
-
+        
         //return dd($senhaUser['password']);
         Auth::login($dadosUser);
         $token = $dadosUser->createToken('milhoAPP')->accessToken;

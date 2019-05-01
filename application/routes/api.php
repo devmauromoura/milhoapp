@@ -10,9 +10,6 @@ Route::get('login/facebook', 'Auth\LoginController@redirectToProvider');
 Route::get('login/facebook/callback', 'Auth\LoginController@handleProviderCallback');
 Route::get('login/facebook/access/{token}','ApiController@validaFbAccess');
 
-Route::get('login/google', 'Auth\LoginController@redirectToProviderGoogle');
-Route::get('login/google/callback', 'Auth\LoginController@handleProviderCallbackGoogle');
-
 Route::get('/logout','UserController@apiLogout');
 
 Route::get('/pratos','ApiController@pratoShow');

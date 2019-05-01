@@ -11,7 +11,8 @@ use App\Bebida;
 use App\Pratos;
 Use App\Curso;
 Use App\Voto;
-
+use App\User;
+use Illuminate\Support\Facades\Auth;
 
 
 class dashController extends Controller
@@ -35,10 +36,14 @@ class dashController extends Controller
     public function homeShow(){
         // Listagem das 5 barracas mais votadas.
         $votosBarraca = Voto::select('idbarraca','nome','nomeimagem',DB::raw('count(idbarraca) AS Votos'))->leftJoin('barraca','voto.idbarraca','=','barraca.id')->groupBy('idbarraca','barraca.nome','nomeimagem')->orderBy('Votos','desc')->limit(5)->get();
+        $dadosBarraca = Barraca::where('idUser', Auth::user()->id)->first();
+        $seusVotos = Voto::where('idusuario', Auth::user()->id)->count();
         $countVotos = Voto::all()->count();
+        $nivelUser = Auth::user()->nivel;
 
-       return view::make('home')->with(compact('votosBarraca'))->with(compact('countVotos'));
+       return view::make('home')->with(compact('votosBarraca'))->with(compact('countVotos'))->with(compact('dadosBarraca'))->with(compact('seusVotos'))->with(compact('nivelUser'));
 
-        //return $countVotos;
+
+        //return $dadosBarraca;
     }
 }
