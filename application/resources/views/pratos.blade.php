@@ -53,7 +53,7 @@
                     <th scope="row">{{$pratos->id}}</th>
                     <td>{{$pratos->nome}}</td>
                     <td>{{$pratos->descricao}}</td>
-                    <td>{{$pratos->valor}}</td>
+                    <td>R${{$pratos->valor}}</td>
                     <td>
                       <a href="#" data-toggle="modal" data-target="#modalEditarPrato"><i class="fas fa-edit mb-2 mr-2"></i></a>
                     </td>

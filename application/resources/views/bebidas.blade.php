@@ -51,7 +51,7 @@
                     <th scope="row">{{$bebidas->id}}</th>
                     <td>{{$bebidas->nome}}</td>
                     <td>{{$bebidas->descricao}}</td>
-                    <td>{{$bebidas->valor}}</td>
+                    <td>R${{$bebidas->valor}}</td>
                     <td>
                       <a href="#" data-toggle="modal" data-target="#modalEditarBebida"><i class="fas fa-edit mb-2 mr-2"></i></a>
                     </td>
