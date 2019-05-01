@@ -153,8 +153,8 @@ return [
     |
     */
 
-    'domain' => 'milho.rodrigojpaiva.com.br',
-    /*'domain' => env(env('SESSION_DOMAIN', null),*/
+    /*'domain' => 'milho.rodrigojpaiva.com.br',*/
+    'domain' => env('SESSION_DOMAIN', null),
 
     /*
     |--------------------------------------------------------------------------
