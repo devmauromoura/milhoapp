@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace MilhoAPP\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\View;
-use App\Pratos;
-use App\Barraca;
+use MilhoAPP\Pratos;
+use MilhoAPP\Barraca;
 
 class pratoController extends Controller
 {

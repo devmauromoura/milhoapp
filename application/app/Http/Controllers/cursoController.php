@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace MilhoAPP\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\View;
-use App\Curso;
+use MilhoAPP\Curso;
 
 class cursoController extends Controller
 {

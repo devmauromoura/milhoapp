@@ -1,17 +1,17 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace MilhoAPP\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Barraca;
-use App\Pratos;
-use App\Bebida;
+use MilhoAPP\Barraca;
+use MilhoAPP\Pratos;
+use MilhoAPP\Bebida;
 use Validator;
 use DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Socialite;
-use App\User;
+use MilhoAPP\User;
 
 class ApiController extends Controller
 {

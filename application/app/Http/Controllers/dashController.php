@@ -1,17 +1,17 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace MilhoAPP\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\View;
 use compact;
-use App\Barraca;
-use App\Bebida;
-use App\Pratos;
-Use App\Curso;
-Use App\Voto;
-use App\User;
+use MilhoAPP\Barraca;
+use MilhoAPP\Bebida;
+use MilhoAPP\Pratos;
+Use MilhoAPP\Curso;
+Use MilhoAPP\Voto;
+use MilhoAPP\User;
 use Illuminate\Support\Facades\Auth;
 
 

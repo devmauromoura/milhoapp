@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace MilhoAPP;
 
 
 use Laravel\Passport\HasApiTokens;
@@ -29,7 +29,7 @@ class User extends Authenticatable
     {
       if($this->nivel == 1)
       {
-        return $this->hasOne('App\Barraca');
+        return $this->hasOne('MilhoAPP\Barraca');
       } else {
         return null;
       }

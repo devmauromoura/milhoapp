@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace MilhoAPP\Http\Controllers\Auth;
 
 use Socialite;
-use App\Http\Controllers\Controller;
+use MilhoAPP\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
-use App\User;
+use MilhoAPP\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
@@ -44,7 +44,7 @@ class LoginController extends Controller
 
     public function redirectToProvider()
     {
-        return "TESTE"; /*Socialite::driver('facebook')->redirect();*/
+        return Socialite::driver('facebook')->redirect();
     }
 
 

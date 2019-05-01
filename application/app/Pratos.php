@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace MilhoAPP;
 
 use Illuminate\Database\Eloquent\Model;
 

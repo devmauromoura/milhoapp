@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace MilhoAPP\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
-use App\Barraca;
-use App\Bebida;
-use App\Pratos;
-use App\Curso;
-use App\Voto;
+use MilhoAPP\Barraca;
+use MilhoAPP\Bebida;
+use MilhoAPP\Pratos;
+use MilhoAPP\Curso;
+use MilhoAPP\Voto;
 use Validator;
 
 class votoController extends Controller

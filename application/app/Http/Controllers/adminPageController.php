@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace MilhoAPP\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
@@ -8,9 +8,9 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
-use App\Mail\cadastroUsuario;
-use App\User;
-use App\Barraca;
+use MilhoAPP\Mail\cadastroUsuario;
+use MilhoAPP\User;
+use MilhoAPP\Barraca;
 
 
 

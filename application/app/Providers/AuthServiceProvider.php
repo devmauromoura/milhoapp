@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Providers;
+namespace MilhoAPP\Providers;
 
 use Laravel\Passport\Passport;
 use Illuminate\Support\Facades\Gate;
@@ -14,7 +14,7 @@ class AuthServiceProvider extends ServiceProvider
      * @var array
      */
     protected $policies = [
-        'App\Model' => 'App\Policies\ModelPolicy',
+        'MilhoAPP\Model' => 'MilhoAPP\Policies\ModelPolicy',
     ];
 
     /**
