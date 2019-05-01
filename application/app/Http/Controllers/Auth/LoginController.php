@@ -54,8 +54,10 @@ class LoginController extends Controller
 
         $findUser = User::where('email', $userFacebook->email)->first();
 
-        if($findUser){
-            $user = $findUser;
+        if($findUser == $userFacebook->email){
+            //$user = $findUser;
+            return "Teste retorno";
+            
         }else{
             $user = new User;
             $user->name = $userFacebook->getName();
