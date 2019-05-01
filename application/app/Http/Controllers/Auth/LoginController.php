@@ -44,7 +44,7 @@ class LoginController extends Controller
 
     public function redirectToProvider()
     {
-        return Socialite::driver('facebook')->redirect();
+        return "TESTE"; /*Socialite::driver('facebook')->redirect();*/
     }
 
 
@@ -52,7 +52,7 @@ class LoginController extends Controller
     {
         $userFacebook = Socialite::driver('facebook')->user();
 
-        /*$findUser = User::where('email', $userFacebook->email)->first();
+        $findUser = User::where('email', $userFacebook->email)->first();
 
         if($findUser){
             $user = $findUser;
@@ -66,7 +66,7 @@ class LoginController extends Controller
 
         Auth::login($user);
         $token = $user->createToken('milhoAPP')->accessToken;
-        return response()->json(['Msg'=>'Login FB realizado com sucesso','Token'=> $token]);*/
+        return response()->json(['Msg'=>'Login FB realizado com sucesso','Token'=> $token]);
 
         return $userFacebook;
     }
