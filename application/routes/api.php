@@ -8,7 +8,7 @@ Route::post('/register', 'UserController@apiRegister');
 
 Route::get('login/facebook', 'Auth\LoginController@redirectToProvider');
 Route::get('login/facebook/callback', 'Auth\LoginController@handleProviderCallback');
-Route::get('login/facebook/access/{token}','ApiController@validaFbAccess');
+Route::get('login/facebook/access/{token}','ApiController@validaFbAccess')->name('fblogado');
 
 Route::get('/logout','UserController@apiLogout');
 

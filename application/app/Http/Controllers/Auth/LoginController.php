@@ -44,11 +44,11 @@ class LoginController extends Controller
 
     public function redirectToProvider()
     {
-        return Socialite::driver('facebook')->redirect();
+        return Socialite::driver('facebook')->redirect()->route('fblogado');
     }
 
 
-        public function handleProviderCallback()
+    public function handleProviderCallback()
     {
         $userFacebook = Socialite::driver('facebook')->user();
 
