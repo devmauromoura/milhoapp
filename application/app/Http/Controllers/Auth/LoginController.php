@@ -51,23 +51,24 @@ class LoginController extends Controller
     public function handleProviderCallback()
     {
         $userFacebook = Socialite::driver('facebook')->user();
-
         $findUser = User::where('email', $userFacebook->email)->first();
 
         if($findUser){
             $user = $findUser;
+            Auth::login($user);
+            $tokenE = $user->createToken('milhoAPP')->accessToken;
+            return response()->json(['Token'=> $tokenE]);
         }else{
+            $user = null;
             $user = new User;
             $user->name = $userFacebook->getName();
             $user->email = $userFacebook->getEmail();
             $user->password = Hash::make('12345');
             $user->save();
+            
+            Auth::login($user);
+            $token = $user->createToken('milhoAPP')->accessToken;
+            return response()->json(['Msg'=>'Login FB realizado com sucesso','Token'=> $token]);
         }
-
-        Auth::login($user);
-        $token = $user->createToken('milhoAPP')->accessToken;
-        return response()->json(['Msg'=>'Login FB realizado com sucesso','Token'=> $token]);
-
-        return $userFacebook;
     }
 }
