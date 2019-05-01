@@ -52,7 +52,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'http://144.202.70.222'),
+    'url' => env('APP_URL', 'https://milho.rodrigojpaiva.com.br'),
 
     'asset_url' => env('ASSET_URL', null),
 
