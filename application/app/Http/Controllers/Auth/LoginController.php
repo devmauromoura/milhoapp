@@ -67,33 +67,4 @@ class LoginController extends Controller
         $token = $user->createToken('milhoAPP')->accessToken;
         return response()->json(['Msg'=>'Login FB realizado com sucesso','Token'=> $token]);
     }
-
-
-    public function redirectToProviderGoogle()
-    {
-        return Socialite::driver('google')->redirect();
-    }
-
-
-        public function handleProviderCallbackGoogle()
-    {
-        $userGoogle = Socialite::driver('google')->user();
-
-        $findUserG = User::where('email', $userGoogle->email)->first();
-
-        if($findUserG){
-            $user = $findUserG;
-        }else{
-            $user = new User;
-            $user->name = $userGoogle->getName();
-            $user->email = $userGoogle->getEmail();
-            $user->password = Hash::make('12345');
-            $user->save();
-        }
-
-        Auth::login($user);
-
-        $token = $user->createToken('milhoAPP')->accessToken;
-        return response()->json(['Msg'=>'Login GG realizado com sucesso','Token'=> $token]);
-    }
 }
