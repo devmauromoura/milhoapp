@@ -90,8 +90,8 @@ class ApiController extends Controller
   }
   public function teste(){
     $dadosBarraca = Barraca::leftJoin('curso','idCurso','=','curso.id')->select(DB::raw('barraca.id ,barraca.nome, barraca.semestre, barraca.periodo, barraca.idcurso, barraca.localizacao, curso.nome AS cnome,barraca.nomeimagem'))->get();
-    $dadosBarracaComVoto = Barraca::leftJoin('curso','idCurso','=','curso.id')->leftJoin('voto','barraca.id','=','voto.idbarraca')->select(DB::raw('barraca.id ,barraca.nome, barraca.semestre, barraca.periodo, barraca.idcurso, barraca.localizacao, curso.nome AS cnome,barraca.nomeimagem,voto AS votos'))->get();
-    
-    return response()->json(['Mensagem'=>$dadosBarracaComVoto]);
+    $dadosBarracaComVoto = Barraca::leftJoin('curso','idCurso','=','curso.id')->leftJoin('voto','barraca.id','=','voto.idbarraca')->select(DB::raw('barraca.id ,barraca.nome, barraca.semestre, barraca.periodo, barraca.idcurso, barraca.localizacao, curso.nome AS cnome,barraca.nomeimagem,count(idbarraca) AS votos'))->get();
+    $votos = Voto::select('idbarraca','nome','semestre','periodo','idcurso','localizacao','nomeimagem',DB::raw('count(idbarraca) AS Votos'))->leftJoin('barraca','voto.idbarraca','=','barraca.id')->groupBy('idbarraca','barraca.nome','barraca.semestre','barraca.periodo','barraca.localizacao','barraca.nomeimagem')->get();
+    return response()->json(['Mensagem'=>$votos]);
   }
 }
