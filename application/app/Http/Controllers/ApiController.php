@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use MilhoAPP\Barraca;
 use MilhoAPP\Pratos;
 use MilhoAPP\Bebida;
+use MilhoAPP\Voto;
 use Validator;
 use DB;
 use Illuminate\Support\Facades\Auth;
