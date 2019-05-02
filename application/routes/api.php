@@ -19,6 +19,7 @@ Route::prefix('/barraca')->group(function(){
   Route::get('/','ApiController@barracaShow');
   Route::get('/{id}/pratos/','ApiController@pratoBarraca');
   Route::get('/{id}/bebidas/','ApiController@bebidaBarraca');
+  Route::get('/teste','ApiController@teste');
 });
 
 Route::group(['middleware' => 'auth:api'], function(){
