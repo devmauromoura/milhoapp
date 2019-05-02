@@ -17,8 +17,11 @@ class ApiController extends Controller
 {
     public function barracaShow(){
       
-      $dadosBarraca = Barraca::leftJoin('curso','idCurso','=','curso.id')->select(DB::raw('barraca.id ,barraca.nome, barraca.semestre, barraca.periodo, barraca.idcurso, barraca.localizacao, curso.nome AS cnome,barraca.nomeimagem'))->get();
-  
+      /*$dadosBarraca = Barraca::leftJoin('curso','idCurso','=','curso.id')->select(DB::raw('barraca.id ,barraca.nome, barraca.semestre, barraca.periodo, barraca.idcurso, barraca.localizacao, curso.nome AS cnome,barraca.nomeimagem'))->get();
+      */
+      
+
+      $dadosBarraca = Barraca::leftJoin('curso','idCurso','=','curso.id')->leftJoin('voto','id','=','voto.idbarraca')->select(DB::raw('count(idbarraca) AS Votos'))->select(DB::raw('barraca.id ,barraca.nome, barraca.semestre, barraca.periodo, barraca.idcurso, barraca.localizacao, curso.nome AS cnome,barraca.nomeimagem,Votos as voto'))->get();
       return response()->json(['message'=>'True','Retorno'=>$dadosBarraca]);
     
     }
