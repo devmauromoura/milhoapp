@@ -90,7 +90,7 @@ class ApiController extends Controller
   }
   public function teste(){
     $dadosBarraca = Barraca::leftJoin('curso','idCurso','=','curso.id')->select(DB::raw('barraca.id ,barraca.nome, barraca.semestre, barraca.periodo, barraca.idcurso, barraca.localizacao, curso.nome AS cnome,barraca.nomeimagem'))->get();
-    $dadosBarracaComVoto = Barraca::leftJoin('curso','idCurso','=','curso.id')->leftJoin('voto','barraca.id','=','voto.idbarraca')->select(DB::raw('barraca.id ,barraca.nome, barraca.semestre, barraca.periodo, barraca.idcurso, barraca.localizacao, curso.nome AS cnome,barraca.nomeimagem,voto.idbarraca AS votos'))->get();
+    $dadosBarracaComVoto = Barraca::leftJoin('curso','idCurso','=','curso.id')->leftJoin('voto','barraca.id','=','voto.idbarraca')->select(DB::raw('barraca.id ,barraca.nome, barraca.semestre, barraca.periodo, barraca.idcurso, barraca.localizacao, curso.nome AS cnome,barraca.nomeimagem,voto AS votos'))->get();
     
     return response()->json(['Mensagem'=>$dadosBarracaComVoto]);
   }
