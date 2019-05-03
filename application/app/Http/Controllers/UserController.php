@@ -150,7 +150,7 @@ class UserController extends Controller
 
     public function getUser(){
         $user = Auth::user();
-        return response()->json($user);
+        return response()->json(['Retorno'=>$user]);
     }
 
     public function apiLogout(){

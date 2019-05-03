@@ -23,9 +23,9 @@ Route::prefix('/barraca')->group(function(){
 });
 
 Route::group(['middleware' => 'auth:api'], function(){
-    //Route::get('/user', 'UserController@getUser');
-    //Route::get('/items', 'dashController@getItemApi');
+    Route::get('/user', 'UserController@getUser');
     Route::post('/registrarvoto','votoController@registrarVoto');
+
 
     // Route::prefix('/barraca')->group(function(){
     //   Route::get('/','ApiController@barracaShow');
