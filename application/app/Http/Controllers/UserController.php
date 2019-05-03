@@ -151,12 +151,7 @@ class UserController extends Controller
     public function getUser(){
         $user = Auth::user();
 
-        if($user == null){
-            return response()->json(['Retorno'=>'Faca o login']);
-        }else
-        {
         return response()->json(['Retorno'=>$user]);
-        }
     }
 
     public function apiLogout(){
