@@ -21,7 +21,7 @@ class votoController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return response()->json(['Mensagem'=>'Envie os dados corretamente.']);
+            return response()->json(['Mensagem'=>'Envie os dados corretamente.'],403);
         }else{          
             $dadosVoto = $request->all();
             $user = Auth::user();
@@ -37,9 +37,9 @@ class votoController extends Controller
                 $voto->created_at = date("Y-m-d");
                 $voto->save();
         
-                return response()->json(['Mensagem'=>'Voto registrado com sucesso!']); 
+                return response()->json(['Mensagem'=>'Voto registrado com sucesso!'],200); 
             }else{
-                return response()->json(['Mensagem'=>'Limite máximo de voto alcançado. Você pode votar uma vez por barraca a cada dia.','Data Atual'=> $dataAtual,'Ultimo Voto'=>$dataUltimoVoto['created_at']]);
+                return response()->json(['Mensagem'=>'Limite máximo de voto alcançado. Você pode votar uma vez por barraca a cada dia.','Data Atual'=> $dataAtual,'Ultimo Voto'=>$dataUltimoVoto['created_at']],403);
             }
         }
     
