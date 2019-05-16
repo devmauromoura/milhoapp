@@ -73,14 +73,20 @@ class UserController extends Controller
 
         $pass = Hash::make($request->input('passwordNew'));
         $passC = User::find($id);
-        $passC->password = $pass;
-        $passC->ativo = 1;
 
-        $passC->save();
+        if($passC->nivel != 2){
+            $passC->password = $pass;
+            $passC->ativo = 1;
+    
+            $passC->save();
+            return redirect('/');
+        }else{
+            
+            $passC->password = $pass;
+            $passC->ativo = 1;
 
-
-
-        return redirect('/');
+            return "<h4><center>Senha cadastrada com sucesso!</center></h4>";
+        }
     }
 
     /*
@@ -115,7 +121,8 @@ class UserController extends Controller
         $validator = Validator::make($request->all(), [
             "name" => "required|string",
             "email" => "required|email|unique:users",
-            "password"  => "required|string",
+            "telefone" => "required|min:9|numeric",
+            "aluno" => "required",
         ]);
         
         if ($validator->fails()) {
@@ -135,12 +142,18 @@ class UserController extends Controller
                  $passApi = Hash::make($dadosRequest['password']);
                  $userApi->password = $passApi;
                  $userApi->email = $dadosRequest['email'];
+                 $userApi->telefone = $dadosRequest['telefone'];
+                 $userApi->aluno = $dadosRequest['aluno'];
                  $userApi->nivel = 2;
-                 $userApi->ativo = 1;
                  $userApi->save();
 
                 //$token = $userApi->createToken('milhoAPP')->accessToken;
-
+                
+                $userCheck = User::where('email', '=', $dadosRequest['email'])->first();
+                $id = $userCheck->id;
+                
+                Mail::to($dadosRequest['email'])->send(new cadastroUsuario($id));
+                
                 return response()->json(['Mensagem' => 'Cadastro Realizado com Sucesso'], 200);
 
                 //return response()->json($dadosRequest);   
