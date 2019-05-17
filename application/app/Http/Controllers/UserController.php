@@ -84,8 +84,9 @@ class UserController extends Controller
             
             $passC->password = $pass;
             $passC->ativo = 1;
+            $passC->save();
 
-            return "<h4><center>Senha cadastrada com sucesso!</center></h4>";
+            return "<h2><center>Senha cadastrada com sucesso!<br>Realize o acesso ao APP.</center></h2>";
         }
     }
 
@@ -139,8 +140,6 @@ class UserController extends Controller
 
                  $userApi = new User;
                  $userApi->name = $dadosRequest['name'];
-                 $passApi = Hash::make($dadosRequest['password']);
-                 $userApi->password = $passApi;
                  $userApi->email = $dadosRequest['email'];
                  $userApi->telefone = $dadosRequest['telefone'];
                  $userApi->aluno = $dadosRequest['aluno'];
@@ -154,7 +153,7 @@ class UserController extends Controller
                 
                 Mail::to($dadosRequest['email'])->send(new cadastroUsuario($id));
                 
-                return response()->json(['Mensagem' => 'Cadastro Realizado com Sucesso'], 200);
+                return response()->json(['Mensagem' => 'Cadastro Realizado com Sucesso, verifique seu email.'], 200);
 
                 //return response()->json($dadosRequest);   
             }        
