@@ -21,7 +21,7 @@ class CreateUsersTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password')->default('Hxa53CnBUlPx1wS');
             $table->string('telefone')->default('00000000000');
-            $table->boolean('aluno')->default('0');
+            $table->boolean('aluno')->nullable();
             $table->integer('nivel')->default('1');
             $table->integer('ativo')->default('0');
             $table->rememberToken();

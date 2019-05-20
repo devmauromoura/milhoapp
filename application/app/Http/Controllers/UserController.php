@@ -110,10 +110,10 @@ class UserController extends Controller
                 $user = Auth::user();
                 $token = $user->createToken('milhoAPP')->accessToken;
 
-                return response()->json(['Mensagem' => 'Login Realizado com Sucesso', 'token' => $token], 200);
+                return response()->json(['Mensagem' => 'Login Realizado com Sucesso', 'token' => $token,'Aluno' => $user->aluno], 200);
             }
             else{
-                return response()->json(['Mensagem'=>'Dados Incorretos']);
+                return response()->json(['Mensagem'=>'Dados Incorretos'], 401);
             }
         }    
     }
@@ -123,7 +123,6 @@ class UserController extends Controller
             "name" => "required|string",
             "email" => "required|email|unique:users",
             "telefone" => "required|min:9|numeric",
-            "aluno" => "required",
         ]);
         
         if ($validator->fails()) {
@@ -142,7 +141,6 @@ class UserController extends Controller
                  $userApi->name = $dadosRequest['name'];
                  $userApi->email = $dadosRequest['email'];
                  $userApi->telefone = $dadosRequest['telefone'];
-                 $userApi->aluno = $dadosRequest['aluno'];
                  $userApi->nivel = 2;
                  $userApi->save();
 
@@ -158,6 +156,25 @@ class UserController extends Controller
                 //return response()->json($dadosRequest);   
             }        
         } 
+    }
+
+
+    public function registrarAluno(Request $request){
+        $validator = Validator::make($request->all(), [
+            "aluno" => "required|max:1|numeric",
+        ]);
+        if ($validator->fails()) {
+            return response()->json(['Mensagem'=>'Envie os dados corretamente.'], 401);
+        }else{
+            $user = Auth::user();
+            $aluno =  $request['aluno'];
+            
+            $user->aluno = $aluno;
+            $user->save();
+
+            return response()->json(['Mensagem' => 'Alteracao relizada com sucesso'], 200);
+            
+        }
     }
 
     public function getUser(){

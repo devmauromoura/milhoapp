@@ -14,6 +14,7 @@ Route::get('/logout','UserController@apiLogout');
 
 Route::group(['middleware' => 'auth:api'], function(){
     Route::get('/user', 'UserController@getUser');
+    Route::post('/user/aluno','UserController@registrarAluno');
     Route::post('/registrarvoto','votoController@registrarVoto');
     
     Route::get('/pratos','ApiController@pratoShow');
