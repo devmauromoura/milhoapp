@@ -44,7 +44,7 @@ class votoController extends Controller
                     return response()->json(['Mensagem'=>'Limite máximo de voto alcançado. Você pode votar uma vez por barraca a cada dia.','Data Atual'=> $dataAtual,'Ultimo Voto'=>$dataUltimoVoto['created_at']],403);
                 }
             }else{
-                return response()->json(['Mensagem'=>'o cadastro precisa estar ativo'],401); 
+                return response()->json(['Mensagem'=>'O cadastro precisa estar ativo. Verifique seu email.'],401); 
             }
         }
     
