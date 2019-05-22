@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
 use MilhoAPP\Mail\cadastroUsuario;
+use MilhoAPP\Mail\cadastroApp;
 use MilhoAPP\User;
 use Validator;
 class UserController extends Controller
@@ -122,6 +123,7 @@ class UserController extends Controller
         $validator = Validator::make($request->all(), [
             "name" => "required|string",
             "email" => "required|email|unique:users",
+            "password" => "required",
             "telefone" => "required|min:9|numeric",
         ]);
         
@@ -141,15 +143,16 @@ class UserController extends Controller
                  $userApi->name = $dadosRequest['name'];
                  $userApi->email = $dadosRequest['email'];
                  $userApi->telefone = $dadosRequest['telefone'];
+                 $userApi->password = Hash::make($dadosRequest['password']);
                  $userApi->nivel = 2;
                  $userApi->save();
 
                 //$token = $userApi->createToken('milhoAPP')->accessToken;
                 
                 $userCheck = User::where('email', '=', $dadosRequest['email'])->first();
-                $id = $userCheck->id;
+                $idAtiva = $userCheck->id;
                 
-                Mail::to($dadosRequest['email'])->send(new cadastroUsuario($id));
+                Mail::to($dadosRequest['email'])->send(new cadastroApp($idAtiva));
                 
                 return response()->json(['Mensagem' => 'Cadastro Realizado com Sucesso, verifique seu email.'], 200);
 
@@ -175,6 +178,15 @@ class UserController extends Controller
             return response()->json(['Mensagem' => 'Alteracao relizada com sucesso'], 200);
             
         }
+    }
+
+    public function ativarconta($id){
+        $ativar = User::find($id);
+        $ativar->ativo = 1;
+        $ativar->save();
+
+        return "<h3><center>Conta ativada com sucesso!</center></h3>";
+
     }
 
     public function getUser(){

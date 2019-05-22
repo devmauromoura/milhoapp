@@ -22,24 +22,29 @@ class votoController extends Controller
 
         if ($validator->fails()) {
             return response()->json(['Mensagem'=>'Envie os dados corretamente.'],403);
-        }else{          
+        }else{ 
+         
             $dadosVoto = $request->all();
             $user = Auth::user();
-            $dataUltimoVoto = Voto::select('created_at')->where('idusuario','=',$user->id)->where('idbarraca','=',$dadosVoto['idBarraca'])->orderBy('created_at','desc')->first();
+            if($user->ativo == 1){
+                $dataUltimoVoto = Voto::select('created_at')->where('idusuario','=',$user->id)->where('idbarraca','=',$dadosVoto['idBarraca'])->orderBy('created_at','desc')->first();
         
 
-            $dataAtual = date("Y-m-d");
-
-            if($dataUltimoVoto['created_at'] < $dataAtual){
-                $voto = new Voto;
-                $voto->idusuario = $user->id;
-                $voto->idbarraca = $dadosVoto['idBarraca'];
-                $voto->created_at = date("Y-m-d");
-                $voto->save();
-        
-                return response()->json(['Mensagem'=>'Voto registrado com sucesso!'],200); 
+                $dataAtual = date("Y-m-d");
+    
+                if($dataUltimoVoto['created_at'] < $dataAtual){
+                    $voto = new Voto;
+                    $voto->idusuario = $user->id;
+                    $voto->idbarraca = $dadosVoto['idBarraca'];
+                    $voto->created_at = date("Y-m-d");
+                    $voto->save();
+            
+                    return response()->json(['Mensagem'=>'Voto registrado com sucesso!'],200); 
+                }else{
+                    return response()->json(['Mensagem'=>'Limite máximo de voto alcançado. Você pode votar uma vez por barraca a cada dia.','Data Atual'=> $dataAtual,'Ultimo Voto'=>$dataUltimoVoto['created_at']],403);
+                }
             }else{
-                return response()->json(['Mensagem'=>'Limite máximo de voto alcançado. Você pode votar uma vez por barraca a cada dia.','Data Atual'=> $dataAtual,'Ultimo Voto'=>$dataUltimoVoto['created_at']],403);
+                return response()->json(['Mensagem'=>'o cadastro precisa estar ativo'],401); 
             }
         }
     

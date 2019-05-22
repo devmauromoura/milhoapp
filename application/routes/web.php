@@ -8,6 +8,7 @@ Route::get('/', 'UserController@ini')->name('index');
 Route::post('/loginUser','UserController@login');
 Route::get('/logout','UserController@logout');
 Route::get('/cadastrarSenha/{id}','UserController@cadastrarSenha');
+Route::get('/ativarconta/{id}','UserController@ativarconta');
 Route::post('/cadastrarSenha/{id}/aplicar','UserController@salvarSenha');
 Route::get('/sair', function(){
     return view('logout');
